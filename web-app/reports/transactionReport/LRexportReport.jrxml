@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LRexportReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="acc2ca2a-829d-434e-8917-441982fa9772">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false"/>
+	<field name="details" class="java.util.Collection"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<title>
+		<band height="31">
+			<subreport>
+				<reportElement uuid="545f5c0e-f4a6-480b-b8a1-1b2726d6af61" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="31"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="1fb00ce8-97c7-422b-b21f-8c38ffd5dc0b" x="0" y="26" width="35" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ee49e6b1-deba-4a59-bea6-999178f1d3b4" x="35" y="26" width="70" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="20e288ac-d2f7-4299-b08e-4906f85caa79" x="105" y="26" width="63" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8234b2da-45f3-462e-bd43-a9735498a8de" x="168" y="26" width="152" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e2c72efe-5ccc-4cc9-9ae6-108e00f89e1f" x="320" y="26" width="149" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9b98c19e-72af-4fd5-8936-f6417cabfc54" x="469" y="26" width="86" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8d5c05da-6b7b-415c-8791-da2f170181d9" x="0" y="26" width="35" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3881491-0ab5-4f33-a5d0-b6b1d37fbe52" x="105" y="26" width="63" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LR No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a6986d7-fb09-4235-8197-5df602533d3e" x="168" y="26" width="152" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[From Company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c26a230e-c5f1-47b9-8561-8b50c76cc43e" x="320" y="26" width="149" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[To Company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="59ab7d18-4b80-40df-b9b3-948d29ee326d" x="469" y="26" width="86" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehiclce No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="69d3f7a5-0f18-4338-a01c-3c6d26fa1e93" x="35" y="26" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="e4406098-1391-4dcf-9770-c4c024b27b91" x="1" y="2" width="554" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="d06bebb7-d41b-4fa0-93cc-102849a290ba" x="168" y="6" width="152" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date :"+$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d40b4cfe-7b83-45a1-a4b0-c784cbfae439" x="320" y="6" width="149" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["To Date :"+$F{toDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="036dabf7-479b-4a21-97cf-40a6b788771c" x="0" y="0" width="555" height="37"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LRexportReport_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

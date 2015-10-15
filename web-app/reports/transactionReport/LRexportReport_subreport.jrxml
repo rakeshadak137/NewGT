@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LRexportReport_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2109c534-5d32-4e7a-b2fc-3526fb22fc1d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="fromName" class="java.lang.String"/>
+	<field name="toName" class="java.lang.String"/>
+	<field name="amount" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="034693a0-502f-4b9e-8545-0a0e28785552" x="0" y="0" width="35" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e8a1d911-72c3-44bd-b898-19f28bc4a05a" x="35" y="0" width="70" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b7750e33-ef26-4b6c-a203-0f6cf0273b6f" x="105" y="0" width="63" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="06332229-2dd1-4fc0-bc47-99d1d50eb0af" x="168" y="0" width="152" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c98d1df4-198a-4d3d-a7c9-fed1c5e5d613" x="320" y="0" width="149" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a2ea6e52-4b67-4f10-8e8b-cdf8c811aacc" x="469" y="0" width="86" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="caf7e493-ef23-4d6a-85ae-885c979396f7" x="-2" y="0" width="37" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa4db24a-51d0-4ca0-870e-397dbdd7bf70" x="35" y="0" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6e8373a-216c-4aaf-a6d3-45bbe3ba0cf5" x="105" y="0" width="63" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="041534ad-9bae-4cb9-bf77-312611bee494" x="168" y="0" width="152" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7cc1f75d-0d0b-49ce-9d72-5e7b4255117b" x="320" y="0" width="149" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="554cdbc7-7bad-4828-872d-0a37e3a3429b" x="469" y="0" width="86" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

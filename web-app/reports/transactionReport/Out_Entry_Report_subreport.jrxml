@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Out_Entry_Report_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f17dee2b-c7f8-4f11-8afe-c11c833574e5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="unit" class="java.lang.String"/>
+	<field name="product" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="becb2707-7a77-4db6-ad88-291cac227e6a" x="0" y="0" width="53" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="33075b4f-75e0-4cf0-9a67-638b53b18b09" x="53" y="0" width="83" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9896d5fe-5335-4d1e-87b7-d27201baa523" x="300" y="0" width="73" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e680bd12-06a9-466e-be91-bd96f22d10f1" x="373" y="0" width="92" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a1a5e966-273e-4279-8df9-b685d4d602b0" x="465" y="0" width="90" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="06381b8b-1fde-4754-a892-cf03f633bbf9" x="0" y="0" width="53" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9461d34-d8df-4d0b-a49e-2f4894bceaef" x="53" y="0" width="83" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="82c96662-c51c-4278-98c6-25d74fa7a4c5" x="300" y="0" width="73" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6cc0c50b-6f21-4d44-ab9c-63e83de675bb" x="374" y="0" width="91" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="63762c28-8335-4694-a024-68b10e292e2f" x="465" y="0" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="91192cae-d511-46ce-ac62-2ffe056a7739" x="136" y="0" width="164" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="cc17ab2e-b62b-4098-9078-dfa78468e1eb" x="136" y="0" width="164" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

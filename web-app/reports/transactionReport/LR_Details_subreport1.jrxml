@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LR_Details_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3d0ae61b-cf14-4109-a5bb-483bbbb67cee">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNO" class="java.lang.String"/>
+	<field name="LrDate" class="java.lang.String"/>
+	<field name="form" class="java.lang.String"/>
+	<field name="to" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7a1e4ea7-a821-4c9e-aba7-fda16615907d" stretchType="RelativeToBandHeight" x="1" y="0" width="40" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5ff3f357-5b63-45e3-9ffc-f137fc0a2a01" stretchType="RelativeToBandHeight" x="41" y="0" width="53" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9898420a-9d6a-4124-8554-4d9778c8cfa9" stretchType="RelativeToBandHeight" x="94" y="0" width="135" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="677aab3e-08f3-4107-a5fd-3ed01b52548a" stretchType="RelativeToBandHeight" x="358" y="0" width="63" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c36f1758-45f6-4b68-bcce-95e3c08f69fa" stretchType="RelativeToBandHeight" x="421" y="0" width="66" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="832e106f-4fc5-425d-8f8c-1caae40ffd9a" stretchType="RelativeToBandHeight" x="487" y="0" width="69" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4bfdd10c-f01c-4551-a2d4-dd9749c8f304" x="229" y="0" width="129" height="16"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="d7d009ba-58d6-41bc-b294-76f49e6605ab" stretchType="RelativeToBandHeight" x="1" y="0" width="40" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="738b07d2-3c3c-47f7-8eb0-82e7d3586e38" stretchType="RelativeToBandHeight" x="41" y="0" width="53" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f4695507-e4ac-4412-bf75-6f87872e3d78" stretchType="RelativeToTallestObject" x="94" y="0" width="135" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{form}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="353daff4-1f8c-465b-ac29-a6d227416db5" stretchType="RelativeToBandHeight" x="358" y="0" width="63" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5bc62db2-bc1b-4488-9b5b-47593173d899" stretchType="RelativeToBandHeight" x="421" y="0" width="66" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a026b9a1-3ef1-4d8d-b4e8-751bd88f6e29" stretchType="RelativeToBandHeight" x="487" y="0" width="68" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e6209e5-8573-4a78-ae68-b626e8fa7683" stretchType="RelativeToTallestObject" mode="Transparent" x="229" y="0" width="129" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{to}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

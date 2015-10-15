@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="closingStock_subreport_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ea6363e3-a9e0-4cad-aa43-de3bc3469d1c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="itemName" class="java.lang.String"/>
+	<field name="partyName" class="java.lang.String"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="srNo" class="java.lang.String"/>
+	<variable name="srCount" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{srNo}++]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{srNo}]]></initialValueExpression>
+	</variable>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="9f2d207d-eecb-4028-82a1-09934b1f036e" x="0" y="0" width="36" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fca29ddd-44e8-47fc-9241-85e6d329008b" x="36" y="0" width="211" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9400edbe-711d-4901-a4d6-8cb27c22fd23" x="247" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="43340ee0-7a95-4c3c-a8c0-4a63ec26cc43" x="347" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4371fca7-c4f7-439b-acc5-d3ed21569398" x="447" y="0" width="108" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="cb176f4a-fd1a-4426-abf5-ff26c8acb5d1" x="0" y="0" width="36" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4cd806ef-ab88-4c58-8887-40d9a301f165" x="36" y="0" width="211" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="db740b44-9573-4c41-b4c5-ef57043a8129" x="247" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f97d6acc-6fff-4f27-8fc1-974ec659e574" x="347" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="202808e5-d7ea-4c5a-ae5e-850029ac686d" x="447" y="0" width="108" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

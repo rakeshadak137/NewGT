@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="address_info_landscape" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe08c27a-0861-41de-b451-1e293787150e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<field name="details" class="java.util.Collection"/>
+	<title>
+		<band height="117" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7eab3518-ab73-4bc4-a8c8-dfcb2ba1743f" x="0" y="0" width="802" height="117"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="a48e4908-fe51-4864-bf0f-beef273cb033" x="72" y="0" width="723" height="37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="26" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[GANESH TRANSPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73723a0c-eccf-4e9c-a6fd-f9d9c7613f02" x="72" y="37" width="723" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[TRANSPORT CONTRACTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab4f6c9d-84cd-4599-b6b3-2e61505cb282" x="0" y="57" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Head off: Northland Commercial Complex, Shop No.3, Plot No.5 Sec.1 Near Vaishnovdevi Mandir, Indrayni nagar, Bhosari, Pune-26]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc952b25-4d0b-4003-8654-173589317011" x="0" y="77" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mob: 9850050582, 9822014897 Website:- www.ganeshtransport.co.in]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d27ad3ae-5e46-4e56-aa2c-c8669db3b0be" x="0" y="97" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Branch Off: W-12, MIDC. Waluj, Aurangabad, E-mail:- ganeshtransport92@gmail.com, Mob.: 9881374442]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="3eed3c87-eda4-47a0-a108-45bd2bc99a22" x="0" y="56" width="802" height="1"/>
+			</line>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement uuid="86400696-1f81-4a13-b99f-854c3ee268e3" x="5" y="2" width="67" height="50"/>
+				<imageExpression><![CDATA[$P{IMAGE_DIR} + "logo.bmp"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+</jasperReport>

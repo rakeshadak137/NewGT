@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lrDatewise_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0913eabf-547b-4026-9c07-7aa27735ec76">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="productName" class="java.lang.String"/>
+	<field name="itemName" class="java.lang.String"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="invoiceQty" class="java.lang.String"/>
+	<field name="invoiceUnit" class="java.lang.String"/>
+	<field name="unit" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="weight" class="java.lang.String"/>
+	<field name="partyName" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="9fda5f90-517b-40a2-83d7-0688915ade5d" x="0" y="0" width="33" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="49d0a2c5-fb0a-484d-be61-86b57640a2c4" x="33" y="0" width="56" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="02aa5dd0-3adc-4f55-b8f1-5cd68aa14c17" x="89" y="0" width="139" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2c499383-9e8d-47c9-bc54-91200f64e8da" x="228" y="0" width="116" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b6c6e2ea-dd34-4456-9689-f4064e8a95ed" x="344" y="0" width="53" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="913dfc86-2eed-412e-88fd-4bbef214a53d" x="397" y="0" width="43" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8146ea07-65b7-47b1-a9e2-0a0a46febeab" x="440" y="0" width="44" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="66007f1d-ecbd-4158-aed9-a143e5a043fd" x="0" y="0" width="33" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="814daec4-fd6c-4bee-a7df-e56f4080caeb" x="33" y="0" width="56" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="16b9a895-b2ed-47ff-9991-04990beb34a5" x="228" y="0" width="116" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="79132d7f-c482-488e-a0dd-f18590b1e078" x="344" y="0" width="53" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5b215da-0e22-4eee-9bac-72b3267612d5" x="89" y="0" width="139" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{partyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fa473558-c8fd-49ee-a357-e21258794155" x="397" y="0" width="43" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceQty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a944a03b-b601-415b-9f39-5ce884eda23f" x="440" y="0" width="44" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceUnit}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="c9ea0023-6653-4854-bd34-621808c868df" x="484" y="0" width="71" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="a5fad519-d844-40ca-bcd2-3ca9028520ff" x="484" y="0" width="71" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

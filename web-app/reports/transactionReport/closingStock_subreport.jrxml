@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="closingStock_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d4b8a1d6-8202-478d-b372-336c76079a68">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\GT\\28SeptGT\\NewGT\\web-app\\reports\\transactionReport\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="divisionName" class="java.lang.String"/>
+	<field name="subchild" class="java.util.Collection"/>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="db5acd4b-2356-44fa-a79b-27aa5037a2e3" x="247" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Division Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6ab05615-7818-465e-aaaf-9babbfbe1d04" x="347" y="0" width="208" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{divisionName}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="003e1f56-c3fa-44c8-a681-fe492386eda1" x="0" y="20" width="36" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="acf5ed15-e5fe-4d8a-80f6-647984a16b89" x="36" y="20" width="211" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="29b1a871-59f9-47fe-9a9e-0ea56c174ce0" x="247" y="20" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7d7a8c50-7a13-4e64-aa3e-afb69780688e" x="347" y="20" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="026253dc-87e1-48a3-a987-0c14d6973fa3" x="447" y="20" width="108" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="24f844c4-d2e6-4d71-be04-67b2da8752cd" x="347" y="20" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Invoice Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4a9f202-8b88-4e89-90e1-010a014d4947" x="247" y="20" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Invoice No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8119ec85-bfb7-4e35-a972-1b6f3155bd3a" x="447" y="20" width="108" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Remark/LR No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="08c4095b-55b6-4cbc-a7b9-73d7b3d289fb" x="0" y="20" width="36" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Sr No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f23d3328-0aa4-4883-9d42-411e4bd38edf" x="36" y="20" width="211" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="1f97656b-b316-443e-855c-2e2858c09862" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="22"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{subchild})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "closingStock_subreport_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

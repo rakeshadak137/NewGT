@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LocalOutEntryReport_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="abff2d42-d1cc-433f-a9da-01db67b3495e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="unit" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="16a0ca4e-f2cb-4042-a2c7-12478bcc8f3b" x="0" y="0" width="48" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="978959af-ca0c-4db0-b61f-28a0648c77c7" x="48" y="0" width="310" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f7928edb-7aad-4cdc-afdb-844b9ef1a7bd" x="358" y="0" width="90" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3ccf4e16-19cc-4a9b-83ce-1f2952d8958a" x="448" y="0" width="107" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="be4c0c88-a2ce-49eb-95b4-5d6c4e152546" x="0" y="0" width="48" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e1ad4fcd-7948-4a9c-a4de-7e0d5313100a" x="48" y="0" width="310" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca2ce18c-535c-4b9f-a388-0fae6343abe9" x="358" y="0" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9a75578-3fde-426a-b861-cf275579d386" x="448" y="0" width="107" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

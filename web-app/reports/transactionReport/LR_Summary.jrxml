@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LR_Summary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1594ca6e-a4e7-4261-957e-d4e02642593a">
+	<property name="ireport.zoom" value="1.1000000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<field name="details" class="java.util.Collection"/>
+	<field name="totalAmount" class="java.lang.String"/>
+	<field name="billNo" class="java.lang.String"/>
+	<title>
+		<band height="29" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="11e59eb2-3f82-4c0b-abc1-41e620a0e7d4" x="0" y="0" width="555" height="29"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b874e9d1-b317-47e8-a0ac-eef57430030c" x="406" y="8" width="61" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BILL NO.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c83873cb-4bb4-4a25-b32f-909ba702a041" x="467" y="8" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{billNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="d9795f0e-6bbc-44b2-b849-99cedd2d8b3d" x="76" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="de242229-0fc3-47f1-9fc1-455aed4647a9" x="176" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="09487644-2232-4b13-93ba-1c6544dfc000" x="276" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b107f423-d654-4273-8524-99f6ee099630" x="376" y="0" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="20b82963-a5bd-43f7-87de-f8f4718b36c4" x="76" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[S. NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b84d8039-9549-4cfd-86ce-34103d9210ad" x="176" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6356a095-e62c-4733-a037-3604610ad731" x="276" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LR. NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="61ae6e7c-ef8f-48f8-b676-5a0259abfddf" x="376" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMOUNT (RS.)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="d674a638-c28b-4884-9cf2-ea5741ef6e31" x="0" y="0" width="555" height="16"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LR_Summary_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="054869c0-07f0-42db-8e93-e1762df61a00" x="76" y="0" width="300" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4737092f-8459-4bfe-b6df-ffc574b8723e" x="376" y="0" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4297ca01-f566-455f-b941-700e06b6bc89" x="276" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e09ac6b2-fdb2-498a-a6e9-5b5bdb9d018c" x="376" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

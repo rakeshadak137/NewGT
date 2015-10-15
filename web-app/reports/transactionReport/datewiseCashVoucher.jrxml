@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datewiseCashVoucher" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3985bee3-fd70-489c-b0f9-c8247c173926">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="details" class="java.util.Collection"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="fc71b7ce-c953-4d97-89d0-28a301909d57" x="0" y="0" width="802" height="555"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="cb4652e5-587b-4eef-b610-ef3783456580" x="0" y="0" width="802" height="117"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6eff00d5-f534-46db-a594-079e0c7b41c4" x="72" y="0" width="723" height="37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="26" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[GANESH TRANSPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07061d2e-fd1a-43b7-8184-0faa09ab1f5d" x="72" y="37" width="723" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[TRANSPORT CONTRACTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2ae2a46-0ab9-433b-ad6e-7a5026890910" x="0" y="57" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Head off: Northland Commercial Complex, Shop No.3, Plot No.5 Sec.1 Near Vaishnovdevi Mandir, Indrayni nagar, Bhosari, Pune-26]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="667d88bb-ca2c-4519-8ae0-fb128a3e3174" x="0" y="77" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mob: 9850050582, 9822014897 Website:- www.ganeshtransport.co.in]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1198f95-1c85-4df7-95cd-144673ec3d37" x="0" y="97" width="795" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Branch Off: W-12, MIDC. Waluj, Aurangabad, E-mail:- ganeshtransport92@gmail.com, Mob.: 9881374442]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="f3cbbcac-96e1-4306-af0c-c0e9e28cc4e3" x="0" y="56" width="802" height="1"/>
+			</line>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement uuid="6b522201-8854-4490-8979-e19cc865d428" x="5" y="2" width="67" height="50"/>
+				<imageExpression><![CDATA[$P{IMAGE_DIR} + "logo.bmp"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="063d0062-56fc-4c16-b0b3-5bf3db5135e3" x="0" y="0" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CASH VOUCHER REPORT]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="c4ab6a39-5936-4641-9bdd-d09eda80ae71" stretchType="RelativeToTallestObject" x="0" y="0" width="20" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="817995d1-969e-4a50-a7e7-718690004f60" stretchType="RelativeToTallestObject" x="20" y="0" width="49" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6ab76e18-e881-47db-83ac-f41b6d8f180f" stretchType="RelativeToTallestObject" x="69" y="0" width="67" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="1359660f-1da7-41bf-a8a7-85ecd0cea41e" stretchType="RelativeToTallestObject" x="136" y="0" width="101" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9a3ccee5-4add-4ab8-867f-e0359d081820" stretchType="RelativeToTallestObject" x="237" y="0" width="57" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c3476532-a6d4-443b-969f-a0a745959c0b" stretchType="RelativeToTallestObject" x="294" y="0" width="92" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="64843cd8-67d8-441a-875e-87bcfe115f8b" stretchType="RelativeToTallestObject" x="386" y="0" width="66" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="67576382-7dd2-42c6-9ae5-505f2732c115" stretchType="RelativeToTallestObject" x="452" y="0" width="64" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9fb8ff03-8ef5-45c3-8866-141173f79b8a" stretchType="RelativeToTallestObject" x="516" y="0" width="149" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="edf7e9ed-0e2c-4e2d-88a8-ecd7147bf260" stretchType="RelativeToTallestObject" x="665" y="0" width="86" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="57b58204-cd55-47d5-ac59-909d2eae8096" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7d0d2bc2-d2d5-4ec3-9e7a-7c61182b4ffc" x="0" y="0" width="20" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Sr.No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e86c3ae-418b-4759-b2f0-502b11325f2f" x="20" y="0" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Voucher No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b2a721fe-4085-4b91-8243-0305cc0acd57" x="69" y="0" width="67" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1c41d6c6-5fc2-481a-9dec-7fada4266241" x="136" y="0" width="101" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Paid To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="efc5a770-bc06-4491-885a-a579c17eb2ee" x="237" y="0" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f77409d-56c2-4c17-98d2-69629b8fce02" x="294" y="0" width="92" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Bank Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a80ef75-cd0d-4112-8254-7701ce9fca0e" x="386" y="0" width="66" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cheque No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="495962d0-013e-46fb-b942-38781784625b" x="452" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Vehicle No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c1162494-e6f8-410f-abef-e15676828d7f" x="516" y="0" width="149" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9bd1df48-d27c-45c0-8a0a-17b37d4cc78b" x="665" y="0" width="86" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Pump Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bae23fff-9794-4650-8b45-e7fb76792e99" x="751" y="0" width="51" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Diesel Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="9040be26-a1f6-497b-b0dc-09ee74bf4260" x="0" y="0" width="802" height="20"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CashVoucher_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

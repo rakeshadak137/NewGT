@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datewiseoutentry_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="81600b18-855a-456e-963f-bbd77846408a">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="inv" class="java.lang.String"/>
+	<field name="fromTo" class="java.lang.String"/>
+	<field name="partNo" class="java.lang.String"/>
+	<field name="desc" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="srNo" class="java.lang.Integer"/>
+	<variable name="srNo" class="java.lang.Integer" resetType="None" calculation="Count">
+		<variableExpression><![CDATA[$V{srNo}?$V{srNo}++:0]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="vehicleNo">
+		<groupExpression><![CDATA[$F{vehicleNo}]]></groupExpression>
+	</group>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="c3f14aa0-c97c-4bfc-9f68-02104b61180b" stretchType="RelativeToTallestObject" x="0" y="0" width="30" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cb3053fc-d2a4-437e-8042-7c97e99e54b6" stretchType="RelativeToTallestObject" x="30" y="0" width="67" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dc737610-7d59-477a-8f81-e094f1125ed3" stretchType="RelativeToTallestObject" x="97" y="0" width="53" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f26f7368-b344-4823-a27b-2bfe78e8ae17" stretchType="RelativeToTallestObject" x="150" y="0" width="133" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2ff92edf-2159-44df-8ffb-9d9272e3eea7" stretchType="RelativeToTallestObject" x="283" y="0" width="47" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fb95be0d-8841-4060-8058-378c97043878" stretchType="RelativeToTallestObject" x="330" y="0" width="91" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="783b4ba0-fc7f-438e-a659-c046b9d144b4" stretchType="RelativeToTallestObject" x="421" y="0" width="44" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2c62fdd9-e882-4874-9181-2cfa7502a3ee" stretchType="RelativeToTallestObject" x="465" y="0" width="41" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f6cd47b2-bf52-4a3b-b260-3bff47e7fbb7" stretchType="RelativeToTallestObject" x="506" y="0" width="49" height="20"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f0b1455-9853-447c-b859-6041c8d140c6" stretchType="RelativeToTallestObject" x="30" y="0" width="67" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2cab3a10-9429-447c-afc9-bfdff6187cf9" stretchType="RelativeToTallestObject" x="97" y="0" width="53" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{inv}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="658c0493-6bb2-4f35-8691-da526b38a198" stretchType="RelativeToTallestObject" x="150" y="0" width="133" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromTo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cf299971-e234-4c17-ac26-f3a63696e252" stretchType="RelativeToTallestObject" x="283" y="0" width="46" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{partNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="793b7166-76bb-4e00-b737-9e823a78524e" stretchType="RelativeToTallestObject" x="330" y="0" width="91" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{desc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7c8dcdd7-3457-49d6-8f5e-4fa8d260cdea" stretchType="RelativeToTallestObject" x="421" y="0" width="44" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9426c3d8-1445-41f2-9156-797a27ab7817" stretchType="RelativeToTallestObject" x="0" y="0" width="30" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{srNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

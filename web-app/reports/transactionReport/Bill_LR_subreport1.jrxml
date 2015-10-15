@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Bill_LR_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fd3f7b47-b118-4e5f-a226-0ae9ecc9aaca">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="5"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<field name="fromLocation" class="java.lang.String"/>
+	<field name="toLocation" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="fromAddress" class="java.lang.String"/>
+	<field name="toAddress" class="java.lang.String"/>
+	<field name="billPayType" class="java.lang.String"/>
+	<field name="details" class="java.util.Collection"/>
+	<field name="freight" class="java.lang.String"/>
+	<field name="loading" class="java.lang.String"/>
+	<field name="unloading" class="java.lang.String"/>
+	<field name="collection" class="java.lang.String"/>
+	<field name="cartage" class="java.lang.String"/>
+	<field name="cata" class="java.lang.String"/>
+	<field name="bilty" class="java.lang.String"/>
+	<field name="doorDelivery" class="java.lang.String"/>
+	<field name="grandTotal" class="java.lang.String"/>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="e6e4f474-1cbd-4187-ab9b-c980a7b2a635" x="0" y="0" width="555" height="31"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="149">
+			<rectangle>
+				<reportElement uuid="c4985a40-8276-45b9-a053-8dae9f0e629c" x="0" y="0" width="159" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ac6925c9-1a45-404e-abf2-5b74440c9067" x="159" y="0" width="175" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2f68fe84-d113-4afe-b0a3-55328a139980" x="477" y="0" width="78" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="42e961f7-5d35-47d7-9f2e-bb62aa0b9bfb" x="477" y="0" width="78" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[L.R.No]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="1244babb-c433-47fd-958a-c2a777c432c9" x="334" y="0" width="143" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a08a4bc6-775e-451e-a00a-bdd576dd0d63" x="334" y="20" width="143" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="01ae7d16-c377-4407-9971-32ff55dc6d92" x="159" y="0" width="175" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[GOODS CONSIGNMENT NOTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76b966d7-bf2b-42f9-bace-3131d3b7ecbe" x="0" y="0" width="31" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="dc1a9f92-aab4-4662-843b-814f9c1bc2a8" x="0" y="20" width="159" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5284ebba-aee8-4a84-8b4c-b3623d49e14c" x="159" y="20" width="175" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="438756b2-0880-47d5-ad1f-da44657dbcb0" x="0" y="40" width="227" height="79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ed9a4894-4945-4199-81b2-a800550892d8" x="227" y="40" width="188" height="79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="db0ce72a-5386-482a-806d-b4ac0b9490d6" x="415" y="40" width="140" height="79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6da4c90a-c8f1-4fa8-8e3b-24f6736a5b36" x="477" y="20" width="78" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="479043a9-befe-4523-a529-56698bd1e2f7" x="159" y="20" width="175" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[AT OWENERS RISK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15d1eefc-2abb-4097-917d-b0750c0bdd42" x="0" y="20" width="23" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8754c4ee-677c-46be-ae4f-41adbeb94e47" x="334" y="0" width="44" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8de5f14d-5260-4bbc-9dcf-d867f1aa24f0" x="334" y="20" width="63" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Vehicle No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5952d69-d7aa-47d8-949a-0a7394976471" x="415" y="40" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Bill Pay Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d56c953-e85f-4b42-b37d-66e9bf58f6b1" x="11" y="40" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Consignor [From] :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3c171624-8124-4e6e-8190-7244c9abbe63" x="0" y="119" width="54" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2dc87cca-9c96-4131-b369-d9a6feacb36a" x="54" y="119" width="120" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="35abdef9-4a8a-4f67-9acd-22b134782ad8" x="174" y="119" width="53" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3f66b009-b758-4e93-b2e1-c807bc074ebd" x="227" y="119" width="49" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="85ae13a7-f5fa-44fb-b8ce-18fae1946e8b" x="276" y="119" width="66" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fe5cf95b-df59-4efe-aee7-dbdaaa6f8af9" x="342" y="119" width="55" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="42325acb-4a6e-46e9-8983-d360ce0d1f43" x="397" y="119" width="58" height="30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="32fc3eb4-6497-4a8a-832d-56cbc3ebb6a2" x="455" y="119" width="100" height="30"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0f31abe9-57ac-411a-81dd-ff73937cae22" x="0" y="119" width="54" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d7e66a2-bd60-47bf-90a0-c443756d1e32" x="54" y="119" width="120" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec8c4c81-f36c-441f-a46f-2672c347e36e" x="174" y="119" width="53" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a8ba366-e0a0-413c-a49a-fb1e2b022fb5" x="227" y="119" width="49" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Packing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cf72bbc5-e1e1-475f-9508-28ab91e1f60c" x="276" y="119" width="66" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Weight Per Piece]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3e7a1125-40a8-482a-b91a-16650d1ba0f8" x="342" y="119" width="55" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Weight]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9a8abb5b-f96b-41ba-9d25-d9e8fb169ca6" x="397" y="119" width="58" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3ecd83d8-e1ad-4966-b61e-f28892db866b" x="455" y="119" width="100" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4da9ad71-1e6d-4b90-8643-3f62008ca683" x="31" y="0" width="128" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromLocation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0103bab2-f5b9-4f2f-a43e-da7fbf4d0b00" x="31" y="20" width="128" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toLocation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d871c3e-5f52-4eb4-bf84-b2ff5032fe28" x="377" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1db7fd02-a4f6-4545-87d7-c184685e49a1" x="397" y="20" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d5f6a16-e8b0-4e00-b05b-b1175baf4d06" x="477" y="20" width="78" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a4a2e48a-1bdd-4d23-a156-c2c05290d8f4" x="11" y="60" width="216" height="59"/>
+				<textElement>
+					<font size="12" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71a33b23-7443-4df7-bfa9-3107d8ecc4b9" x="237" y="60" width="178" height="59"/>
+				<textElement>
+					<font size="12" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ec1a666-20dd-49ba-ad0f-c1432c56587e" x="415" y="78" width="140" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{billPayType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d66fac06-0b57-45b8-b2bd-2c174f6525b8" x="237" y="40" width="121" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Consignee [To] :]]></text>
+			</staticText>
+		</band>
+		<band height="17">
+			<rectangle>
+				<reportElement uuid="a963b0f0-11a5-4bdc-9732-d77df685ee84" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="17"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="aafb3f91-424a-45dd-ad1d-c769cb958407" x="0" y="0" width="555" height="17"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LR_report_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="144">
+			<rectangle>
+				<reportElement uuid="20ce1d84-f2d0-43a1-90e3-9c565c87478f" x="0" y="0" width="555" height="60"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4aba65c3-503f-4cea-8205-2814c66c302a" x="4" y="20" width="39" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cartage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="20b4f5b0-02ae-4980-b807-3245c2a76170" x="99" y="0" width="47" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loading]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cca9d00-c0e0-483a-864a-9561d27b0f60" x="99" y="20" width="47" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cata]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d750234-04c0-43d1-89e6-4ce815f93c1c" x="211" y="0" width="53" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unloading]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dfb4ed07-27b8-4fb1-b0e4-994275cfcf87" x="211" y="20" width="53" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bilty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f67d2e9-dd9f-477d-9584-459ed9edb660" x="327" y="0" width="73" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Collection]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="20e1b077-0b21-4c2d-8443-99b432402f99" x="327" y="20" width="73" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Door Delivery]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2add0164-1c8b-4ad7-beb1-a2a112ff48a5" x="43" y="0" width="56" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{freight}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="675da2e4-8d7c-45d0-a862-587f8038623b" x="146" y="0" width="65" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{loading}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bf7cad87-331c-4475-bfc2-a0dfdff0ebcb" x="264" y="0" width="63" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{unloading}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a741695f-efe2-421e-b25e-09a33994873d" x="400" y="0" width="55" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{collection}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a439b9e-c873-4786-84f8-2344ed5a2ab3" x="400" y="20" width="55" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{doorDelivery}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9c20b66-58df-4e24-b665-c3235be7ca00" x="264" y="20" width="63" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{bilty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bea0b68d-ffc8-4a02-97df-9d0e73a8f996" x="146" y="20" width="65" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{cata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7876a839-250b-4246-8476-5af9e42140ab" x="43" y="20" width="56" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{cartage}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="57b88caf-8806-43f1-ab3c-1406a36dcf10" x="355" y="40" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trip Rate:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8d94f94c-ae56-4e78-9fd8-ad9019044362" x="455" y="40" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grandTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="34b78c24-6e1f-40cd-b52a-e8947615ae8e" x="4" y="0" width="39" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Freight]]></text>
+			</staticText>
+			<break>
+				<reportElement uuid="0ee0e3c8-08d9-4a8d-b8a0-291281f52347" x="0" y="143" width="555" height="1"/>
+			</break>
+			<rectangle>
+				<reportElement uuid="fbb433fe-6c0c-4244-b46c-a10b8e2a5512" x="0" y="60" width="555" height="84"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="9bee0fb8-28bc-4589-83e3-1cfbc3368434" x="0" y="124" width="199" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receivers Signature & Stamp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b52299a5-3bdd-4736-af68-29ac96053e92" x="378" y="64" width="177" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[For GANESH TRANSPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6ceab9d-b008-437e-9cc5-68220bb165d1" x="378" y="124" width="177" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Authorised Signatory]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
