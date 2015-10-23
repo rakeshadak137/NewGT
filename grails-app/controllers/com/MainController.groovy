@@ -1,5 +1,7 @@
 package com
 
+import com.system.*
+
 class MainController {
 
     def index() {
@@ -37,15 +39,15 @@ class MainController {
                             data.each { da ->
                                 result.push([
                                         domainName: da?.screen?.domainName,
-                                        id: da?.screen?.id,
+                                        id        : da?.screen?.id,
                                         controller: da?.screen?.controller ?: "",
-                                        filter: da?.screen?.filter ?: ''
+                                        filter    : da?.screen?.filter ?: ''
                                 ])
                             }
                             d.push([
                                     subMenu: sub.filter,
-                                    childs: result,
-                                    id: sub.id
+                                    childs : result,
+                                    id     : sub.id
                             ])
                         }
                     }

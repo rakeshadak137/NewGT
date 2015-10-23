@@ -305,6 +305,8 @@ class OutEntryController {
                                     lrNo         : s.lrNo,
                                     lrDate       : s.lrDate,
                                     invoiceNo    : s.invoiceNo,
+                                    productName: s?.productName?.productName ?: "",
+                                    productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName
@@ -316,6 +318,8 @@ class OutEntryController {
                                     lrNo         : s.lrNo,
                                     lrDate       : s.lrDate,
                                     invoiceNo    : s.invoiceNo,
+                                    productName: s?.productName?.productName ?: "",
+                                    productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName
@@ -348,6 +352,8 @@ class OutEntryController {
                                     lrNo         : s.lrNo,
                                     lrDate       : s.lrDate,
                                     invoiceNo    : s.invoiceNo,
+                                    productName: s?.productName?.productName ?: "",
+                                    productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName
