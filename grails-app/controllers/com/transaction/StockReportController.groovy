@@ -96,7 +96,7 @@ class StockReportController {
                         fromParty : d?.fromCustomer?.accountName?:"",
                         toParty : d?.toCustomer?.accountName?:"",
                         invoiceNo : d.invoiceNo?:"",
-                        date : "",
+                        date : d?.invoiceDate?.format("dd-MM-yyyy")?:"",
                         qty : d?.invoiceQty?:0
                 ])
             }

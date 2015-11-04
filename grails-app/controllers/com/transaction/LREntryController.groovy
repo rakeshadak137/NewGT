@@ -1,6 +1,7 @@
 package com.transaction
 
 import annotation.ParentScreen
+import com.master.*
 import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -135,6 +136,7 @@ class LREntryController {
                 stockInstance.lrDate = LREntryInstance.lrDate;
 
                 stockInstance.invoiceNo = ch.invoiceNo;
+                stockInstance.invoiceDate = ch?.invoiceDate?:""
                 stockInstance.invoiceUnit = UnitMaster.findById(ch.invoiceUnit.id as Long);
                 stockInstance.invoiceQty = ch.invoiceQty as BigDecimal;
                 stockInstance.fromCustomer = AccountMaster.findById(LREntryInstance.fromCustomer.id as Long);
@@ -362,6 +364,7 @@ class LREntryController {
                             productId: d.productName.id,
                             productName: d.productName.productCode +'-'+ d.productName.productName,
                             invoiceNo: d.invoiceNo,
+                            invoiceDate: d?.invoiceDate?:"",
                             qty: d.qty,
                             unitId: d.unit.id,
                             unitName: d.unit.unitName,

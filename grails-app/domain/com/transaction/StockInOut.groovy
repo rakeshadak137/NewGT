@@ -12,6 +12,7 @@ class StockInOut {
     ProductMaster productName
 
     String invoiceNo
+    Date invoiceDate
     AccountMaster fromCustomer, toCustomer
     BigDecimal invoiceQty
     String status
@@ -44,5 +45,6 @@ class StockInOut {
         lastUpdatedBy display: false
         financialYear display: false
         branch display: false
+        invoiceDate nullable: true
     }
 }
