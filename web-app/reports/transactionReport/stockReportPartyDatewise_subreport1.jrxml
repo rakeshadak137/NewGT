@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stockReportPartyDatewise_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4496f1a1-2e65-4184-9503-b08444945b9b">
+	<property name="ireport.zoom" value="0.7513148009015777"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="a817c438-5bc6-4a15-9af7-bf99ce646308" stretchType="RelativeToBandHeight" x="0" y="0" width="58" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4773930e-78c3-4160-8173-0ba8180669ac" stretchType="RelativeToBandHeight" x="58" y="0" width="115" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a00f53b3-9baa-422f-ade0-db5684f0628d" stretchType="RelativeToBandHeight" x="173" y="0" width="169" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e6073b2e-86b0-4aab-a20d-f5ba44df1273" stretchType="RelativeToBandHeight" x="342" y="0" width="172" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2001bd65-3c28-4566-bf2a-b7900bbfa2b1" stretchType="RelativeToBandHeight" x="514" y="0" width="96" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b234ae95-0ff4-41f0-bed8-810783f2c738" stretchType="RelativeToBandHeight" x="610" y="0" width="96" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a18e207c-0035-4070-b0d4-73d222facdce" stretchType="RelativeToBandHeight" x="706" y="0" width="96" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="159b5ee7-cbb0-4cf2-ab18-1ff6db2208f9" stretchType="RelativeToBandHeight" x="0" y="3" width="58" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fc8f5119-9b8d-473e-9544-c0a64d2b4058" stretchType="RelativeToBandHeight" x="58" y="3" width="115" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="85653815-e4fe-418b-bc48-056778cdced0" stretchType="RelativeToTallestObject" x="173" y="3" width="169" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromParty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="796b57cb-c1ac-49ce-bc9d-5504070bae21" stretchType="RelativeToTallestObject" x="342" y="3" width="172" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toParty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="abe80e73-9d18-48f0-88ee-9269e5913944" stretchType="RelativeToBandHeight" x="514" y="3" width="96" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4f6911a8-0d95-4d43-9295-a9dedb9bc89a" stretchType="RelativeToBandHeight" x="610" y="3" width="96" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="64d41601-912d-4a6a-a99e-19eb3253f113" stretchType="RelativeToBandHeight" x="706" y="3" width="96" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

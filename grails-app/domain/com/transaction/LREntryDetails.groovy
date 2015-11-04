@@ -7,6 +7,7 @@ import org.codehaus.groovy.grails.web.json.JSONObject
 class LREntryDetails {
     ProductMaster productName
     String invoiceNo
+    Date invoiceDate
     BigDecimal qty = 0
     UnitMaster unit
     BigDecimal invoiceQty = 0
@@ -27,7 +28,7 @@ class LREntryDetails {
         rate nullable: false
         weight nullable: false,scale: 5
         totalAmount nullable: false
-
+        invoiceDate nullable: true
     }
 
     static saveChildData(JSONObject st) {
@@ -35,7 +36,8 @@ class LREntryDetails {
         return new LREntryDetails(
                 productName: ProductMaster.findById(st.productId as Long),
                 invoiceNo: st.invoiceNo,
-                qty: st.qty as BigDecimal,
+                invoiceDate: st?.invoiceDate ? Date.parse("yyyy-MM-dd",st?.invoiceDate):null,
+                qty: st?.qty as BigDecimal,
                 unit: UnitMaster.findById(st.unitId as Long),
                 invoiceQty: st.invoiceQty as BigDecimal,
                 invoiceUnit: UnitMaster.findById(st.invoiceUnitId as Long),

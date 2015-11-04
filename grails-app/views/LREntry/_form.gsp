@@ -318,10 +318,11 @@
                             productId: $scope.productData.id,
                             productName: $scope.productData.productCode +'-'+ $scope.productData.productName,
                             invoiceNo: $scope.invoiceNo,
+                            invoiceQty: $scope.invoiceQty,
                             qty: $scope.qty,
                             unitId: $scope.unitId,
                             unitName: $scope.unit,
-                            invoiceQty: $scope.invoiceQty,
+                            invoiceDate: $scope.invoiceDate,
                             invoiceUnitId: $scope.unitData.id,
                             invoiceUnitName: $scope.unitData.unitName,
                             rate: $scope.rate,
@@ -339,6 +340,7 @@
         function doBlank(){
             $scope.productName = "";
             $scope.invoiceNo = "";
+            $scope.invoiceDate = "";
             $scope.qty = 0;
             $scope.unit = "";
             $scope.invoiceQty = 0;
@@ -366,6 +368,7 @@
             debugger;
             $scope.productName = $scope.LRData[index].productId;
             $scope.invoiceNo = $scope.LRData[index].invoiceNo;
+            $scope.invoiceDate = $scope.LRData[index].invoiceDate;
             $scope.qty = $scope.LRData[index].qty;
             $scope.unit = $scope.LRData[index].unitName;
             $scope.unitId = $scope.LRData[index].unitId;
@@ -387,6 +390,7 @@
             $scope.LRData[$scope.indexing].productId = $scope.productData.id;
             $scope.LRData[$scope.indexing].productName = $scope.productData.productCode +'-'+ $scope.productData.productName;
             $scope.LRData[$scope.indexing].invoiceNo = $scope.invoiceNo;
+            $scope.LRData[$scope.indexing].invoiceDate = $scope.invoiceDate;
             $scope.LRData[$scope.indexing].qty = $scope.qty;
             $scope.LRData[$scope.indexing].unitId = $scope.unitId;
             $scope.LRData[$scope.indexing].unitName = $scope.unit;
@@ -810,6 +814,7 @@
             <td>Product Name</td>
 
             <td>Invoce No</td>
+            <td>Invoce Date</td>
 
             <td>Qty/Boxes/KG./Bags</td>
 
@@ -832,6 +837,7 @@
 
             <td><select id="productName" ng-model="productName" ng-options="p.id as p.productCode+'-'+p.productName for p in productList" ng-change="setProductInfo()" style="width: 150px"/></td>
             <td><input type="text" ng-model="invoiceNo" style="width: 50px" ng-change="invoiceNo=isNumber(invoiceNo)" ng-blur="checkInvoiceNo()"/></td>
+            <td><input type="date" name="invoiceDate" ng-model="invoiceDate"  style="width: 120px" /></td>
             <td><input type="text" ng-model="qty" style="width: 50px" ng-focus="focusAlert()" ng-change="qty=isNumber(qty);gettAmount()" /></td>
             <td><input type="text" ng-model="unit" disabled="" style="width: 50px"/></td>
             <td><input type="text" ng-model="invoiceQty" style="width: 50px" ng-focus="focusAlert2()" ng-change="invoiceQty=isNumber(invoiceQty)"/></td>
@@ -870,6 +876,7 @@
             <td>Product</td>
 
             <td>Invoice No.</td>
+            <td>Date</td>
 
             <td>Qty.</td>
 
@@ -901,6 +908,7 @@
 
             <td>{{d.productName}}</td>
             <td>{{d.invoiceNo}}</td>
+            <td>{{d.invoiceDate}}</td>
             <td>{{d.qty}}</td>
             <td>{{d.unitName}}</td>
             <td>{{d.invoiceQty}}</td>
