@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="memoReportPartyDatewise_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8a14fb18-521d-485d-acb0-c7cb6ae5d182">
+	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="child" class="java.util.Collection"/>
+	<field name="memoNo" class="java.lang.String"/>
+	<field name="memoDate" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="22ec1ee2-6030-4b0e-b1f0-82ca97cf9e22" x="0" y="0" width="802" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="ac5fa400-1121-437f-8436-a8d7bcc27ff3" x="16" y="0" width="267" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MEMO NO. :- " +$F{memoNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="873b3b88-b90b-4443-bcf6-0aed27bda2b8" x="389" y="0" width="262" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MEMO DATE :- " +$F{memoDate}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="30">
+			<subreport>
+				<reportElement uuid="6afaf53c-49a6-43c8-aed2-e5705a37b80c" x="0" y="0" width="802" height="30"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "memoReportPartyDatewise_subreport1_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

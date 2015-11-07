@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="memoReportPartyDatewise_subreport1_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bf485bc4-e5fd-4048-b17e-dd9a50c5221e">
+	<property name="ireport.zoom" value="0.7513148009015777"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="17b3e93e-7537-4a6c-b67e-8df4b0da0f31" stretchType="RelativeToBandHeight" x="0" y="0" width="58" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="caae82c0-1c95-457e-b6c4-57979e98d401" stretchType="RelativeToBandHeight" x="58" y="0" width="92" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="61c96ca0-3803-48cf-9b49-43b706df89c9" stretchType="RelativeToBandHeight" x="359" y="0" width="221" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ccaff0e9-a9c8-43b2-8fb0-1a3f7b6be3ad" stretchType="RelativeToBandHeight" x="580" y="0" width="222" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="61854e6a-3a0e-4315-a8a1-3e1463f4517b" stretchType="RelativeToBandHeight" x="246" y="0" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dba6e72b-2b53-4c22-99d0-8399a84adf11" stretchType="RelativeToBandHeight" x="150" y="0" width="96" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="43160090-c2ef-4b4a-a97b-27970f51f9cb" stretchType="RelativeToBandHeight" x="0" y="3" width="58" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="22927413-356a-40e2-9aae-51d577e122d9" stretchType="RelativeToBandHeight" x="58" y="3" width="92" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ae3ce42a-2f58-4e95-9dff-25210112cd45" stretchType="RelativeToBandHeight" x="150" y="3" width="96" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bbe223b7-f8f4-4a46-a2b4-b09b693ac20e" stretchType="RelativeToTallestObject" x="359" y="3" width="221" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromParty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="70c1ca45-f609-4d21-9b36-0727fbc86e63" stretchType="RelativeToTallestObject" x="580" y="3" width="222" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toParty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="61f26773-b5c5-4f59-bd6f-c4b191125152" stretchType="RelativeToBandHeight" x="246" y="3" width="113" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

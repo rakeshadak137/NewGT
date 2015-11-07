@@ -484,10 +484,10 @@ class LREntryController {
         def invNo = "";
         if(Data){
             Data.each {d ->
-//                invNo="";
-//                if(d?.lrEntryDetails) {
-//                    invNo = d?.lrEntryDetails?.first()?.invoiceNo;
-//                }
+                invNo="";
+                if(d?.lrEntryDetails) {
+                    invNo = d?.lrEntryDetails?.first()?.invoiceNo;
+                }
                 child.push([
                         id: d.id,
                         version: d.version,
@@ -497,7 +497,7 @@ class LREntryController {
                         toCust: d?.toCustomer ? d.toCustomer?.accountName : d?.tCustomer,
                         vehicleNo: d.vehicleNo.vehicleNo,
                         grandTotal: d.grandTotal,
-                        invoiceNo: ""
+                        invoiceNo: invNo
                 ])
             }
         }
@@ -656,7 +656,7 @@ class LREntryController {
         def data2;
         def result = [];
         if(params?.no && params?.from && params?.to){
-            data = LREntry.findAllByFromCustomerAndToCustomerAndFinancialYear(AccountMaster.findById(params.from),AccountMaster.findById(params.to),session['financialYear']);
+            data = LREntry.findAllByFromCustomerAndToCustomerAndFinancialYear(AccountMaster.findById(params.from as Long),AccountMaster.findById(params.to as Long),session['financialYear']);
             if(data){
                 data.each{d->
                     data2= LREntryDetails.findByLrEntryAndInvoiceNo(d as LREntry,params.no);
