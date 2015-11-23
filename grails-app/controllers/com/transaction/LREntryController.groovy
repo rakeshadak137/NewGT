@@ -136,7 +136,7 @@ class LREntryController {
                 stockInstance.lrDate = LREntryInstance.lrDate;
 
                 stockInstance.invoiceNo = ch.invoiceNo;
-                stockInstance.invoiceDate = ch?.invoiceDate?:""
+                stockInstance.invoiceDate = ch?.invoiceDate ? ch?.invoiceDate :LREntryInstance.lrDate
                 stockInstance.invoiceUnit = UnitMaster.findById(ch.invoiceUnit.id as Long);
                 stockInstance.invoiceQty = ch.invoiceQty as BigDecimal;
                 stockInstance.fromCustomer = AccountMaster.findById(LREntryInstance.fromCustomer.id as Long);

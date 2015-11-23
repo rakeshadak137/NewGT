@@ -241,7 +241,9 @@ class OutEntryController {
                         invoiceQty   : d?.invoiceQty ?: "",
                         invoiceUnitId: d?.invoiceUnit?.id ?: "",
                         invoiceUnit  : d?.invoiceUnit?.unitName ?: "",
-                        sr:sr
+                        sr:sr,
+                        from:d?.fromCustomer?.accountName?:"",
+                        to:d?.toCustomer?.accountName?:""
                 ])
                 sr++
 //                    }
