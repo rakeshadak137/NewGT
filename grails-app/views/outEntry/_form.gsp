@@ -27,8 +27,15 @@
             $scope.toCustomer = "";
             $scope.fromCustomer = "";
             $scope.godown = "";
+            $scope.parameterList = [];
+            $scope.alertParameter = false;
             $scope.accountData = ${com.master.AccountMaster.findAllByIsActive(true) as grails.converters.JSON};
             $scope.godownData = ${com.master.GodownMaster.findAllByIsActive(true) as grails.converters.JSON};
+
+            $http.get("/${grailsApplication.config.erpName}/OutEntry/findParametersList" )
+                    .success(function (data) {
+                        $scope.parameterList = data;
+                    });
 
             <g:if test="${outEntryInstance?.id}">
             $scope.fromCustomer = ${outEntryInstance?.fromCustomer.id};
@@ -46,13 +53,13 @@
             $http.get("/${grailsApplication.config.erpName}/OutEntry/editStockData?id=" + ${outEntryInstance?.id})
                     .success(function (data) {
                         $scope.stockData = data;
-                        debugger;
+
                     });
 
             $http.get("/${grailsApplication.config.erpName}/OutEntry/editStockData1?id=" + ${outEntryInstance?.id})
                     .success(function (data) {
                         $scope.stockData1 = data;
-                        debugger;
+
                     });
             </g:if>
         }
@@ -61,7 +68,7 @@
             $http.get("/${grailsApplication.config.erpName}/OutEntry/stockData?fCustomer=" + $scope.fromCustomer + "&tCustomer=" + $scope.toCustomer + "&godown=" + $scope.godown)
                     .success(function (data) {
                         $scope.stockData = data;
-                        debugger;
+
                     });
         };
 
@@ -109,7 +116,8 @@
                             productId  : $scope.stockData[i].productId,
                             invoiceQty   : $scope.stockData[i].invoiceQty,
                             invoiceUnitId: $scope.stockData[i].invoiceUnitId,
-                            invoiceUnit  : $scope.stockData[i].invoiceUnit
+                            invoiceUnit  : $scope.stockData[i].invoiceUnit,
+                            parameterId  : null
                         });
                     }
                 }else{
@@ -135,6 +143,22 @@
             }else if(!document.getElementById("vehicle").value){
                 alert("Please Enter Vehicle No:");
                 event.preventDefault();
+            }
+            else if(true){
+                debugger;
+                for(var i=0;i<$scope.stockData1.length;i++){
+                    debugger;
+                    if(!$scope.stockData1[i].parameterId){
+                        $scope.alertParameter=true;
+                    }
+                    else{
+                        $scope.alertParameter=false;
+                    }
+                }
+                if($scope.alertParameter){
+                    alert("Please select all parameters");
+                    event.preventDefault();
+                }
             }
             else{
                 $scope.showButton = false
@@ -165,7 +189,8 @@
                     productId  : $scope.stockData[index].productId,
                     invoiceQty   : $scope.stockData[index].invoiceQty,
                     invoiceUnitId: $scope.stockData[index].invoiceUnitId,
-                    invoiceUnit  : $scope.stockData[index].invoiceUnit
+                    invoiceUnit  : $scope.stockData[index].invoiceUnit,
+                    parameterId  : null
                 });
             }else{
                 var l = $scope.stockData1.length;
@@ -394,6 +419,7 @@
             <td style="text-align: center">Invoice Qty</td>
 
             <td style="text-align: center">Invoice Unit</td>
+            <td style="text-align: center">Parameter</td>
 
         </tr>
         </thead>
@@ -411,6 +437,7 @@
             <td style="text-align: center">{{d.lrDate}}</td>
             <td style="text-align: center">{{d.invoiceQty}}</td>
             <td style="text-align: center">{{d.invoiceUnit}}</td>
+            <td style="text-align: center"><select name="parameter" ng-model="d.parameterId" ng-options="r.id as r.name for r in parameterList" ></select> </td>
         </tr>
         </tbody>
     </table>

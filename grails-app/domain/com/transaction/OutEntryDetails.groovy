@@ -1,5 +1,6 @@
 package com.transaction
 
+import com.master.Parameter
 import com.master.ProductMaster
 import com.master.UnitMaster
 import org.codehaus.groovy.grails.web.json.JSONObject
@@ -11,6 +12,7 @@ class OutEntryDetails {
     BigDecimal invoiceQty
     UnitMaster invoiceUnit
     ProductMaster productName
+    Parameter parameter
 
     static belongsTo = [outEntry: OutEntry]
 
@@ -21,6 +23,7 @@ class OutEntryDetails {
         invoiceQty nullable: false
         invoiceUnit nullable: false
         productName nullable: false
+        parameter nullable: true
     }
 
     static saveChildData(JSONObject st) {
@@ -31,7 +34,8 @@ class OutEntryDetails {
                 invoiceNo: st.invoiceNo,
                 invoiceQty: st.invoiceQty as BigDecimal,
                 invoiceUnit: st?.invoiceUnitId ? UnitMaster.findById(st.invoiceUnitId as Long):"",
-                productName: st?.productId ? ProductMaster.findById(st.productId as long):""
+                productName: st?.productId ? ProductMaster.findById(st.productId as long):"",
+                parameter: st?.parameterId ? Parameter.findById(st?.parameterId as long):null
         )
     }
 }

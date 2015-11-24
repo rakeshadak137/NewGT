@@ -4,6 +4,7 @@ import annotation.ParentScreen
 import com.master.AccountMaster
 import com.master.DivisionMaster
 import com.master.GodownMaster
+import com.master.Parameter
 import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -311,7 +312,8 @@ class OutEntryController {
                                     productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
-                                    invoiceUnit  : s.invoiceUnit.unitName
+                                    invoiceUnit  : s.invoiceUnit.unitName,
+                                    parameterId  : null
                             ])
                         } else {
                             child.push([
@@ -324,7 +326,8 @@ class OutEntryController {
                                     productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
-                                    invoiceUnit  : s.invoiceUnit.unitName
+                                    invoiceUnit  : s.invoiceUnit.unitName,
+                                    parameterId  : null
                             ])
                         }
                     }
@@ -358,7 +361,8 @@ class OutEntryController {
                                     productId  : s?.productName?.id ?: "",
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
-                                    invoiceUnit  : s.invoiceUnit.unitName
+                                    invoiceUnit  : s.invoiceUnit.unitName,
+                                    parameterId   : outChildData?.parameter?.id?:null
                             ])
                         }
                     }
@@ -533,6 +537,11 @@ class OutEntryController {
         params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
 
         chain(controller: 'states', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
+    def findParametersList(){
+        def result = Parameter.findAllByIsActive(true)
+        render result as JSON
     }
 
 
