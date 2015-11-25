@@ -117,7 +117,9 @@
                             invoiceQty   : $scope.stockData[i].invoiceQty,
                             invoiceUnitId: $scope.stockData[i].invoiceUnitId,
                             invoiceUnit  : $scope.stockData[i].invoiceUnit,
-                            parameterId  : null
+                            parameterId  : null,
+                            from:$scope.stockData[i].from,
+                            to:$scope.stockData[i].to
                         });
                     }
                 }else{
@@ -190,7 +192,9 @@
                     invoiceQty   : $scope.stockData[index].invoiceQty,
                     invoiceUnitId: $scope.stockData[index].invoiceUnitId,
                     invoiceUnit  : $scope.stockData[index].invoiceUnit,
-                    parameterId  : null
+                    parameterId  : null,
+                    from:$scope.stockData[index].from,
+                    to:$scope.stockData[index].to
                 });
             }else{
                 var l = $scope.stockData1.length;
@@ -409,8 +413,8 @@
 
             <td style="text-align: center">Invoice No</td>
             <td style="text-align: center">Product Name</td>
-            %{--<td style="text-align: center">From Party</td>--}%
-            %{--<td style="text-align: center">To Party</td>--}%
+            <td style="text-align: center">From Party</td>
+            <td style="text-align: center">To Party</td>
 
             <td style="text-align: center">LR No</td>
 
@@ -431,8 +435,8 @@
             %{--class="lbl"></span></td>--}%
             <td style="text-align: center">{{d.invoiceNo}}</td>
             <td style="text-align: center">{{d.productName}}</td>
-            %{--<td style="text-align: center">{{d.from}}</td>--}%
-            %{--<td style="text-align: center">{{d.to}}</td>--}%
+            <td style="text-align: center">{{d.from}}</td>
+            <td style="text-align: center">{{d.to}}</td>
             <td style="text-align: center">{{d.lrNo}}</td>
             <td style="text-align: center">{{d.lrDate}}</td>
             <td style="text-align: center">{{d.invoiceQty}}</td>

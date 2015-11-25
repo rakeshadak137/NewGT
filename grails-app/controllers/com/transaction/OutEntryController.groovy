@@ -362,7 +362,9 @@ class OutEntryController {
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName,
-                                    parameterId   : outChildData?.parameter?.id?:null
+                                    parameterId  : outChildData?.parameter?.id?:null,
+                                    from         : outChildData?.from?:"",
+                                    to           : outChildData?.to?:""
                             ])
                         }
                     }

@@ -13,6 +13,7 @@ class OutEntryDetails {
     UnitMaster invoiceUnit
     ProductMaster productName
     Parameter parameter
+    String from,to
 
     static belongsTo = [outEntry: OutEntry]
 
@@ -24,6 +25,8 @@ class OutEntryDetails {
         invoiceUnit nullable: false
         productName nullable: false
         parameter nullable: true
+        from nullable: true
+        to nullable: true
     }
 
     static saveChildData(JSONObject st) {
@@ -35,7 +38,9 @@ class OutEntryDetails {
                 invoiceQty: st.invoiceQty as BigDecimal,
                 invoiceUnit: st?.invoiceUnitId ? UnitMaster.findById(st.invoiceUnitId as Long):"",
                 productName: st?.productId ? ProductMaster.findById(st.productId as long):"",
-                parameter: st?.parameterId ? Parameter.findById(st?.parameterId as long):null
+                parameter: st?.parameterId ? Parameter.findById(st?.parameterId as long):null,
+                from:st?.from?:"",
+                to:st?.to?:""
         )
     }
 }
