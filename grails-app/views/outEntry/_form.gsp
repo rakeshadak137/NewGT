@@ -119,7 +119,9 @@
                             invoiceUnit  : $scope.stockData[i].invoiceUnit,
                             parameterId  : null,
                             from:$scope.stockData[i].from,
-                            to:$scope.stockData[i].to
+                            fromPartyId:$scope.stockData[i].fromPartyId,
+                            to:$scope.stockData[i].to,
+                            toPartyId:$scope.stockData[i].toPartyId
                         });
                     }
                 }else{
@@ -194,7 +196,9 @@
                     invoiceUnit  : $scope.stockData[index].invoiceUnit,
                     parameterId  : null,
                     from:$scope.stockData[index].from,
-                    to:$scope.stockData[index].to
+                    fromPartyId:$scope.stockData[index].fromPartyId,
+                    to:$scope.stockData[index].to,
+                    toPartyId:$scope.stockData[index].toPartyId
                 });
             }else{
                 var l = $scope.stockData1.length;

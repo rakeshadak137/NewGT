@@ -244,7 +244,9 @@ class OutEntryController {
                         invoiceUnit  : d?.invoiceUnit?.unitName ?: "",
                         sr:sr,
                         from:d?.fromCustomer?.accountName?:"",
-                        to:d?.toCustomer?.accountName?:""
+                        fromPartyId:d?.fromCustomer?.id?:"",
+                        to:d?.toCustomer?.accountName?:"",
+                        toPartyId:d?.toCustomer?.id?:""
                 ])
                 sr++
 //                    }
@@ -313,7 +315,11 @@ class OutEntryController {
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName,
-                                    parameterId  : null
+                                    parameterId  : null,
+                                    from:s?.fromCustomer?.accountName?:"",
+                                    fromPartyId:s?.fromCustomer?.id?:"",
+                                    to:s?.toCustomer?.accountName?:"",
+                                    toPartyId:s?.toCustomer?.id?:""
                             ])
                         } else {
                             child.push([
@@ -327,7 +333,11 @@ class OutEntryController {
                                     invoiceQty   : s.invoiceQty,
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName,
-                                    parameterId  : null
+                                    parameterId  : null,
+                                    from:s?.fromCustomer?.accountName?:"",
+                                    fromPartyId:s?.fromCustomer?.id?:"",
+                                    to:s?.toCustomer?.accountName?:"",
+                                    toPartyId:s?.toCustomer?.id?:""
                             ])
                         }
                     }
@@ -363,8 +373,10 @@ class OutEntryController {
                                     invoiceUnitId: s.invoiceUnit.id,
                                     invoiceUnit  : s.invoiceUnit.unitName,
                                     parameterId  : outChildData?.parameter?.id?:null,
-                                    from         : outChildData?.from?:"",
-                                    to           : outChildData?.to?:""
+                                    from         : outChildData?.fromParty?.accountName?:"",
+                                    to           : outChildData?.toParty?.accountName?:"",
+                                    fromPartyId  : outChildData?.fromParty?.id?:null,
+                                    toPartyId    : outChildData?.toParty?.id?:null
                             ])
                         }
                     }

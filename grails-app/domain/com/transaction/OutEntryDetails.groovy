@@ -1,5 +1,6 @@
 package com.transaction
 
+import com.master.AccountMaster
 import com.master.Parameter
 import com.master.ProductMaster
 import com.master.UnitMaster
@@ -13,7 +14,7 @@ class OutEntryDetails {
     UnitMaster invoiceUnit
     ProductMaster productName
     Parameter parameter
-    String from,to
+    AccountMaster fromParty,toParty
 
     static belongsTo = [outEntry: OutEntry]
 
@@ -25,8 +26,8 @@ class OutEntryDetails {
         invoiceUnit nullable: false
         productName nullable: false
         parameter nullable: true
-        from nullable: true
-        to nullable: true
+        fromParty nullable: true
+        toParty nullable: true
     }
 
     static saveChildData(JSONObject st) {
@@ -39,8 +40,8 @@ class OutEntryDetails {
                 invoiceUnit: st?.invoiceUnitId ? UnitMaster.findById(st.invoiceUnitId as Long):"",
                 productName: st?.productId ? ProductMaster.findById(st.productId as long):"",
                 parameter: st?.parameterId ? Parameter.findById(st?.parameterId as long):null,
-                from:st?.from?:"",
-                to:st?.to?:""
+                fromParty: st?.fromPartyId?AccountMaster.findById(st.fromPartyId as long):null,
+                toParty: st?.toPartyId?AccountMaster.findById(st.toPartyId as long):null,
         )
     }
 }
