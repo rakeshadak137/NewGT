@@ -3,6 +3,7 @@ package com.transaction
 import annotation.ParentScreen
 import com.master.AccountMaster
 import com.master.PumpMaster
+import com.master.TripRate
 import com.master.VehicleMaster
 import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
@@ -28,10 +29,11 @@ class InternalMemoController {
     def save() {
         def internalMemoInstance = new InternalMemo(params)
 //        bindData(internalMemoInstance,params,'vehicleNo');
-        bindData(internalMemoInstance, params, [exclude: ['vehicleNo','pumpName']])
+        bindData(internalMemoInstance, params, [exclude: ['vehicleNo','pumpName','tripLocation']])
 
         internalMemoInstance.voucherNo = voucherNO();
         internalMemoInstance.vehicleNo = VehicleMaster.findById(params.vehicle_no_id as Long);
+        internalMemoInstance.tripLocation = TripRate.findById(params.tripId as Long);
         if(params?.Pumpid){
             internalMemoInstance.pumpName = PumpMaster.findById(params.Pumpid as Long);
         }
@@ -55,6 +57,12 @@ class InternalMemoController {
         }
         if(params.balance){
             internalMemoInstance.balance = params.balance as BigDecimal;
+        }
+        if(params.tripRate){
+            internalMemoInstance.tripRate = params.tripRate as BigDecimal;
+        }
+        if(params.totalBalance){
+            internalMemoInstance.totalBalance = params.totalBalance as BigDecimal;
         }
 
         internalMemoInstance.dateCreated = new Date();
@@ -103,7 +111,7 @@ class InternalMemoController {
 
     def update(Long id, Long version) {
         def internalMemoInstance = InternalMemo.get(id)
-        bindData(internalMemoInstance, params, [exclude: ['vehicleNo']])
+        bindData(internalMemoInstance, params, [exclude: ['vehicleNo','tripLocation']])
 
         InternalMemo.executeUpdate("delete InternalMemoDetails as b where b.internalMemo.id=:id", [id: internalMemoInstance.id]);
         internalMemoInstance.save(flush: true);
@@ -126,6 +134,7 @@ class InternalMemoController {
 
         internalMemoInstance.properties = params
         internalMemoInstance.vehicleNo = VehicleMaster.findById(params.vehicle_no_id as Long);
+        internalMemoInstance.tripLocation = TripRate.findById(params.tripId as Long);
 
         if(params?.Pumpid && params?.Pumpid!="null"){
             internalMemoInstance.pumpName = PumpMaster.findById(params.Pumpid as Long);
@@ -150,6 +159,12 @@ class InternalMemoController {
         }
         if(params.balance){
             internalMemoInstance.balance = params.balance as BigDecimal;
+        }
+        if(params.tripRate){
+            internalMemoInstance.tripRate = params.tripRate as BigDecimal;
+        }
+        if(params.totalBalance){
+            internalMemoInstance.totalBalance = params.totalBalance as BigDecimal;
         }
 
         internalMemoInstance.lastUpdatedBy = session['activeUser'];

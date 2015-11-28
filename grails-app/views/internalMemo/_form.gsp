@@ -13,6 +13,8 @@
             $scope.DataList = [];
 
             $scope.dieselLtr = 0;
+            $scope.totalBalance = 0;
+            $scope.tripRate = 0;
             $scope.dieselRate = 0;
             $scope.dieselAmount = 0;
             $scope.freight = 0;
@@ -20,6 +22,7 @@
             $scope.advance = 0;
             $scope.balance = 0;
             $scope.showButton = true;
+            $scope.tripList = ${com.master.TripRate.findAllByIsActive(true) as grails.converters.JSON}
 
             $scope.vehicleList = [];
             $http.get("/${grailsApplication.config.erpName}/internalMemo/showVehicleNo")
@@ -41,6 +44,10 @@
             $scope.totalTripRate = ${internalMemoInstance?.totalTripRate};
             $scope.advance = ${internalMemoInstance?.advance};
             $scope.balance = ${internalMemoInstance?.balance};
+
+            $scope.tripLocation = ${internalMemoInstance?.tripLocation?.id};
+            $scope.totalBalance = ${internalMemoInstance?.totalBalance};
+            $scope.tripRate = ${internalMemoInstance?.tripRate};
             debugger;
 
             $http.get("/${grailsApplication.config.erpName}/internalMemo/editLRData?id=" + ${internalMemoInstance?.id})
@@ -50,6 +57,14 @@
                     });
             </g:if>
         }
+
+        $scope.showRate = function(){
+            var tripNo = _.findIndex($scope.tripList,{id:$scope.tripLocation});
+
+            $scope.tripRate = $scope.tripList[tripNo].rate;
+
+            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
+        };
 
         $scope.showData = function () {
             debugger;
@@ -78,6 +93,8 @@
             $scope.totalTripRate = total;
             $scope.totalTripRate.toFixed(2);
             $scope.balance = total - parseFloat($scope.advance).toFixed(2);
+
+            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
         }
 
         $scope.showTotalTripAmount = function () {
@@ -151,6 +168,9 @@
 <input type="hidden" name="totalTripRate" value="{{totalTripRate}}">
 <input type="hidden" name="advance" value="{{advance}}">
 <input type="hidden" name="balance" value="{{balance}}">
+<input type="hidden" name="tripId" value="{{tripLocation}}">
+<input type="hidden" name="tripRate" value="{{tripRate}}">
+<input type="hidden" name="totalBalance" value="{{totalBalance}}">
 <table>
 
     <tr>
@@ -466,10 +486,50 @@
 
         <div class="fieldcontain ${hasErrors(bean: internalMemoInstance, field: 'balance', 'error')} required">
             <td><label for="balance">
-                <g:message code="internalMemo.balance.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Balance"/>
+                <g:message code="internalMemo.balance.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Total Amount"/>
             </label></td>
             <td><input type="text" id="balance" ng-model="balance" ng-change="balance=isNumber(balance)" disabled=""
                        value="${internalMemoInstance?.balance}"/></td>
+        </div>
+    </tr>
+
+    <tr>
+        <div class="fieldcontain ${hasErrors(bean: internalMemoInstance, field: 'tripLocation', 'error')} required">
+            <td><label for="tripLocation">
+                <g:message code="internalMemo.tripLocation.label" default="Trip Location"/>
+                <span class="required-indicator">*</span>
+            </label></td>
+            <td><select ng-model="tripLocation" ng-options="t.id as t.location for t in tripList"
+                        ng-change="showRate()" required=""
+                        value="${internalMemoInstance?.tripLocation?.id}" class="many-to-one"></select></td>
+        </div>
+
+        <div class="fieldcontain ${hasErrors(bean: internalMemoInstance, field: 'tripLocation', 'error')} required">
+            <td><label for="tripLocation">
+                <g:message code="internalMemo.tripLocation.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Trip No."/>
+                <span class="required-indicator">*</span>
+            </label></td>
+            <td><select ng-model="tripLocation" ng-options="t.id as t.srNo for t in tripList"
+                        ng-change="showRate()" required=""
+                        value="${internalMemoInstance?.tripLocation?.id}" class="many-to-one"></select></td>
+        </div>
+    </tr>
+
+    <tr>
+        <div class="fieldcontain ${hasErrors(bean: internalMemoInstance, field: 'balance', 'error')} required">
+            <td><label for="balance">
+                <g:message code="internalMemo.balance.label" default="Trip Rate"/>
+            </label></td>
+            <td><input type="text" id="tripRate" ng-model="tripRate" ng-change="tripRate=isNumber(tripRate)" disabled=""
+                       value="${internalMemoInstance?.tripRate}"/></td>
+        </div>
+
+        <div class="fieldcontain ${hasErrors(bean: internalMemoInstance, field: 'totalBalance', 'error')} required">
+            <td><label for="totalBalance">
+                <g:message code="internalMemo.balance.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Total Balance"/>
+            </label></td>
+            <td><input type="text" id="totalBalance" ng-model="totalBalance" ng-change="totalBalance=isNumber(totalBalance)"
+                       value="${internalMemoInstance?.totalBalance}"/></td>
         </div>
     </tr>
 </table>

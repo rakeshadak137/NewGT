@@ -31,6 +31,15 @@ class TransactionReportController {
         render result as JSON;
     }
 
+    def memoList(){
+        def result = [];
+        result = InternalMemo.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+        }
+        render result as JSON;
+    }
+
     def LR(){
         def reportDetails = [];
         Boolean printRate=false;

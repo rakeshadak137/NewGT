@@ -1,9 +1,6 @@
 package com.transaction
 
-import com.master.BranchMaster
-import com.master.FinancialYear
-import com.master.PumpMaster
-import com.master.VehicleMaster
+import com.master.*
 import com.system.User
 import org.springframework.beans.PropertyEditorRegistrar
 import org.springframework.beans.PropertyEditorRegistry
@@ -39,6 +36,10 @@ class InternalMemo implements PropertyEditorRegistrar{
     int print_status=0
     boolean isCleared=false
 
+    TripRate tripLocation
+    BigDecimal tripRate = 0
+    BigDecimal totalBalance = 0
+
     User lastUpdatedBy,createdBy
     Date lastUpdated
     Date dateCreated
@@ -73,6 +74,7 @@ class InternalMemo implements PropertyEditorRegistrar{
         totalTripRate nullable: false
         advance nullable: false
         balance nullable: false
+        tripLocation nullable: true
 
         createdBy display: false
         lastUpdatedBy display: false,nullable: true

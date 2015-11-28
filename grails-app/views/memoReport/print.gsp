@@ -28,12 +28,19 @@
             $scope.accountList=[];
             $scope.itemList=[];
             $scope.vehicleList=[];
+            $scope.memoList=[];
 //            $scope.fromParty = "";
 //            $scope.toParty = "";
             init();
 
             function init() {
                 $scope.memoList = ${com.transaction.InternalMemo.findAllByBranchAndIsActive(session['branch'],true) as grails.converters.JSON}
+
+                %{--$http.get("/${grailsApplication.config.erpName}/transactionReport/memoList")--}%
+                         %{--.success(function(data){--}%
+                          %{--$scope.memoList=data;--}%
+                        %{--});--}%
+
                 $scope.date1 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.date2 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.goDownList = ${com.master.GodownMaster.findAllByIsActive(true) as grails.converters.JSON};
@@ -54,10 +61,13 @@
             }
 
             $scope.showMemoData = function(){
-                $http.get("/${grailsApplication.config.erpName}/memoReport/memoData?fromParty="+$scope.fromParty+"&toParty="+$scope.toParty+"&fromDate="+$scope.fromDate+"&toDate="+$scope.toDate)
-                        .success(function(data){
-                            $scope.memoList=data;
-                        });
+                if($scope.fromParty && $scope.toParty) {
+                    debugger;
+                    $http.get("/${grailsApplication.config.erpName}/memoReport/memoData?fromParty=" + $scope.fromParty + "&toParty=" + $scope.toParty + "&fromDate=" + $scope.fromDate + "&toDate=" + $scope.toDate)
+                            .success(function (data) {
+                                $scope.memoList = data;
+                            });
+                }
             };
         }
     </script>
@@ -84,7 +94,8 @@
 
 <ul>
     <li><a href="#tabs-1">Memo Wise Report</a></li>
-    <li><a href="#tabs-2">Pending LR Report</a></li>
+    <li><a href="#tabs-2">Vehicle Wise Report</a></li>
+    <li><a href="#tabs-3">Pending LR Report</a></li>
 
 </ul>
 
@@ -187,6 +198,70 @@
 </div>
 
 <div id="tabs-2">
+    <div class="row-fluid">
+        <div class="span12">
+            <span class="span6">
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="Vehicle No."/>
+                    </label>
+                </div>
+
+                <div class="span8">
+                    <select ng-model="vehicleNo" ng-options="v.id as v.vehicleNo for v in vehicleList" id="vehicle">
+                        %{--<option value="">---Select One---</option>--}%
+                    </select>
+                </div>
+            </span>
+            <div class="span6"></div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span6">
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
+                    </label>
+                </div>
+
+                <div class="span8">
+                    <input type="date" id="date5"  style="width: 150px;" ng-model="fromDatev"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                </div>
+            </div>
+            <div class="span6">
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
+                    </label>
+                </div>
+
+                <div class="span8">
+                    <input type="date" id="date6"  style="width: 150px;" ng-model="toDatev"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span2">
+                <a ng-href="/${grailsApplication.config.erpName}/memoReport/print_action2?scrid=${session['activeScreen'].id}&vNo={{vehicleNo}}&fromDate={{fromDatev}}&toDate={{toDatev}}&format=PDF"
+                   class="btn btn-primary btn-mini" target="_blank">
+                    PDF</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a ng-href="/${grailsApplication.config.erpName}/memoReport/print_action2?scrid=${session['activeScreen'].id}&vNo={{vehicleNo}}&fromDate={{fromDatev}}&toDate={{toDatev}}&format=XLSX"
+                   class="btn btn-primary btn-mini">
+                    EXCEL</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tabs-3">
     <div class="row-fluid">
         <div class="span12">
             <div class="span6">

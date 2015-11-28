@@ -2,6 +2,7 @@ package com.transaction
 
 import annotation.ParentScreen
 import com.master.AccountMaster
+import com.master.VehicleMaster
 import grails.converters.JSON
 
 @ParentScreen(name = "Report", subUnder = "Report", fullName = "Memo Report")
@@ -111,7 +112,11 @@ class MemoReportController {
                         parent.push([
                                 child : child,
                                 memoNo : d?.voucherNo?:"",
-                                memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:""
+                                memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
+                                vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                                tripLocation : d?.tripLocation?.location?:"",
+                                tripRate : d?.tripRate?:0,
+                                balance : d?.totalBalance?:0
                         ]);
                     }
                 }
@@ -185,7 +190,11 @@ class MemoReportController {
                         parent.push([
                                 child : child,
                                 memoNo : d?.voucherNo?:"",
-                                memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:""
+                                memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
+                                vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                                tripLocation : d?.tripLocation?.location?:"",
+                                tripRate : d?.tripRate?:0,
+                                balance : d?.totalBalance?:0
                         ]);
                     }
                 }
@@ -266,6 +275,84 @@ class MemoReportController {
         ];
 
         reportDetails.push(parent);
+        params._format = params.format;
+        params._file = "../reports/transactionReport/memoReportPartyDatewise"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'stockReport', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
+    def print_action2(){
+        def reportDetails = [];
+        def finalData;
+        def parent = [];
+        def child = [];
+
+        def Data = [];
+
+        Data = InternalMemo.createCriteria().list {
+            eq("branch", session['branch'])
+            eq("isActive",true)
+
+            if(params.vNo) {
+                eq("vehicleNo", VehicleMaster.createCriteria().get {
+                    eq("id", params.vNo as Long)
+                })
+            }
+
+            if ((params.fromDate) && (params.toDate)) {
+                between("voucherDate", Date.parse("yyyy-MM-dd", params.fromDate), Date.parse("yyyy-MM-dd", params.toDate))
+            } else if (params.fromDate) {
+                ge("voucherDate", Date.parse("yyyy-MM-dd", params.fromDate))
+            } else if (params.toDate) {
+                le("voucherDate", Date.parse("yyyy-MM-dd", params.toDate))
+            }
+        }
+
+        if(Data){
+            Data.each {d ->
+                int srNo = 0;
+                def childData = d?.internalMemoDetails;
+
+                if(childData){
+                    childData.each {c ->
+                        srNo++;
+
+                        child.push([
+                                srNo : srNo,
+                                lrNo : c?.lrNo?:"",
+                                lrDate : c?.lrDate?.format("dd-MM-yyyy")?:"",
+                                fromParty : c?.fromCustomer?.accountName?:"",
+                                toParty : c?.toCustomer?.accountName?:"",
+                                vehicleNo : c?.lrChild?.lrEntry?.vehicleNo?.vehicleNo?:""
+                        ]);
+                    }
+                }
+
+                if(child){
+                    parent.push([
+                            child : child,
+                            memoNo : d?.voucherNo?:"",
+                            memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
+                            vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                            tripLocation : d?.tripLocation?.location?:"",
+                            tripRate : d?.tripRate?:0,
+                            balance : d?.totalBalance?:0
+                    ]);
+                }
+            }
+        }
+
+        finalData = [
+                parent : parent,
+                reportName : "memoReportPartyDatewise_subreport1.jasper",
+                fromParty : params.fromParty?AccountMaster.findById(params.fromParty as Long).accountName:"",
+                toParty : params.toParty?AccountMaster.findById(params.toParty as Long).accountName:"",
+                fromDate: params.fromDate?Date.parse("yyyy-MM-dd",params.fromDate)?.format("dd-MM-yyyy"):"",
+                toDate: params.toDate?Date.parse("yyyy-MM-dd",params.toDate)?.format("dd-MM-yyyy"):"",
+        ];
+
+        reportDetails.push(finalData);
         params._format = params.format;
         params._file = "../reports/transactionReport/memoReportPartyDatewise"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
