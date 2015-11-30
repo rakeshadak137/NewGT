@@ -144,6 +144,10 @@
                 alert("Please Select Vehicle No");
                 event.preventDefault();
             }
+            else if(!$scope.tripLocation){
+                alert("Please Select Trip Location or Trip No.");
+                event.preventDefault();
+            }
             else if($scope.LRData.length<=0){
                 alert("There is no data");
                 event.preventDefault();
