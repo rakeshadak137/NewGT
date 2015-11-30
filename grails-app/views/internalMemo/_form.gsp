@@ -8,6 +8,7 @@
         init();
 
         function init() {
+            $scope.dieselReceiptNo = "NA";
             $scope.currentPage = 0;
             $scope.pageSize = 10;
             $scope.DataList = [];
@@ -37,6 +38,7 @@
             <g:if test="${internalMemoInstance?.id}">
             $scope.vehicleNo = ${internalMemoInstance?.vehicleNo?.id};
             $scope.pumpName = parseInt(${internalMemoInstance?.pumpName?.id});
+            $scope.dieselReceiptNo = "${internalMemoInstance?.dieselReceiptNo}";
             $scope.dieselLtr = ${internalMemoInstance?.dieselLtr};
             $scope.dieselRate = ${internalMemoInstance?.dieselRate};
             $scope.dieselAmount = ${internalMemoInstance?.dieselAmount};
@@ -62,8 +64,10 @@
             var tripNo = _.findIndex($scope.tripList,{id:$scope.tripLocation});
 
             $scope.tripRate = $scope.tripList[tripNo].rate;
+            $scope.freight = $scope.tripList[tripNo].rate;
 
-            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
+//            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
+            doTotalTripAmount();
         };
 
         $scope.showData = function () {
@@ -94,7 +98,8 @@
             $scope.totalTripRate.toFixed(2);
             $scope.balance = total - parseFloat($scope.advance).toFixed(2);
 
-            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
+//            $scope.totalBalance = parseFloat($scope.tripRate).toFixed(2) - parseFloat($scope.balance).toFixed(2);
+            $scope.totalBalance = $scope.balance;
         }
 
         $scope.showTotalTripAmount = function () {
@@ -103,7 +108,7 @@
 
         $scope.showBalance = function () {
             $scope.balance = parseFloat($scope.totalTripRate).toFixed(2) - parseFloat($scope.advance).toFixed(2);
-            $scope.balance.toFixed(2);
+            $scope.totalBalance = $scope.balance;
         };
 
         $scope.showDieselRate = function () {
@@ -335,7 +340,7 @@
             <td><label for="dieselReceiptNo">
                 <g:message code="internalMemo.dieselReceiptNo.label" default="Receipt No"/>
             </label></td>
-            <td><g:textField id="dieselReceiptNo" name="dieselReceiptNo"
+            <td><g:textField id="dieselReceiptNo" name="dieselReceiptNo" ng-model="dieselReceiptNo"
                              value="${internalMemoInstance?.dieselReceiptNo}"/></td>
         </div>
 
@@ -434,7 +439,7 @@
                 <g:message code="internalMemo.freight.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Freight"/>
                 <span class="required-indicator">*</span>
             </label></td>
-            <td><input type="text" id="freight" ng-model="freight"
+            <td><input type="text" id="freight" ng-model="freight" disabled=""
                        ng-change="freight=isNumber(freight);showTotalTripAmount()"
                        value="${internalMemoInstance?.freight}"/></td>
         </div>
@@ -532,7 +537,7 @@
             <td><label for="totalBalance">
                 <g:message code="internalMemo.balance.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Total Balance"/>
             </label></td>
-            <td><input type="text" id="totalBalance" ng-model="totalBalance" ng-change="totalBalance=isNumber(totalBalance)"
+            <td><input type="text" id="totalBalance" disabled = "" ng-model="totalBalance" ng-change="totalBalance=isNumber(totalBalance)"
                        value="${internalMemoInstance?.totalBalance}"/></td>
         </div>
     </tr>
