@@ -387,75 +387,150 @@ class OutEntryController {
     }
 
     def print_action(){
-        def data=[];
-        def parent;
-        def child=[];
-        def reportDetails=[];
-        String productName="";
-        int srNo=1;
-        if(params?.id){
-            data = OutEntry.findById(params?.id as Long);
-            if(data){
+        def reportDetails = [];
+        def finalData;
+        def parent = [];
+        def child = [];
 
-                def data2 = OutEntryDetails.findAllByOutEntry(data as OutEntry);
-                if(data2){
-                    data2.each {d2->
-                        productName="";
-//                        LREntry lrObj=LREntry.createCriteria().listDistinct {
-//                            eq("lrNo",d2.lrNo as String)
-//                            eq("financialYear",session['financialYear'])
-//                        }
-//                        productName=LREntryDetails.findByInvoiceNoAndLrEntry(d2?.invoiceNo,LREntry.findByLrNo(d2?.lrNo))?.productName?.productName?:""
+        def data = OutEntry.createCriteria().get {
+            eq("id",params.id as Long)
+        }
 
-                        def lrDetailsData = LREntryDetails.findAllByInvoiceNoAndLrEntry(d2.invoiceNo,LREntry.findByLrNo(d2.lrNo));
-//                        String lrNo=d2.lrNo;
+        def fromPartyData = OutEntryDetails.createCriteria().list {
+            eq("outEntry",data as OutEntry)
+            projections {
+                property("fromParty")
+            }
+        }.unique()
 
-                        if(lrDetailsData){
-                            lrDetailsData.each {ch ->
-//                                def lrData = LREntry.findByLrNo(lrNo);
+        def toPartyData = OutEntryDetails.createCriteria().list {
+            eq("outEntry",data as OutEntry)
+            projections {
+                property("toParty")
+            }
+        }.unique()
 
-//                                if(ch?.lrEntry?.id == lrData.id){
-                                    productName = ch?.productName?.productName?:"";
-                                    child.push([
-                                            srNo:srNo++,
-                                            invoiceNo: d2?.invoiceNo?:"",
-                                            lrNo: d2?.lrNo?:"",
-                                            lrDate: d2?.lrDate?.format("dd-MM-yyyy")?:"",
-                                            qty: d2?.invoiceQty?:0.00,
-                                            product: productName?:"",
-                                            unit: d2?.invoiceUnit?.unitName?:""
-                                    ])
-//                                }
-                            }
-                        }
+        fromPartyData.each {f ->
+            toPartyData.each {t ->
+                child = [];
 
+                def childData = OutEntryDetails.createCriteria().list {
+                    eq("outEntry",data as OutEntry)
+                    eq("fromParty",f as AccountMaster)
+                    eq("toParty",t as AccountMaster)
+                }
 
+                if(childData){
+                    childData.each {c ->
+                        child.push([
+                                invoiceNo: c?.invoiceNo?:"",
+                                lrNo: c?.lrNo?:"",
+                                lrDate: c?.lrDate?.format("dd-MM-yyyy")?:"",
+                                qty: c?.invoiceQty?:0.00,
+                                product: c?.productName?.productCode?:"",
+                                parameter : c?.parameter?.name?:""
+                        ]);
                     }
+
                     if(child){
-                        parent=[
-                                child:child,
-                                rcptNo:data?.voucherNo?:"",
-                                rcptDate:data?.voucherDate?.format("dd-MM-yyyy")?:"",
-                                fromCust:data?.fromCustomer?.accountName?:"",
-                                toCust:data?.toCustomer?.accountName?:"",
-                                godown:data?.godown?.godownName?:"",
-                                vehicleNo:data?.vehicle?:"",
-                                outTime:data?.outTime?.format("hh:mm:ss a")?:"",
-                        ]
+                        parent.push([
+                                fromParty : f?.accountName?:"",
+                                toParty : t?.accountName?:"",
+                                child : child
+                        ]);
                     }
                 }
             }
-            if(parent){
-                reportDetails.push(parent);
-            }
         }
+
+        finalData = [
+                details : parent,
+                rcptNo:data?.voucherNo?:"",
+                rcptDate:data?.voucherDate?.format("dd-MM-yyyy")?:"",
+                vehicleNo:data?.vehicle?:"",
+                outTime:data?.outTime?.format("hh:mm:ss a")?:""
+        ];
+
+        reportDetails.push(finalData)
+
         params._format = "PDF";
-        params._file = "../reports/transactionReport/Out_Entry_Report"
+        params._file = "../reports/transactionReport/OutEntryReportNew"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
         params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
 
         chain(controller: 'states', action: 'generateReport', model: [data: reportDetails], params: params);
     }
+
+//    def print_action(){
+//        def data=[];
+//        def parent;
+//        def child=[];
+//        def reportDetails=[];
+//        String productName="";
+//        int srNo=1;
+//        if(params?.id){
+//            data = OutEntry.findById(params?.id as Long);
+//            if(data){
+//
+//                def data2 = OutEntryDetails.findAllByOutEntry(data as OutEntry);
+//                if(data2){
+//                    data2.each {d2->
+//                        productName="";
+////                        LREntry lrObj=LREntry.createCriteria().listDistinct {
+////                            eq("lrNo",d2.lrNo as String)
+////                            eq("financialYear",session['financialYear'])
+////                        }
+////                        productName=LREntryDetails.findByInvoiceNoAndLrEntry(d2?.invoiceNo,LREntry.findByLrNo(d2?.lrNo))?.productName?.productName?:""
+//
+//                        def lrDetailsData = LREntryDetails.findAllByInvoiceNoAndLrEntry(d2.invoiceNo,LREntry.findByLrNo(d2.lrNo));
+////                        String lrNo=d2.lrNo;
+//
+//                        if(lrDetailsData){
+//                            lrDetailsData.each {ch ->
+////                                def lrData = LREntry.findByLrNo(lrNo);
+//
+////                                if(ch?.lrEntry?.id == lrData.id){
+//                                    productName = ch?.productName?.productName?:"";
+//                                    child.push([
+//                                            srNo:srNo++,
+//                                            invoiceNo: d2?.invoiceNo?:"",
+//                                            lrNo: d2?.lrNo?:"",
+//                                            lrDate: d2?.lrDate?.format("dd-MM-yyyy")?:"",
+//                                            qty: d2?.invoiceQty?:0.00,
+//                                            product: productName?:"",
+//                                            unit: d2?.invoiceUnit?.unitName?:""
+//                                    ])
+////                                }
+//                            }
+//                        }
+//
+//
+//                    }
+//                    if(child){
+//                        parent=[
+//                                child:child,
+//                                rcptNo:data?.voucherNo?:"",
+//                                rcptDate:data?.voucherDate?.format("dd-MM-yyyy")?:"",
+//                                fromCust:data?.fromCustomer?.accountName?:"",
+//                                toCust:data?.toCustomer?.accountName?:"",
+//                                godown:data?.godown?.godownName?:"",
+//                                vehicleNo:data?.vehicle?:"",
+//                                outTime:data?.outTime?.format("hh:mm:ss a")?:"",
+//                        ]
+//                    }
+//                }
+//            }
+//            if(parent){
+//                reportDetails.push(parent);
+//            }
+//        }
+//        params._format = "PDF";
+//        params._file = "../reports/transactionReport/Out_Entry_Report"
+//        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+//        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+//
+//        chain(controller: 'states', action: 'generateReport', model: [data: reportDetails], params: params);
+//    }
 
     def print_action2(){
         def data=[];

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OutEntryReportNew" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02f69c9d-e6d3-4a7f-aaef-88a4f6aec1f8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false"/>
+	<field name="details" class="java.util.Collection"/>
+	<field name="rcptNo" class="java.lang.String"/>
+	<field name="rcptDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="outTime" class="java.lang.String"/>
+	<background>
+		<band height="802">
+			<rectangle>
+				<reportElement uuid="74aecdc2-6d06-4581-b633-a1cbee7fa38d" x="0" y="0" width="555" height="802"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="82fa9213-c110-4786-9d30-f1b5c21fe100" x="0" y="0" width="555" height="135"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="7e50d77b-0b75-4a1c-9308-2a5e05dabc84" x="56" y="117" width="432" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[OUT ENTRY REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="4e83bb0f-ff57-4d91-8538-6f75cd81002f" x="315" y="0" width="240" height="40"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7a315759-f03a-4ac8-a6e0-7b1e7968b8aa" x="0" y="0" width="315" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="20fc3937-27cb-40a6-b0d5-266d06de8786" x="13" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Receipt No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3ea67c31-a73d-43fe-af55-d54f6a39e8ba" x="327" y="0" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Receipt Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5c1788d-5dc3-4c4a-a8db-41e5a4f60521" x="13" y="20" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Vehicle No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a0a3715-d8b5-4b81-aa3c-b953cbfd258e" x="327" y="20" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Out Time]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="329aaecd-ad6a-4577-9b0b-9add96d279cc" x="113" y="0" width="158" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{rcptNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0933b03a-45e3-444b-90e8-8e1d3158dbe5" x="402" y="0" width="138" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{rcptDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a2822fae-e9ce-453d-bba2-323a6f6f42c0" x="113" y="20" width="158" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="49a6ad2d-3642-4d06-8029-df091049ab05" x="402" y="20" width="138" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{outTime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="f33e1d77-f38f-43e2-b6d3-51c5d073774d" x="0" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5e1f2a01-8ce5-4ad0-ab2a-51f7c93ab1c0" x="74" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="252c9f4a-9430-4efd-9eb4-13e4675049bb" x="148" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0d1c5953-9c27-42c6-bf6d-29c872a4c043" x="222" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6e91b5e8-9cd2-4f22-9a1f-0f532ff883fc" x="315" y="0" width="150" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="08010e03-bb82-4bb2-835c-45cba05feea2" x="465" y="0" width="90" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4c6f1983-25f7-48f8-9be3-35e1832b0411" x="0" y="0" width="74" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Invoice No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3661c4d6-3617-4f27-a3d7-fe07b35c88ff" x="74" y="0" width="74" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="229216e5-5fcb-4027-b01b-2a42ea277dc1" x="148" y="0" width="74" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="704cc6d2-bb61-4b36-8771-2a6e7b4c3bc9" x="222" y="0" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e958cc9-0aaa-410e-9a41-77fe3d1c622d" x="315" y="0" width="150" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Parameter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="625125ab-ace1-4e80-adf8-8b3fd26a3437" x="465" y="0" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Qty.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="cc87aa3e-cfc3-4d57-a60b-339265e2fae1" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="20"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="6a9979bd-4407-4bba-8d12-fbf7ff12502a" x="0" y="0" width="555" height="20"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OutEntryReportNew_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

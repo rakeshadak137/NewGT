@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OutEntryReportNew_subreport1_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a3b8a35b-a623-4481-b37b-f1ffa16534b3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="product" class="java.lang.String"/>
+	<field name="parameter" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="83c35491-8886-4da5-9ff6-08b19e4fe8be" stretchType="RelativeToBandHeight" x="0" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="eef997a6-06f3-4d72-b549-9a5e85f4ff63" stretchType="RelativeToBandHeight" x="74" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="405182fa-5967-4da4-9c19-066593e9fefe" stretchType="RelativeToBandHeight" x="148" y="0" width="74" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f17c9b98-5b84-4b27-9c07-f4f2fca03f9d" stretchType="RelativeToBandHeight" x="222" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e1743dc0-d774-4523-9e88-f103365a1bd8" stretchType="RelativeToBandHeight" x="315" y="0" width="150" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4b100a1e-c42b-4fe1-8721-db0899a6f413" stretchType="RelativeToBandHeight" x="465" y="0" width="90" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="96b36201-1020-4973-99e5-3cf1942c27c4" stretchType="RelativeToBandHeight" x="0" y="4" width="74" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="01b2bfbb-2594-4ad9-9518-e8f986dda3a0" stretchType="RelativeToBandHeight" x="74" y="4" width="74" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d057946-2075-44e9-8388-67842a297589" stretchType="RelativeToBandHeight" x="148" y="4" width="74" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="341e3321-d0e8-4ce8-aba1-e857c537222d" stretchType="RelativeToBandHeight" x="465" y="4" width="90" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dc3a2203-7471-4a4a-917c-678e02428280" stretchType="RelativeToBandHeight" x="222" y="4" width="93" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="68b6e8a4-1040-4a2f-9bd7-83f0aadf8d83" stretchType="RelativeToTallestObject" x="315" y="4" width="150" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parameter}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
