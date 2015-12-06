@@ -34,13 +34,8 @@
             init();
 
             function init() {
-                $scope.memoList = ${com.transaction.InternalMemo.findAllByBranchAndIsActive(session['branch'],true) as grails.converters.JSON}
-
-                %{--$http.get("/${grailsApplication.config.erpName}/transactionReport/memoList")--}%
-                         %{--.success(function(data){--}%
-                          %{--$scope.memoList=data;--}%
-                        %{--});--}%
-
+                %{--$scope.memoList = ${com.transaction.InternalMemo.findAllByBranchAndIsActive(session['branch'],true) as grails.converters.JSON}--}%
+                findMemoList();
                 $scope.date1 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.date2 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.goDownList = ${com.master.GodownMaster.findAllByIsActive(true) as grails.converters.JSON};
@@ -69,6 +64,14 @@
                             });
                 }
             };
+
+            function findMemoList(){
+                $http.post("/${grailsApplication.config.erpName}/transactionReport/findMemoList")
+                        .success(function(data){
+                            debugger;
+                            $scope.memoList=data;
+                        });
+            }
         }
     </script>
 </head>
@@ -172,7 +175,7 @@
                 </div>
 
                 <div class="span8">
-                    <select ng-model="memoNo" ng-options="m.id as m.voucherNo for m in memoList" id="item">
+                    <select ng-model="memoNo" ng-options="r.id as r.voucherNo for r in memoList" id="item">
                         %{--<option value="">---Select One---</option>--}%
                     </select>
                 </div>
@@ -180,6 +183,7 @@
             <div class="span6"></div>
         </div>
     </div>
+
 
     <div class="row-fluid">
         <div class="span12">
