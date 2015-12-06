@@ -211,6 +211,19 @@
                 }
             }
         };
+
+        $scope.setFromInfo = function(){
+            $http.get("/${grailsApplication.config.erpName}/LREntry/getCustomerData?id=" + $scope.fromCustomer)
+                    .success(function(data){
+                        $scope.fromAddress = data.address;
+                    })
+        }
+        $scope.setToInfo = function(){
+            $http.get("/${grailsApplication.config.erpName}/LREntry/getCustomerData?id=" + $scope.toCustomer)
+                    .success(function(data){
+                        $scope.toAddress = data.address;
+                    })
+        }
     }
 
 </script>
@@ -260,7 +273,7 @@
                 <span class="required-indicator">*</span>
             </label></td>
             <td><select id="fromCustomer" ng-model="fromCustomer"
-                        ng-options="a.id as a.accountName for a in accountData"/></td>
+                        ng-options="a.id as a.accountName for a in accountData" ng-change="setFromInfo()" /></td>
         </div>
 
         <div class="fieldcontain ${hasErrors(bean: outEntryInstance, field: 'toCustomer', 'error')} required">
@@ -268,10 +281,29 @@
                 <g:message code="outEntry.toCustomer.label" default="&nbsp;&nbsp;&nbsp;&nbsp;To Customer"/>
                 <span class="required-indicator">*</span>
             </label></td>
-            <td><select id="toCustomer" ng-model="toCustomer" ng-options="a.id as a.accountName for a in accountData"/>
+            <td><select id="toCustomer" ng-model="toCustomer"
+                        ng-options="a.id as a.accountName for a in accountData" ng-change="setToInfo()" />
             </td>
         </div>
 
+    </tr>
+
+    <tr>
+        <div>
+            <td><label for="fromLocation">
+                <g:message code="outEntry.fromLocation.label" default="From Location"/>
+
+            </label></td>
+            <td><textarea disabled="" name="fromLocationAuto" ng-model="fromAddress"></textarea></td>
+        </div>
+
+        <div>
+            <td><label for="toLocation">
+                <g:message code="outEntry.toLocation.label" default="&nbsp;&nbsp;&nbsp;&nbsp;To Location"/>
+
+            </label></td>
+            <td><textarea disabled="" name="toLocationAuto" ng-model="toAddress"></textarea></td>
+        </div>
     </tr>
 
     <tr>

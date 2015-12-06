@@ -113,10 +113,24 @@
                alert("Please select Pump Name");
                    $scope.dieselAmount=0;
                }
-             }
+             };
              $scope.isNumber=function(num){
                  debugger;
                  return isNumberKey(num)
+             }
+             $scope.checkDuplicateChequeNo=function(){
+                 var bankId=document.getElementById("bankName").value;
+
+                 $http.get("/${grailsApplication.config.erpName}/cashVoucher/checkDuplicateChequeNo?chequeNo=" + $scope.chequeNo+"&bankId="+bankId)
+                         .success(function (data) {
+                             if(data){
+                                 $scope.duplicateVoucherNo = data;
+                                 $scope.showChequeAlert = true;
+                             }
+                             else{
+                                 $scope.showChequeAlert = false;
+                             }
+                         });
              }
          }
 </script>
@@ -328,7 +342,9 @@
                 <g:message code="cashVoucher.bankName.label" default="Bank Name"/>
                 
             </label></td>
-            <td><g:select id="bankName" name="bankName.id" from="${com.master.BankMaster.list()}" optionKey="id" value="${cashVoucherInstance?.bankName?.id}" class="many-to-one" noSelection="['null': '']"/></td>
+            <td>
+                <g:select id="bankName" name="bankName.id" from="${com.master.BankMaster.list()}" optionKey="id" value="${cashVoucherInstance?.bankName?.id}" class="many-to-one" noSelection="['null': '']"/>
+            </td>
         %{--</div>--}%
 
         %{--<div class="fieldcontain ${hasErrors(bean: cashVoucherInstance, field: 'chequeNo', 'error')} ">--}%
@@ -336,7 +352,9 @@
                 <g:message code="cashVoucher.chequeNo.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Cheque No"/>
 
             </label></td>
-            <td><g:textField name="chequeNo" value="${cashVoucherInstance?.chequeNo}"/></td>
+            <td><g:textField name="chequeNo" value="${cashVoucherInstance?.chequeNo}" ng-model="chequeNo" ng-change="checkDuplicateChequeNo()" />
+
+            </td>
         %{--</div>--}%
 
     </tr>

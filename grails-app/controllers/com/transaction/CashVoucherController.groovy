@@ -2,6 +2,7 @@ package com.transaction
 
 import NumbersToWords.NumToWords
 import annotation.ParentScreen
+import com.master.BankMaster
 import com.master.VehicleMaster
 import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
@@ -338,6 +339,21 @@ class CashVoucherController {
             render '[]'
         }
         render child as JSON;
+    }
+
+    def checkDuplicateChequeNo(){
+        if(params?.chequeNo && params?.bankId){
+            def result = CashVoucher.findByBankNameAndChequeNo(BankMaster.findById(params?.bankId as long),params?.chequeNo)
+            if(result){
+                render result?.voucherNo
+            }
+            else{
+                render ''
+            }
+        }
+        else{
+            render ''
+        }
     }
 }
 
