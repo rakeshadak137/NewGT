@@ -20,11 +20,11 @@ class MemoReportController {
             eq("branch", session['branch'])
             eq("isActive",true)
 
-            if ((params.fromDate) && (params.toDate)) {
+            if ((params.fromDate != "undefined") && (params.toDate != "undefined")) {
                 between("voucherDate", Date.parse("yyyy-MM-dd", params.fromDate), Date.parse("yyyy-MM-dd", params.toDate))
-            } else if (params.fromDate) {
+            } else if (params.fromDate != "undefined") {
                 ge("voucherDate", Date.parse("yyyy-MM-dd", params.fromDate))
-            } else if (params.toDate) {
+            } else if (params.toDate != "undefined") {
                 le("voucherDate", Date.parse("yyyy-MM-dd", params.toDate))
             }
         }
@@ -116,7 +116,9 @@ class MemoReportController {
                                 vehicleNo : d?.vehicleNo?.vehicleNo?:"",
                                 tripLocation : d?.tripLocation?.location?:"",
                                 tripRate : d?.tripRate?:0,
-                                balance : d?.totalBalance?:0
+                                balance : d?.totalBalance?:0,
+                                receiptNo : d?.dieselReceiptNo?:"",
+                                pumpName : d?.pumpName?.pumpName?:""
                         ]);
                     }
                 }
@@ -194,7 +196,9 @@ class MemoReportController {
                                 vehicleNo : d?.vehicleNo?.vehicleNo?:"",
                                 tripLocation : d?.tripLocation?.location?:"",
                                 tripRate : d?.tripRate?:0,
-                                balance : d?.totalBalance?:0
+                                balance : d?.totalBalance?:0,
+                                receiptNo : d?.dieselReceiptNo?:"",
+                                pumpName : d?.pumpName?.pumpName?:""
                         ]);
                     }
                 }
@@ -337,7 +341,9 @@ class MemoReportController {
                             vehicleNo : d?.vehicleNo?.vehicleNo?:"",
                             tripLocation : d?.tripLocation?.location?:"",
                             tripRate : d?.tripRate?:0,
-                            balance : d?.totalBalance?:0
+                            balance : d?.totalBalance?:0,
+                            receiptNo : d?.dieselReceiptNo?:"",
+                            pumpName : d?.pumpName?.pumpName?:""
                     ]);
                 }
             }

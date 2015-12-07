@@ -13,6 +13,8 @@
 	<field name="tripLocation" class="java.lang.String"/>
 	<field name="tripRate" class="java.lang.String"/>
 	<field name="balance" class="java.lang.String"/>
+	<field name="receiptNo" class="java.lang.String"/>
+	<field name="pumpName" class="java.lang.String"/>
 	<detail>
 		<band height="60" splitType="Stretch">
 			<rectangle>
@@ -21,44 +23,58 @@
 			<textField>
 				<reportElement uuid="ac5fa400-1121-437f-8436-a8d7bcc27ff3" x="16" y="0" width="267" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["MEMO NO. :- " +$F{memoNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="873b3b88-b90b-4443-bcf6-0aed27bda2b8" x="389" y="0" width="262" height="20"/>
+				<reportElement uuid="873b3b88-b90b-4443-bcf6-0aed27bda2b8" x="303" y="0" width="310" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["MEMO DATE :- " +$F{memoDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="78999493-569e-401c-9d97-ff000456f3be" x="16" y="20" width="373" height="20"/>
+				<reportElement uuid="78999493-569e-401c-9d97-ff000456f3be" x="16" y="20" width="267" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["VEHICLE NO. :- "+$F{vehicleNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e72c6ecb-400b-4406-be35-d7bbabb0b932" x="389" y="20" width="398" height="20"/>
+				<reportElement uuid="e72c6ecb-400b-4406-be35-d7bbabb0b932" x="303" y="20" width="310" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TIRP LOCATION :- "+$F{tripLocation}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="cb744904-1df4-456c-bc97-d5efe81c4165" x="16" y="40" width="373" height="20"/>
+				<reportElement uuid="cb744904-1df4-456c-bc97-d5efe81c4165" x="16" y="40" width="267" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TRIP RATE :- "+$F{tripRate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0b89f6fe-d041-4dc8-bfbd-ba818dd8c313" x="389" y="40" width="398" height="20"/>
+				<reportElement uuid="0b89f6fe-d041-4dc8-bfbd-ba818dd8c313" x="303" y="40" width="310" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA["BALANCE :- "+$F{balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56ff9fb5-aace-4879-b559-c62a85eba29f" x="613" y="0" width="177" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RECEIPT NO. :- "+$F{receiptNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dae04a29-9f4a-43b2-aa19-a6a1448b8e55" x="613" y="25" width="177" height="35"/>
+				<textElement>
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PUMP NAME :- "+$F{pumpName}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="30">

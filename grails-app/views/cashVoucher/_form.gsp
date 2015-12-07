@@ -132,6 +132,17 @@
                              }
                          });
              }
+
+             $scope.uncheckOther = function(index){
+                 if($scope.memoData[index].bool) {
+                     for (var i = 0; i < $scope.memoData.length; i++) {
+                         $scope.memoData[i].bool = false;
+                     }
+                     $scope.memoData[index].bool = true;
+                 }else{
+                     $scope.memoData[index].bool=false;
+                 }
+             };
          }
 </script>
 <body>
@@ -219,7 +230,7 @@
            aria-describedby="sample-table-2_info">
         <thead>
         <tr>
-            <td style="text-align: center"><input type="checkbox" ng-model="selectAll" ng-change="selectAllValues()"/><span
+            <td style="text-align: center"><input type="checkbox" ng-model="selectAll" disabled="" ng-change="selectAllValues()"/><span
                     class="lbl"></span></td>
 
             <td style="text-align: center">Date</td>
@@ -239,7 +250,7 @@
         <tbody>
         <tr ng-repeat="d in memoData  | filter : search">
 
-            <td style="text-align: center"><input type="checkbox" ng-model="d.bool" value={{d.bool}} ng-change="doTotal()"/><span
+            <td style="text-align: center"><input type="checkbox" ng-model="d.bool" value={{d.bool}} ng-change="uncheckOther($index);doTotal()"/><span
                     class="lbl"></span></td>
             <td style="text-align: center">{{d.memoDate}}</td>
             <td style="text-align: center">{{d.memoNo}}</td>

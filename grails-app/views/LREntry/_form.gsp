@@ -886,9 +886,9 @@
 
             <td>Invoice Unit</td>
 
-            <td ng-show="showField">Rate</td>
-
             <td>Weight</td>
+
+            <td ng-show="showField">Rate</td>
 
             <td ng-show="showField">Total Amount</td>
 
@@ -913,8 +913,8 @@
             <td>{{d.unitName}}</td>
             <td>{{d.invoiceQty}}</td>
             <td>{{d.invoiceUnitName}}</td>
-            <td ng-show="showField">{{d.rate}}</td>
             <td>{{d.weight}}</td>
+            <td ng-show="showField">{{d.rate}}</td>
             <td ng-show="showField">{{d.tAmount}}</td>
 
         </tr>

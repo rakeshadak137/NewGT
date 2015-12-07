@@ -35,7 +35,7 @@
 
             function init() {
                 %{--$scope.memoList = ${com.transaction.InternalMemo.findAllByBranchAndIsActive(session['branch'],true) as grails.converters.JSON}--}%
-                findMemoList();
+//                findMemoList();
                 $scope.date1 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.date2 = "${new Date().format("yyyy-MM-dd")}";
                 $scope.goDownList = ${com.master.GodownMaster.findAllByIsActive(true) as grails.converters.JSON};
@@ -56,22 +56,19 @@
             }
 
             $scope.showMemoData = function(){
-                if($scope.fromParty && $scope.toParty) {
-                    debugger;
-                    $http.get("/${grailsApplication.config.erpName}/memoReport/memoData?fromParty=" + $scope.fromParty + "&toParty=" + $scope.toParty + "&fromDate=" + $scope.fromDate + "&toDate=" + $scope.toDate)
-                            .success(function (data) {
-                                $scope.memoList = data;
-                            });
-                }
+                $http.get("/${grailsApplication.config.erpName}/memoReport/memoData?fromParty=" + $scope.fromParty + "&toParty=" + $scope.toParty + "&fromDate=" + $scope.fromDate + "&toDate=" + $scope.toDate)
+                        .success(function (data) {
+                            $scope.memoList = data;
+                        });
             };
 
-            function findMemoList(){
-                $http.post("/${grailsApplication.config.erpName}/transactionReport/findMemoList")
-                        .success(function(data){
-                            debugger;
-                            $scope.memoList=data;
-                        });
-            }
+            %{--function findMemoList(){--}%
+                %{--$http.post("/${grailsApplication.config.erpName}/transactionReport/findMemoList")--}%
+                        %{--.success(function(data){--}%
+                            %{--debugger;--}%
+                            %{--$scope.memoList=data;--}%
+                        %{--});--}%
+            %{--}--}%
         }
     </script>
 </head>
