@@ -824,9 +824,9 @@
 
             <td>Invoice Unit</td>
 
-            <td ng-show="showField">Rate</td>
-
             <td>Weight</td>
+
+            <td ng-show="showField">Rate</td>
 
             <td ng-show="showField">Total Amount</td>
 
@@ -842,8 +842,8 @@
             <td><input type="text" ng-model="unit" disabled="" style="width: 50px"/></td>
             <td><input type="text" ng-model="invoiceQty" style="width: 50px" ng-focus="focusAlert2()" ng-change="invoiceQty=isNumber(invoiceQty)"/></td>
             <td><select ng-model="invoiceUnit" style="width: 70px" ng-focus="focusAlert3()" ng-options="u.id as u.unitName for u in unitList"/></td>
-            <td ng-show="showField"><input type="text" ng-model="rate" disabled="" style="width: 50px" ng-change="rate=isNumber(rate)"/></td>
             <td><input type="text" ng-model="weight"  style="width: 50px" ng-change="weight=isNumber(weight);gettAmount()"/></td>
+            <td ng-show="showField"><input type="text" ng-model="rate" disabled="" style="width: 50px" ng-change="rate=isNumber(rate)"/></td>
             <td ng-show="showField"><input type="text" ng-model="tAmount" disabled="" style="width: 50px" ng-change="tAmount=isNumber(tAmount)"/></td>
 
         </tr>
