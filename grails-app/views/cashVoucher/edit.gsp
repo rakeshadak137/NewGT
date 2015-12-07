@@ -45,15 +45,15 @@
                 <div class="widget-main padding-8" style="margin-left: 50px; margin-right: 50px;"><g:render
                         template="form"/></div>
             </fieldset>
-            <fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">
+            %{--<fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">--}%
                 %{--<g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>--}%
-                <g:actionSubmit class="btn btn-info btn-small" action="update"
-                                value="${message(code: 'default.button.update.label', default: 'Update')}"/>
-                <g:actionSubmit class="btn btn-info btn-small" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                formnovalidate=""
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-            </fieldset>
+                %{--<g:actionSubmit class="btn btn-info btn-small" action="update"--}%
+                                %{--value="${message(code: 'default.button.update.label', default: 'Update')}"/>--}%
+                %{--<g:actionSubmit class="btn btn-info btn-small" action="delete"--}%
+                                %{--value="${message(code: 'default.button.delete.label', default: 'Delete')}"--}%
+                                %{--formnovalidate=""--}%
+                                %{--onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>--}%
+            %{--</fieldset>--}%
             </g:form>
         </div>
         <g:render template="/shared/viewFooter"/>

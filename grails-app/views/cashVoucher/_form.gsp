@@ -20,6 +20,7 @@
                 $scope.showDiesel=false;
                  $scope.memoData = [];
                  $scope.tempMemoData = [];
+                 $scope.disableSave = false;
 
                  debugger;
                 <g:if test="${cashVoucherInstance?.id}">
@@ -28,6 +29,7 @@
                         $scope.vType = "${cashVoucherInstance?.voucherType}";
                         $scope.paymentType = "${cashVoucherInstance?.paymentType}";
                         $scope.memoTotal = "${cashVoucherInstance?.netAmount}";
+                        $scope.chequeNo = "${cashVoucherInstance?.chequeNo?:""}";
                         if("${cashVoucherInstance?.vehicleNo?.id}") $scope.vehicleNo = parseInt("${cashVoucherInstance?.vehicleNo?.id}");
                         if("${cashVoucherInstance?.pumpName?.id}"){
                             $scope.pumpName = parseInt("${cashVoucherInstance?.pumpName?.id}");
@@ -118,20 +120,23 @@
                  debugger;
                  return isNumberKey(num)
              }
-             $scope.checkDuplicateChequeNo=function(){
-                 var bankId=document.getElementById("bankName").value;
-
-                 $http.get("/${grailsApplication.config.erpName}/cashVoucher/checkDuplicateChequeNo?chequeNo=" + $scope.chequeNo+"&bankId="+bankId)
+             $scope.checkDuplicateChequeNo=function() {
+                 var bankId = document.getElementById("bankName").value;
+                 if (bankId) {
+                 $http.get("/${grailsApplication.config.erpName}/cashVoucher/checkDuplicateChequeNo?chequeNo=" + $scope.chequeNo + "&bankId=" + bankId)
                          .success(function (data) {
-                             if(data){
+                             if (data) {
                                  $scope.duplicateVoucherNo = data;
                                  $scope.showChequeAlert = true;
+                                 $scope.disableSave = true;
                              }
-                             else{
+                             else {
                                  $scope.showChequeAlert = false;
+                                 $scope.disableSave = false;
                              }
                          });
-             }
+              }
+             };
 
              $scope.uncheckOther = function(index){
                  if($scope.memoData[index].bool) {
@@ -366,6 +371,10 @@
             <td><g:textField name="chequeNo" value="${cashVoucherInstance?.chequeNo}" ng-model="chequeNo" ng-change="checkDuplicateChequeNo()" />
 
             </td>
+        <td></td>
+        <td ng-show="showChequeAlert" class="alert">
+            Cheque No already exist for Voucher No : {{duplicateVoucherNo}}
+        </td>
         %{--</div>--}%
 
     </tr>
@@ -398,10 +407,22 @@
 
 </table>
         <g:if test="${cashVoucherInstance?.id}">
-
+            <fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">
+                %{--<g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>--}%
+                <g:actionSubmit class="btn btn-info btn-small" action="update" ng-disabled="disableSave"
+                                value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+                <g:actionSubmit class="btn btn-info btn-small" action="delete"
+                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                formnovalidate=""
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+            </fieldset>
         </g:if>
         <g:else>
+            <fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">
 
+                <g:submitButton name="create" class="btn btn-info btn-small" ng-disabled="disableSave"
+                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            </fieldset>
         </g:else>
 </div>
 </body>

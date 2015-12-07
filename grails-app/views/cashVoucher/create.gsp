@@ -33,15 +33,16 @@
                 </ul>
             </g:hasErrors>
             <g:form action="save" >
+            <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
             <fieldset class="form">
                 <div class="widget-main padding-8" style="margin-left: 50px; margin-right: 50px;"><g:render
                         template="form"/></div>
             </fieldset>
-            <fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">
-                <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
-                <g:submitButton name="create" class="btn btn-info btn-small"
-                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-            </fieldset>
+            %{--<fieldset class="buttons" style="margin-left: 100px; margin-right: 50px;">--}%
+                %{--<g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>--}%
+                %{--<g:submitButton name="create" class="btn btn-info btn-small"--}%
+                                %{--value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
+            %{--</fieldset>--}%
             </g:form>
         </div>
         <g:render template="/shared/viewFooter"/>
