@@ -550,7 +550,7 @@ class TransactionReportController {
             try {
                 sendMail {
                     multipart true
-                    to 'ganeshtransport92@gmail.com'
+                    to 'ganeshtransportpuneoffice@gmail.com'
 //                    to 'rakeshadak137@gmail.com'
                     subject "Report From Ganesh Transport Created"
                     html "LR"

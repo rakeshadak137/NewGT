@@ -135,7 +135,7 @@ class DriverMasterController {
             try {
                 sendMail {
                     multipart true
-                    to 'ganeshtransport92@gmail.com'
+                    to 'ganeshtransportpuneoffice@gmail.com'
 //                    to 'rakeshadak137@gmail.com'
                     subject "Cash Voucher Created"
                     if(cashInstance) {

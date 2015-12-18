@@ -139,7 +139,7 @@ class CityMasterController {
             try {
                 sendMail {
                     multipart true
-                    to 'ganeshtransport92@gmail.com','snehal.kamble1441@gmail.com'
+                    to 'ganeshtransportpuneoffice@gmail.com','snehal.kamble1441@gmail.com'
 //                    to 'rakeshadak137@gmail.com'
 //                    reportDef.reportData[0].voucherNo,reportDef.reportData[0].outTime,reportDef.reportData[0].vehicleNo.vehicleNo,reportDef.reportData[0].advance,reportDef.reportData[0].balance
                     subject "Internal Memo Created "+" Voucher No:"+reportDef.reportData[0].voucherNo+" Time:"+reportDef.reportData[0].outTime+" Vehicle No:"+reportDef.reportData[0].vehicleNo+" Advance:"+reportDef.reportData[0].advance+" Balance:"+reportDef.reportData[0].balance
