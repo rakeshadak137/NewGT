@@ -39,6 +39,8 @@ class LREntry implements PropertyEditorRegistrar{
     String lcNo
     String invoiceNo,invoiceAmount
 
+    Boolean received = false;
+
     User lastUpdatedBy, createdBy
     Date lastUpdated
     Date dateCreated

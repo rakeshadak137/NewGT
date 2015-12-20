@@ -103,7 +103,8 @@ class MemoReportController {
                                     lrDate : c?.lrDate?.format("dd-MM-yyyy")?:"",
                                     fromParty : c?.fromCustomer?.accountName?:"",
                                     toParty : c?.toCustomer?.accountName?:"",
-                                    vehicleNo : c?.lrChild?.lrEntry?.vehicleNo?.vehicleNo?:""
+                                    vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                            " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:"")
                             ]);
                         }
                     }
@@ -113,7 +114,8 @@ class MemoReportController {
                                 child : child,
                                 memoNo : d?.voucherNo?:"",
                                 memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
-                                vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                                vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                        " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                                 tripLocation : d?.tripLocation?.location?:"",
                                 tripRate : d?.tripRate?:0,
                                 balance : d?.totalBalance?:0,
@@ -183,7 +185,8 @@ class MemoReportController {
                                     lrDate : c?.lrDate?.format("dd-MM-yyyy")?:"",
                                     fromParty : c?.fromCustomer?.accountName?:"",
                                     toParty : c?.toCustomer?.accountName?:"",
-                                    vehicleNo : c?.lrChild?.lrEntry?.vehicleNo?.vehicleNo?:""
+                                    vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                            " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:"")
                             ]);
                         }
                     }
@@ -193,7 +196,8 @@ class MemoReportController {
                                 child : child,
                                 memoNo : d?.voucherNo?:"",
                                 memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
-                                vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                                vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                        " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                                 tripLocation : d?.tripLocation?.location?:"",
                                 tripRate : d?.tripRate?:0,
                                 balance : d?.totalBalance?:0,
@@ -263,7 +267,8 @@ class MemoReportController {
                             lrDate : c?.lrDate?.format("dd-MM-yyyy")?:"",
                             fromParty : c?.fromCustomer?.accountName?:"",
                             toParty : c?.toCustomer?.accountName?:"",
-                            vehicleNo : c?.vehicleNo?.vehicleNo?:""
+                            vehicleNo :(c?.vehicleNo?.state?:"")+" - "+(c?.vehicleNo?.rto?:"")+
+                                    " "+(c?.vehicleNo?.series?:"")+" "+(c?.vehicleNo?.vehicleNo?:""),
                     ]);
                 }
             }
@@ -328,7 +333,8 @@ class MemoReportController {
                                 lrDate : c?.lrDate?.format("dd-MM-yyyy")?:"",
                                 fromParty : c?.fromCustomer?.accountName?:"",
                                 toParty : c?.toCustomer?.accountName?:"",
-                                vehicleNo : c?.lrChild?.lrEntry?.vehicleNo?.vehicleNo?:""
+                                vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                        " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:"")
                         ]);
                     }
                 }
@@ -338,7 +344,8 @@ class MemoReportController {
                             child : child,
                             memoNo : d?.voucherNo?:"",
                             memoDate : d?.voucherDate?.format("dd-MM-yyyy")?:"",
-                            vehicleNo : d?.vehicleNo?.vehicleNo?:"",
+                            vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                    " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                             tripLocation : d?.tripLocation?.location?:"",
                             tripRate : d?.tripRate?:0,
                             balance : d?.totalBalance?:0,

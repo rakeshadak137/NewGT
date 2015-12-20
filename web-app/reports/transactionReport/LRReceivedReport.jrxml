@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LRReceivedReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="532a5d5a-ce58-4de0-8604-e02df07c276c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false"/>
+	<field name="child" class="java.util.Collection"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="goDown" class="java.lang.String"/>
+	<field name="reportName" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="30dd499b-0448-47f3-b24e-f04878d83572" x="0" y="0" width="802" height="555"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="195" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="9daf6400-dd72-41dd-99ef-f6dfb54aa627" x="0" y="135" width="802" height="60"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="234b6746-94f2-4e35-8b43-4a63eaa4ab33" x="-20" y="0" width="823" height="135"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_info_landscape.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="acaa845e-0a99-44ed-be2b-642b96fd11d2" x="13" y="135" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d531eb8-58f8-44be-9461-62e781bfc2b6" x="403" y="135" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54737558-f4d5-4e49-a532-ba063de2680b" x="13" y="155" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM DATE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aecdda87-be33-4ae1-b9b1-cf38b312e2cf" x="80" y="135" width="308" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{fromParty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29681165-c0bb-4ebf-9cdd-159fa6255c60" x="470" y="155" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{toDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f439bf30-4273-477d-9e8d-64389db696f4" x="403" y="155" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO DATE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8590f7f8-c844-4b8a-b42d-fb5cf7440c2a" x="80" y="155" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5abcdf11-7a5a-418f-a0b2-1ce4e5ee3004" x="470" y="135" width="320" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{toParty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="daf451b2-c443-4757-bad3-c9b20f6d9944" x="13" y="175" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0f0f3319-5270-4d1c-8347-7afd95c82f92" x="80" y="175" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7759d039-0846-4355-98fb-2c01a7b1bc5f" x="470" y="175" width="320" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{goDown}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="afb34463-4962-4cc3-a35c-7b6b6f88e77b" x="403" y="175" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[GODOWN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="4c03fb16-c4c3-45d1-b263-88d38b60bb06" x="0" y="0" width="802" height="17"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + $F{reportName}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

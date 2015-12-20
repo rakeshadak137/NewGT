@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="issued_pending_BillReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d92adc8-adf2-4fa3-a1ad-3dc0c90203a6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false"/>
+	<field name="details" class="java.util.Collection"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="d835d93c-c168-4ce1-b45c-85bf1e67158f" x="0" y="0" width="802" height="555"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="175" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="1a852dcd-0457-4a11-b2f9-8e0d41444775" x="0" y="135" width="802" height="40"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="b5a07219-7540-4248-85f6-6cbe93cf88c3" x="-20" y="0" width="823" height="135"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_info_landscape.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="40aed3b8-7b6e-46ab-a578-7546b402ac00" x="80" y="135" width="308" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{fromParty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="340fd882-1786-4c02-84cf-f062edb1d003" x="13" y="135" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbe0efcb-69d4-4d17-ac2e-82db3d0ca72b" x="403" y="135" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9c579424-76bc-4fd7-bb93-ee6d4c374575" x="470" y="135" width="320" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :"+$F{toParty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8aca0bbe-40fb-4a92-a9a4-b429f6224f47" x="13" y="155" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="94cbb634-ee49-47ad-8195-8191aa9251b9" x="403" y="155" width="67" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO DATE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5a40e0c1-740e-4f82-a93f-5c0720bce1b5" x="80" y="155" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8fdf53b6-cff9-4c19-916d-a04d78a4ee64" x="470" y="155" width="200" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :"+$F{toDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="217aac5d-7184-4b48-96c7-6df2dcae0cb7" x="0" y="0" width="80" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cfaac02d-e974-4930-b0e3-023bf8abaa7d" x="80" y="0" width="80" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a83ea3f3-4919-4119-b156-ad245c799a9c" x="642" y="0" width="80" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="53919c2d-0f86-481e-8d56-27f38d90ab04" x="722" y="0" width="80" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="10a641f4-3698-47d8-96b2-10ba08c1c497" x="403" y="0" width="239" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fe01755b-098d-49a7-a0bb-fa3773070b39" x="160" y="0" width="243" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0d7095d0-f188-474a-9859-e325c865b1d6" x="722" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[BILL DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48f5b5a5-2b6a-4272-88ab-b654492dcfb0" x="642" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[BILL NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="146ee16c-a38c-4119-a64a-c4a7cba02b1f" x="0" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="72dcfc6c-86df-44c1-9abf-eb0dac07bfa4" x="80" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6ec1a04e-0de7-4be9-862c-85d12466fc91" x="160" y="0" width="243" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c670aeac-6a12-417a-8309-7d1ca2be95af" x="403" y="0" width="239" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="4d194dfb-6e6c-4efe-b06d-ee17275b58d6" x="0" y="0" width="802" height="16"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "issued_pending_BillReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

@@ -8,10 +8,10 @@
         init();
 
         function init() {
-            $scope.dieselReceiptNo = "NA";
             $scope.currentPage = 0;
             $scope.pageSize = 10;
             $scope.DataList = [];
+            $scope.showHideDiesFields = false;
 
             $scope.dieselLtr = 0;
             $scope.totalBalance = 0;
@@ -59,6 +59,15 @@
                     });
             </g:if>
         }
+
+        $scope.showHideDieselFields = function(){
+            if($scope.checkRecNo) {
+                $scope.showHideDiesFields = true;
+            }else{
+                $scope.showHideDiesFields = false;
+                $scope.dieselReceiptNo = "NA";
+            }
+        };
 
         $scope.showRate = function(){
             var tripNo = _.findIndex($scope.tripList,{id:$scope.tripLocation});
@@ -156,6 +165,15 @@
             else if($scope.LRData.length<=0){
                 alert("There is no data");
                 event.preventDefault();
+            }
+            else if($scope.checkRecNo){
+                if(!$scope.dieselReceiptNo){
+                    alert("Please Fill the Receipt No.");
+                    event.preventDefault();
+                }else if(!$scope.pumpName){
+                    alert("Please Select the Pump Name.");
+                    event.preventDefault();
+                }
             }
             else{
                 $scope.showButton = false;
@@ -333,6 +351,17 @@
 <hr>
 
 <table>
+
+    <tr>
+        <td>
+            <input type="checkbox" ng-model="checkRecNo" ng-change="showHideDieselFields()"/><span
+                class="lbl">&nbsp;&nbsp;&nbsp;Receipt No.</span>
+        </td>
+    </tr>
+
+</table>
+
+<table ng-show="showHideDiesFields">
 
     <tr>
 

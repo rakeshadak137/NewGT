@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MisReport" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="405582a8-e545-41dd-aed5-6b5dc87b9c7b">
+	<property name="ireport.zoom" value="1.000000000000001"/>
+	<property name="ireport.x" value="176"/>
+	<property name="ireport.y" value="151"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="parent" class="java.util.Collection"/>
+	<field name="grandTotalLrAmount" class="java.lang.String"/>
+	<field name="grandTotalFreightAmount" class="java.lang.String"/>
+	<field name="grandTotalBalanceAmount" class="java.lang.String"/>
+	<background>
+		<band height="802">
+			<rectangle>
+				<reportElement uuid="afc27d0e-5157-4885-9990-eb3dbb286ac1" x="0" y="0" width="1150" height="802"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="a3bad90f-0d40-48ae-aecb-241c6868492b" stretchType="RelativeToTallestObject" x="-20" y="0" width="1170" height="135"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{parent})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_info_landscape_A3.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="f6900a4b-4e04-4a5e-b15a-82b8daeb3bcb" x="0" y="0" width="52" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cdcce7ea-efcb-474c-8536-22a7baf83303" x="52" y="0" width="137" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="61fac1ae-2c35-491e-8131-b161cf7a8eeb" x="189" y="0" width="135" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8582d2d2-41c3-4c87-b7e6-3835232e8dc5" x="324" y="0" width="70" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0573feb9-1594-455a-8f7a-9799123e4ccf" x="394" y="0" width="46" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e84fceb9-e6a3-405d-9985-33cb456add9f" x="440" y="0" width="46" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f981620a-2540-462a-adbf-f845e3a03f7e" x="486" y="0" width="46" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b896b920-145f-4cc6-895f-ac34ff472aab" x="532" y="0" width="46" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b73dec27-024f-406b-99a8-00092e22d325" x="578" y="0" width="46" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fcb095d0-012c-464e-b997-bcf2a08872af" x="624" y="0" width="35" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2bef1954-84f2-4306-8ded-2789a1f49186" x="659" y="0" width="35" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c8e71e14-80d0-49f7-b7be-03431bc413d4" x="694" y="0" width="51" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fbbb1370-e928-4d76-8a91-bc696085b55b" x="744" y="0" width="51" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5f89d5d9-b937-42c8-8e17-bb12a13dcddb" x="795" y="0" width="50" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c28a4c3d-2e4d-4fb9-a92d-0dc7e34d1d9b" x="845" y="0" width="41" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="42a37897-72aa-4b44-b78a-d3ed9957e67e" x="886" y="0" width="41" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="d43205ce-9713-432d-a3b5-0d044359b9f0" x="927" y="0" width="49" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="482a7b6f-e7a9-4676-a46f-a918058b3d39" x="976" y="0" width="53" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a3664a44-6f35-493f-9f78-7b9e9b376c91" x="1029" y="0" width="58" height="41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e2c76072-df87-4507-b117-2b0b28b62159" x="1087" y="0" width="63" height="41"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="cc3d8a1b-409e-48cc-bfaf-5326816c00ab" x="1087" y="0" width="63" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RECEIVED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15b0c58c-074d-4697-ab95-99cf25c95751" x="1029" y="0" width="58" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PAID DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13dfaa25-9dbd-45cb-ae5e-e4e4cc7f417b" x="976" y="0" width="53" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CASH PAID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eab4c7e6-4b96-4e39-92b5-c3968b96dfd6" x="927" y="0" width="49" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DIESEL AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8b7e9409-bec6-41cb-b889-5f806a8e2ccb" x="886" y="0" width="41" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9cd83f4-f18c-47c9-a4f2-519f717082dc" x="845" y="0" width="41" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PAID DIESEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6ede2c78-a66a-49ac-804e-40cd1a94daec" x="795" y="0" width="50" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[BALANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e52a12ec-a87f-469c-895d-387d0ac0877b" x="745" y="0" width="50" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CASH ADVANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eeab4a0e-21c0-45a4-bb45-ee5441a01c29" x="695" y="0" width="50" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DIESEL AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef2d129c-a16c-455d-b449-6d9ffe8f562a" x="659" y="0" width="36" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab4b346e-4d49-4f9b-9466-1a2b163f7e8f" x="624" y="0" width="35" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DIESEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="417e0d9f-7683-4bf3-8c83-9db9476441d6" x="578" y="0" width="46" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE FREIGHT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1233455d-1a04-4592-9e2d-d1bcd34fe4fa" x="532" y="0" width="46" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL LR AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1b1fd572-f54d-4d80-a0be-2ab31aa7b149" x="486" y="0" width="46" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="463fb527-d3fd-4b36-a770-5b49c523e68b" x="440" y="0" width="46" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7119bbd0-26a3-46f2-b21a-385ee0558809" x="394" y="0" width="46" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MEMO NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="737fcbc3-c5e6-495f-ba3c-00eeeb7c16c2" x="324" y="0" width="70" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c77b8a2c-c006-451b-87cc-88239fdf546b" x="0" y="0" width="52" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44d35826-c7ef-4c96-8673-1bb5d9e27280" x="52" y="0" width="137" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0232bb6-6ff2-43cf-b2f1-7fdd956b30d9" x="189" y="0" width="135" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="df67ec3b-b447-480d-bf8f-d052b25e213d" x="0" y="0" width="1150" height="17"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{parent})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MisReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<rectangle>
+				<reportElement uuid="3b650d12-e181-439f-bf1c-4db847cc960b" x="0" y="0" width="324" height="60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="992167b1-ddfc-4f1d-96e5-1aa39896c7e8" x="324" y="0" width="826" height="60"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="3f73c2f3-e5b1-432d-a738-08378045cf60" x="473" y="0" width="677" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":  "+$F{grandTotalLrAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="172a602b-7b3d-415f-a4fe-19340bb6ec75" x="473" y="20" width="677" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":  "+$F{grandTotalFreightAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="407d3c74-ded9-476b-81b3-cf44c26f7d54" x="473" y="40" width="677" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":  "+$F{grandTotalBalanceAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ce1d22-2d58-4106-ba34-400a3ba10909" x="0" y="0" width="324" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="75936641-3839-42d9-817f-c2bbeec5ab47" x="340" y="0" width="133" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL LR AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbce2b83-12af-4a43-842b-ec3cff2c9621" x="340" y="20" width="133" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL VEHICLE FREIGHT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="29a36567-8bfb-4604-b9bb-7ea7bd5a2955" x="340" y="40" width="133" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL BALANCE]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
