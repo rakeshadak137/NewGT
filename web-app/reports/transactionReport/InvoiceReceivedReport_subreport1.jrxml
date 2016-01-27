@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InvoiceReceivedReport_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1f080325-eb45-45f9-aa03-9183c050379f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="fromPartyAddress" class="java.lang.String"/>
+	<field name="goDown" class="java.lang.String"/>
+	<field name="invocieNo" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="receiveDate" class="java.lang.String"/>
+	<field name="receveNo" class="java.lang.String"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toPartyAddress" class="java.lang.String"/>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="a255b47a-b112-47a7-afbc-c08fcaae7bed" x="0" y="0" width="57" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8a53464f-8575-415a-8208-9ab1f0943f35" x="57" y="0" width="64" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="66ec7478-9635-46dc-8a8a-8bf69d6e8571" x="121" y="0" width="76" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a08d4e53-49c9-46c7-804e-6964ca5200b2" x="568" y="0" width="121" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6c15a8f1-b337-4f24-a45e-c4112a3b25ee" x="689" y="0" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8c5ce78d-fed0-4c58-9f57-9f725ee87f40" x="381" y="0" width="187" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4f369efc-96c6-4a36-b5d1-2bf2288fb781" x="197" y="0" width="184" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f53bdd8e-c707-4d4f-af17-886187c0016e" x="689" y="0" width="113" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[GODOWN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7654b882-01f7-403f-96b5-334e9bce9160" x="568" y="0" width="121" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b854c9f-e2f2-4abe-a1f3-ff74cae2baa3" x="121" y="0" width="76" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INVOICE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="efff78db-8a9c-415b-8674-22bfa239dc39" x="197" y="0" width="184" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40b7dd35-a360-4659-a32f-b986deb1d384" x="381" y="0" width="187" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9a4ae76-d49f-4d14-a74a-01eff653371f" x="0" y="0" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Rcd. NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8d9f653-9d99-4615-8029-fe858ab1bf25" x="57" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Rcd. DATE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="b13eeb3c-05a8-40d9-9eb5-db6cb316f275" stretchType="RelativeToBandHeight" x="0" y="0" width="57" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="83eb1de7-07d1-4657-99b4-28be82ac9118" stretchType="RelativeToBandHeight" x="57" y="0" width="64" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="78293f3e-4c8f-4d8b-b289-445a3a682786" stretchType="RelativeToBandHeight" x="121" y="0" width="76" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9a67b685-c102-4acd-a9a8-671d35377717" stretchType="RelativeToBandHeight" x="568" y="0" width="121" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bcb57338-78ef-4ef1-a7e2-49f56ed19e2b" stretchType="RelativeToBandHeight" x="689" y="0" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="12be2bc4-4b2a-4eeb-a762-f5d3299c3abb" stretchType="RelativeToBandHeight" x="381" y="0" width="187" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7f745cdc-ae9c-4cdd-beac-497ef23a0725" stretchType="RelativeToBandHeight" x="197" y="0" width="184" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="fb5795ea-04e5-4654-8863-1c1cc915566c" stretchType="RelativeToBandHeight" x="0" y="4" width="57" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{receveNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9be4e3c7-9a0e-4d87-82cd-0bc3183e16b5" stretchType="RelativeToBandHeight" x="568" y="4" width="121" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0d915b1e-c4c4-4e4a-8a1f-7f2af5d1ee30" stretchType="RelativeToTallestObject" x="384" y="4" width="180" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toParty}+" - "+$F{toPartyAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ae52955d-e555-4dcb-a41a-7ea5c7f0746c" stretchType="RelativeToBandHeight" x="57" y="4" width="64" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{receiveDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9deefc34-f06d-498b-b49f-024ab71317c8" stretchType="RelativeToBandHeight" x="689" y="4" width="113" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goDown}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6dc7ead6-f2e5-4f94-900e-b2d5e12cee79" stretchType="RelativeToTallestObject" x="200" y="4" width="177" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromParty}+" - "+$F{fromPartyAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="745eba5d-ac6a-459c-bb22-e8dfd4ea8c0e" stretchType="RelativeToBandHeight" x="121" y="4" width="76" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invocieNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -12,6 +12,7 @@ class CashVoucher {
    String paymentType
    String payTo
    String vehicleNumber
+    CustomerMaster customerName
 
     //for diesel voucher
     PumpMaster pumpName
@@ -44,6 +45,7 @@ class CashVoucher {
         description nullable: true
         payTo nullable: true
         vehicleNumber nullable: true
+        customerName nullable: true
 
         createdBy display: false
         lastUpdatedBy display: false

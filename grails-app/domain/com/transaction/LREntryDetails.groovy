@@ -15,6 +15,7 @@ class LREntryDetails {
     BigDecimal rate = 0.00
     BigDecimal weight = 0.00
     BigDecimal totalAmount
+    Boolean received = false;
 
     static belongsTo = [lrEntry:LREntry]
 
@@ -43,7 +44,8 @@ class LREntryDetails {
                 invoiceUnit: UnitMaster.findById(st.invoiceUnitId as Long),
                 rate: st.rate as BigDecimal,
                 weight: st.weight as BigDecimal,
-                totalAmount: st.tAmount as BigDecimal
+                totalAmount: st.tAmount as BigDecimal,
+                received: false
         )
     }
 }

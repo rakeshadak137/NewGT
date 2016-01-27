@@ -20,10 +20,7 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement uuid="e9c36464-7e90-4c4f-9b29-d7b131e69a67" stretchType="RelativeToTallestObject" x="0" y="0" width="20" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="835b5dff-2562-4db7-9ed9-c6ae6b7301fc" stretchType="RelativeToTallestObject" x="20" y="0" width="49" height="20"/>
+				<reportElement uuid="835b5dff-2562-4db7-9ed9-c6ae6b7301fc" stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="20"/>
 			</rectangle>
 			<rectangle>
 				<reportElement uuid="dcf3b6fd-c755-49e5-b94e-4375d0ce67e8" stretchType="RelativeToTallestObject" x="69" y="0" width="67" height="20"/>
@@ -53,7 +50,7 @@
 				<reportElement uuid="387302ed-54ca-4e6d-80a1-685eb552d278" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
 			</rectangle>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="42352df6-e34a-43d9-bbb5-9e73c5b944ee" stretchType="RelativeToTallestObject" x="20" y="0" width="49" height="20"/>
+				<reportElement uuid="42352df6-e34a-43d9-bbb5-9e73c5b944ee" stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{voucherNo}]]></textFieldExpression>
 			</textField>

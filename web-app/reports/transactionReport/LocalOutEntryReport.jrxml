@@ -52,7 +52,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="140" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<textField>
 				<reportElement uuid="93b5efeb-b283-4290-aac3-9a60467b3ce4" x="75" y="0" width="127" height="20"/>
 				<textElement verticalAlignment="Middle">
@@ -68,35 +68,28 @@
 				<textFieldExpression><![CDATA[":  "+$F{entryDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="1506010d-69bf-48c0-99d5-f7fbc6b29379" x="75" y="20" width="127" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Courier-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[":  "+$F{entryTime}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="1cdb5d16-7772-4b7f-ba95-1d8e0708e431" x="38" y="81" width="517" height="19"/>
+				<reportElement uuid="1cdb5d16-7772-4b7f-ba95-1d8e0708e431" x="38" y="60" width="517" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[":  "+$F{fromCust}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="dead8cdc-3b09-46de-90f7-0db27b00b430" x="38" y="100" width="517" height="20"/>
+				<reportElement uuid="dead8cdc-3b09-46de-90f7-0db27b00b430" x="38" y="79" width="517" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[":  "+$F{toCust}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="16c33b45-80c7-48aa-8dff-a0d0e5b2fb07" x="8" y="80" width="30" height="20"/>
+				<reportElement uuid="16c33b45-80c7-48aa-8dff-a0d0e5b2fb07" x="8" y="59" width="30" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[From]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0833d366-b695-4975-b1b3-6b483c6c733a" x="8" y="100" width="30" height="20"/>
+				<reportElement uuid="0833d366-b695-4975-b1b3-6b483c6c733a" x="8" y="79" width="30" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
@@ -117,111 +110,68 @@
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="72bf2a33-6139-461d-beee-1c457583835e" x="8" y="20" width="67" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Out Time]]></text>
-			</staticText>
-			<textField>
-				<reportElement uuid="45e0cdd0-baf4-4396-9438-0f8c7f77efb9" x="387" y="22" width="168" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Courier-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[":  "+$F{godown}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement uuid="dfc25045-591b-494f-91df-d47dfe376c8f" x="320" y="22" width="67" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Godown]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="efd586dd-c682-425a-8807-5e1e5d924260" x="8" y="40" width="67" height="20"/>
+				<reportElement uuid="efd586dd-c682-425a-8807-5e1e5d924260" x="8" y="20" width="67" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Vehicle No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b1f5635b-d086-4a0a-95f3-a7e218a38836" x="320" y="41" width="67" height="20"/>
+				<reportElement uuid="b1f5635b-d086-4a0a-95f3-a7e218a38836" x="8" y="40" width="67" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Trip Rate]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5db5ff0f-ff71-4cc2-a3c8-7fdee358709f" x="8" y="60" width="67" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Advance]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="d8f594fc-02c4-45e1-96a1-099ddf0be996" x="320" y="60" width="67" height="20"/>
+				<reportElement uuid="d8f594fc-02c4-45e1-96a1-099ddf0be996" x="320" y="41" width="67" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Grand Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="e430d7f6-00a8-42e9-9f38-e6c22b8f5c5d" x="75" y="40" width="127" height="20"/>
+				<reportElement uuid="e430d7f6-00a8-42e9-9f38-e6c22b8f5c5d" x="75" y="20" width="127" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[":  "+$F{vehicleNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="3baad91b-bce3-430a-b64d-82df74fdd048" x="75" y="60" width="127" height="20"/>
-				<textElement verticalAlignment="Middle">
-					<font pdfFontName="Courier-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[":  "+$F{advance}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="86ba2d3b-5ccc-4c47-8bfd-924610b20aaa" x="387" y="41" width="168" height="20"/>
+				<reportElement uuid="86ba2d3b-5ccc-4c47-8bfd-924610b20aaa" x="75" y="40" width="168" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[":  "+$F{tripRate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6cdec5af-8411-40f3-8129-8d635058c2f1" x="387" y="61" width="168" height="20"/>
+				<reportElement uuid="6cdec5af-8411-40f3-8129-8d635058c2f1" x="387" y="42" width="168" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[":  "+$F{grandTotal}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement uuid="62d2df3c-7569-470f-9ba5-bb0c4e46c93c" x="0" y="120" width="48" height="20"/>
+				<reportElement uuid="62d2df3c-7569-470f-9ba5-bb0c4e46c93c" x="0" y="99" width="48" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="f1e0f224-37ae-4a9c-9b98-77bea542b8fa" x="48" y="120" width="310" height="20"/>
+				<reportElement uuid="f1e0f224-37ae-4a9c-9b98-77bea542b8fa" x="48" y="99" width="400" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="58fee832-6093-488e-b30e-424115ed3bf9" x="358" y="120" width="90" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="a33f1c91-9b3d-44f7-9f34-c5c0ec1221a1" x="448" y="120" width="107" height="20"/>
+				<reportElement uuid="a33f1c91-9b3d-44f7-9f34-c5c0ec1221a1" x="448" y="99" width="107" height="20"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="ad482b08-1391-4ff5-b97e-df8e1e53f507" x="0" y="120" width="48" height="20"/>
+				<reportElement uuid="ad482b08-1391-4ff5-b97e-df8e1e53f507" x="0" y="99" width="48" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Sr No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cd73dc9e-2e88-4cb6-9193-8ea17a60d447" x="48" y="120" width="310" height="20"/>
+				<reportElement uuid="cd73dc9e-2e88-4cb6-9193-8ea17a60d447" x="48" y="99" width="400" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Product Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2fd800cc-d054-424c-aad8-54906243a5cb" x="358" y="120" width="90" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Unit]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="166afbdc-90b7-44b2-a4ff-c523d478a10d" x="448" y="120" width="107" height="20"/>
+				<reportElement uuid="166afbdc-90b7-44b2-a4ff-c523d478a10d" x="448" y="99" width="107" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Quantity]]></text>
 			</staticText>

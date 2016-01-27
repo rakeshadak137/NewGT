@@ -16,7 +16,7 @@
 		</band>
 	</background>
 	<title>
-		<band height="117" splitType="Stretch">
+		<band height="177" splitType="Stretch">
 			<rectangle>
 				<reportElement uuid="cb4652e5-587b-4eef-b610-ef3783456580" x="0" y="0" width="802" height="117"/>
 			</rectangle>
@@ -60,111 +60,95 @@
 				<reportElement uuid="6b522201-8854-4490-8979-e19cc865d428" x="5" y="2" width="67" height="50"/>
 				<imageExpression><![CDATA[$P{IMAGE_DIR} + "logo.bmp"]]></imageExpression>
 			</image>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="063d0062-56fc-4c16-b0b3-5bf3db5135e3" x="0" y="0" width="802" height="20"/>
+				<reportElement uuid="063d0062-56fc-4c16-b0b3-5bf3db5135e3" x="0" y="117" width="802" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[CASH VOUCHER REPORT]]></text>
 			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement uuid="c4ab6a39-5936-4641-9bdd-d09eda80ae71" stretchType="RelativeToTallestObject" x="0" y="0" width="20" height="20"/>
+				<reportElement uuid="817995d1-969e-4a50-a7e7-718690004f60" stretchType="RelativeToTallestObject" x="0" y="137" width="69" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="817995d1-969e-4a50-a7e7-718690004f60" stretchType="RelativeToTallestObject" x="20" y="0" width="49" height="20"/>
+				<reportElement uuid="6ab76e18-e881-47db-83ac-f41b6d8f180f" stretchType="RelativeToTallestObject" x="69" y="137" width="67" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="6ab76e18-e881-47db-83ac-f41b6d8f180f" stretchType="RelativeToTallestObject" x="69" y="0" width="67" height="20"/>
+				<reportElement uuid="1359660f-1da7-41bf-a8a7-85ecd0cea41e" stretchType="RelativeToTallestObject" x="136" y="137" width="101" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="1359660f-1da7-41bf-a8a7-85ecd0cea41e" stretchType="RelativeToTallestObject" x="136" y="0" width="101" height="20"/>
+				<reportElement uuid="9a3ccee5-4add-4ab8-867f-e0359d081820" stretchType="RelativeToTallestObject" x="237" y="137" width="57" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="9a3ccee5-4add-4ab8-867f-e0359d081820" stretchType="RelativeToTallestObject" x="237" y="0" width="57" height="20"/>
+				<reportElement uuid="c3476532-a6d4-443b-969f-a0a745959c0b" stretchType="RelativeToTallestObject" x="294" y="137" width="92" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="c3476532-a6d4-443b-969f-a0a745959c0b" stretchType="RelativeToTallestObject" x="294" y="0" width="92" height="20"/>
+				<reportElement uuid="64843cd8-67d8-441a-875e-87bcfe115f8b" stretchType="RelativeToTallestObject" x="386" y="137" width="66" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="64843cd8-67d8-441a-875e-87bcfe115f8b" stretchType="RelativeToTallestObject" x="386" y="0" width="66" height="20"/>
+				<reportElement uuid="67576382-7dd2-42c6-9ae5-505f2732c115" stretchType="RelativeToTallestObject" x="452" y="137" width="64" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="67576382-7dd2-42c6-9ae5-505f2732c115" stretchType="RelativeToTallestObject" x="452" y="0" width="64" height="20"/>
+				<reportElement uuid="9fb8ff03-8ef5-45c3-8866-141173f79b8a" stretchType="RelativeToTallestObject" x="516" y="137" width="149" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="9fb8ff03-8ef5-45c3-8866-141173f79b8a" stretchType="RelativeToTallestObject" x="516" y="0" width="149" height="20"/>
+				<reportElement uuid="edf7e9ed-0e2c-4e2d-88a8-ecd7147bf260" stretchType="RelativeToTallestObject" x="665" y="137" width="86" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="edf7e9ed-0e2c-4e2d-88a8-ecd7147bf260" stretchType="RelativeToTallestObject" x="665" y="0" width="86" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="57b58204-cd55-47d5-ac59-909d2eae8096" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
+				<reportElement uuid="57b58204-cd55-47d5-ac59-909d2eae8096" stretchType="RelativeToTallestObject" x="751" y="137" width="51" height="20"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="7d0d2bc2-d2d5-4ec3-9e7a-7c61182b4ffc" x="0" y="0" width="20" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Sr.No.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7e86c3ae-418b-4759-b2f0-502b11325f2f" x="20" y="0" width="49" height="20"/>
+				<reportElement uuid="7e86c3ae-418b-4759-b2f0-502b11325f2f" x="0" y="137" width="69" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Voucher No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b2a721fe-4085-4b91-8243-0305cc0acd57" x="69" y="0" width="67" height="20"/>
+				<reportElement uuid="b2a721fe-4085-4b91-8243-0305cc0acd57" x="69" y="137" width="67" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="1c41d6c6-5fc2-481a-9dec-7fada4266241" x="136" y="0" width="101" height="20"/>
+				<reportElement uuid="1c41d6c6-5fc2-481a-9dec-7fada4266241" x="136" y="137" width="101" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Paid To]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="efc5a770-bc06-4491-885a-a579c17eb2ee" x="237" y="0" width="57" height="20"/>
+				<reportElement uuid="efc5a770-bc06-4491-885a-a579c17eb2ee" x="237" y="137" width="57" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="7f77409d-56c2-4c17-98d2-69629b8fce02" x="294" y="0" width="92" height="20"/>
+				<reportElement uuid="7f77409d-56c2-4c17-98d2-69629b8fce02" x="294" y="137" width="92" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Bank Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2a80ef75-cd0d-4112-8254-7701ce9fca0e" x="386" y="0" width="66" height="20"/>
+				<reportElement uuid="2a80ef75-cd0d-4112-8254-7701ce9fca0e" x="386" y="137" width="66" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Cheque No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="495962d0-013e-46fb-b942-38781784625b" x="452" y="0" width="64" height="20"/>
+				<reportElement uuid="495962d0-013e-46fb-b942-38781784625b" x="452" y="137" width="64" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Vehicle No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c1162494-e6f8-410f-abef-e15676828d7f" x="516" y="0" width="149" height="20"/>
+				<reportElement uuid="c1162494-e6f8-410f-abef-e15676828d7f" x="516" y="137" width="149" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Description]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9bd1df48-d27c-45c0-8a0a-17b37d4cc78b" x="665" y="0" width="86" height="20"/>
+				<reportElement uuid="9bd1df48-d27c-45c0-8a0a-17b37d4cc78b" x="665" y="137" width="86" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Pump Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="bae23fff-9794-4650-8b45-e7fb76792e99" x="751" y="0" width="51" height="20"/>
+				<reportElement uuid="bae23fff-9794-4650-8b45-e7fb76792e99" x="751" y="137" width="51" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Diesel Amount]]></text>
 			</staticText>
 		</band>
-	</columnHeader>
+	</title>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<subreport>

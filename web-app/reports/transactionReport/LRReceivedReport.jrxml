@@ -15,6 +15,7 @@
 	<field name="vehicleNo" class="java.lang.String"/>
 	<field name="goDown" class="java.lang.String"/>
 	<field name="reportName" class="java.lang.String"/>
+	<field name="reportTitle" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<rectangle>
@@ -119,6 +120,13 @@
 				</textElement>
 				<text><![CDATA[GODOWN]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="242e6d48-c560-476a-af57-bcbc11901f7f" x="0" y="0" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportTitle}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>

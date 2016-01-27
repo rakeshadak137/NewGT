@@ -13,6 +13,8 @@
             $("#vehicle").searchable();
             $("#bank").searchable();
             $("#cheque").searchable();
+            $("#accountName").searchable();
+            $("#customer").searchable();
             $("#tabs").tabs();
         });
 
@@ -25,6 +27,7 @@
             $scope.itemList=[];
             $scope.vehicleList=[];
             $scope.bankList=[];
+            $scope.customerList=[];
             init();
 
             function init() {
@@ -33,6 +36,10 @@
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/accountList")
                         .success(function(data){
                             $scope.accountList=data;
+                        });
+                $http.get("/${grailsApplication.config.erpName}/transactionReport/customerList")
+                        .success(function(data){
+                            $scope.customerList=data;
                         });
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/itemList")
                         .success(function(data){
@@ -76,7 +83,9 @@
                             <li><a href="#tabs-1">Datewise</a></li>
                             <li><a href="#tabs-2">Bank Wise</a></li>
                             <li><a href="#tabs-3">Check No Wise</a></li>
-                            <li><a href="#tabs-4">Party Wise</a></li>
+                            <li><a href="#tabs-4">Customer Wise</a></li>
+                            <li><a href="#tabs-5">Customer Wise (New)</a></li>
+                            <li><a href="#tabs-6">Vehicle Wise</a></li>
 
                         </ul>
 
@@ -179,6 +188,56 @@
 
                                 </table>
                                 <input type="hidden" name="party" value="{{party}}" />
+                                <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
+                                <g:jasperButton format="pdf" jasper="jasper-test" class="btn btn-primary btn-mini"
+                                                text="Print Report"/>
+
+                            </g:jasperForm>
+
+                        </div>
+
+                        <div id="tabs-5">
+
+                            <g:jasperForm controller="transactionReport"
+                                          action="partywiseVoucherReportNew"
+                                          jasper="../reports/inward_reports/bookPurchaseDatewiseSummary">
+
+                                <table>
+                                    <tr>
+                                        <td>Customer Name</td>
+                                        <td>
+                                            <select  id="customer" ng-model="customer" ng-options="c.id as c.name for c in customerList" ></select>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <input type="hidden" name="customer" value="{{customer}}" />
+                                <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
+                                <g:jasperButton format="pdf" jasper="jasper-test" class="btn btn-primary btn-mini"
+                                                text="Print Report"/>
+
+                            </g:jasperForm>
+
+                        </div>
+
+                        <div id="tabs-6">
+
+                            <g:jasperForm controller="transactionReport"
+                                          action="vehiclewiseVoucherReport"
+                                          jasper="../reports/inward_reports/bookPurchaseDatewiseSummary">
+
+                                <table>
+                                    <tr>
+                                        <td>Vehicle No.</td>
+                                        <td>
+                                            <select  id="vehicle" ng-model="vehicle" ng-options="r.id as r.state +'-'+ r.rto +' '+ r.series +' '+ r.vehicleNo for r in vehicleList">
+
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <input type="hidden" name="vehicle" value="{{vehicle}}" />
                                 <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
                                 <g:jasperButton format="pdf" jasper="jasper-test" class="btn btn-primary btn-mini"
                                                 text="Print Report"/>

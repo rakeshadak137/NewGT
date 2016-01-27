@@ -12,6 +12,7 @@
 	<field name="toParty" class="java.lang.String"/>
 	<field name="fromDate" class="java.lang.String"/>
 	<field name="toDate" class="java.lang.String"/>
+	<field name="reportName" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<rectangle>
@@ -87,6 +88,13 @@
 					<font size="8" pdfFontName="Courier-Bold"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" :"+$F{toDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b83391b9-cc9c-4d9d-a077-d322d69b2157" x="0" y="0" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

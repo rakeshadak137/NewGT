@@ -317,8 +317,8 @@
                 </ol>
                 <g:form>
                     <fieldset class="buttons" style="margin-left: 50px; margin-right: 50px;">
-                        <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
                         <g:hiddenField name="id" value="${cashVoucherInstance?.id}"/>
+                        <g:hiddenField name="scrid" value="${session['activeScreen'].id}"/>
                         <g:link class="btn btn-info btn-small" action="edit" id="${cashVoucherInstance?.id}" params="${[scrid:session['activeScreen'].id]}"><g:message
                                 code="default.button.edit.label" default="Edit"/></g:link>
                         <g:actionSubmit class="btn btn-info btn-small" action="delete"

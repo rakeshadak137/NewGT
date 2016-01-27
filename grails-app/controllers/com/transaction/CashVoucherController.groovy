@@ -194,42 +194,48 @@ class CashVoucherController {
     def editData(){
         def child = [];
         def data=[];
-        if(params.vid){
-            data=InternalMemo.findAllByVehicleNo(VehicleMaster.findById(params.vid as Long));
-            if(data){
-                data.each {d->
-                    def cashData = CashVoucherChild.findByMemoNoAndCashVoucher(InternalMemo.findById(d.id as Long),CashVoucher.findById(params.id as Long));
+        data=InternalMemo.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
 
-                    if(cashData){
-                        child.push(
-                                [
-                                        id       : cashData?.memoNo?.id,
-                                        memoNo   : cashData?.memoNo?.voucherNo ?: "",
-                                        memoDate : cashData?.memoNo?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                                        amount   : cashData?.memoNo?.totalTripRate ?: 0,
-                                        ltr      : cashData?.dieselLtr ?: 0,
-                                        dieselAmt: cashData?.dieselAmount ?: 0,
-                                        advance  : 0,
-                                        balance  : cashData?.balance ?: 0,
-                                        bool     : true
-                                ]
-                        )
-                    }
-                    else{
-                        child.push(
-                                [
-                                        id:d?.id,
-                                        memoNo:d?.voucherNo?:"",
-                                        memoDate:d?.voucherDate?.format("dd-MM-yyyy")?:"",
-                                        amount:d?.totalTripRate?:0,
-                                        ltr:d?.dieselLtr?:0,
-                                        dieselAmt:d?.dieselAmount?:0,
-                                        advance:d?.advance?:0,
-                                        balance:d?.balance?:0,
-                                        bool:false
-                                ]
-                        )
-                    }
+            if(params.vNo){
+                eq("vehicleNo",VehicleMaster.findById(params.vNo as Long))
+            }
+        }
+
+        if(data){
+            data.each {d->
+                def cashData = CashVoucherChild.findByMemoNoAndCashVoucher(InternalMemo.findById(d.id as Long),CashVoucher.findById(params.id as Long));
+
+                if(cashData){
+                    child.push(
+                            [
+                                    id       : cashData?.memoNo?.id,
+                                    memoNo   : cashData?.memoNo?.voucherNo ?: "",
+                                    memoDate : cashData?.memoNo?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                                    amount   : cashData?.memoNo?.totalTripRate ?: 0,
+                                    ltr      : cashData?.dieselLtr ?: 0,
+                                    dieselAmt: cashData?.dieselAmount ?: 0,
+                                    advance  : 0,
+                                    balance  : cashData?.balance ?: 0,
+                                    bool     : true
+                            ]
+                    )
+                }
+                else{
+                    child.push(
+                            [
+                                    id:d?.id,
+                                    memoNo:d?.voucherNo?:"",
+                                    memoDate:d?.voucherDate?.format("dd-MM-yyyy")?:"",
+                                    amount:d?.totalTripRate?:0,
+                                    ltr:d?.dieselLtr?:0,
+                                    dieselAmt:d?.dieselAmount?:0,
+                                    advance:d?.advance?:0,
+                                    balance:d?.balance?:0,
+                                    bool:false
+                            ]
+                    )
                 }
             }
         }
@@ -246,63 +252,58 @@ class CashVoucherController {
         def sNo="";
         def parent;
         NumToWords nm = new NumToWords();
-           if(params?.id){
-               def data = CashVoucher.findById(params?.id as Long);
-               if(data){
-                   def childData = CashVoucherChild.findAllByCashVoucher(data as CashVoucher);
-                   if(childData){
-                       childData.each {c->
-                           child.push([
-                                   memoNo:c?.memoNo?.voucherNo?:"",
-                                   date:c?.memoDate?.format("dd-MM-yyyy"),
-                                   vehicleNo:c?.memoNo?.vehicleNo?.state+"-"+c?.memoNo?.vehicleNo?.rto+" "+c?.memoNo?.vehicleNo?.series+" "+c?.memoNo?.vehicleNo?.vehicleNo,
-                                   amount:c?.balance?:0
-                           ])
-                       }
-                   }
-                   if(data.voucherType=="Diesel Voucher"){
-                       memoNo="Memo No";
-                       mDate="Date";
-                       vNo="Vehicle No";
-                       amt="Amount";
-                   }
-                   if(!child){
-                       child.push([
-                               memoNo:"",
-                               date:"",
-                               vehicleNo:"",
-                               amount:""
-                       ])
-                   }
-                   parent=[
-                           voucherType:data?.voucherType?:"",
-                           voucherNo: data?.voucherNo?:"",
-                           date:data?.voucherDate?.format("dd-MM-yyyy"),
-                           payTo:data?.payTo?:"",
-                           total:data?.netAmount?df.format(data?.netAmount):0,
-                           totalWords:data?.netAmount?nm.convert(data?.netAmount?.intValue()):0,
-                           description:data?.description?:"",
-                           paymentType:data?.paymentType?:"",
-                           pumpName:data?.pumpName?.pumpName?:"",
-                           dieselLtr:data?.dieselLtr?:"",
-                           dieselAmt:data?.dieselAmount?:"",
-                           slipNo:data?.dieselReceiptNo?:"",
-                           slipDate:data?.dieselReceiptDate?.format("dd-MM-yyyy"),
-                           bankName:data?.bankName?.bankName?:"",
-                           chequeNo:data?.chequeNo?:"",
-                           child:child,
-                           mNo:memoNo,
-                           mDate:mDate,
-                           vNo:vNo,
-                           amt:amt,
-                           sNo:sNo,
-                           vehicleNumber:data?.vehicleNumber?:""
-                   ]
-                   if(parent){
-                       reportDetails.push(parent);
-                   }
-               }
-           }
+
+        def data = CashVoucher.findById(params.id as Long)
+
+        if(data){
+            def childData = data?.cashVoucherChilds
+
+            if (childData){
+                childData.each {c ->
+                    child.push([
+                            memoNo:c?.memoNo?.voucherNo?:"",
+                            date:c?.memoNo?.voucherDate?.format("dd-MM-yyyy")?:"",
+                            vehicleNo:c?.memoNo?.vehicleNo?.state+"-"+c?.memoNo?.vehicleNo?.rto+" "+c?.memoNo?.vehicleNo?.series+" "+c?.memoNo?.vehicleNo?.vehicleNo,
+                            amount:c?.balance?:0
+                    ])
+                }
+            }
+        }
+
+        child.push([
+                memoNo:"",
+                date:"",
+                vehicleNo:"",
+                amount:""
+        ]);
+
+        parent=[
+                voucherType:data?.voucherType?:"",
+                voucherNo: data?.voucherNo?:"",
+                date:data?.voucherDate?.format("dd-MM-yyyy"),
+                payTo:data?.payTo?:data?.customerName?.name?:"",
+                total:data?.netAmount?df.format(data?.netAmount):0,
+                totalWords:data?.netAmount?nm.convert(data?.netAmount?.intValue()):0,
+                description:data?.description?:"",
+                paymentType:data?.paymentType?:"",
+                pumpName:data?.pumpName?.pumpName?:"",
+                dieselLtr:data?.dieselLtr?:"",
+                dieselAmt:data?.dieselAmount?:"",
+                slipNo:data?.dieselReceiptNo?:"",
+                slipDate:data?.dieselReceiptDate?.format("dd-MM-yyyy"),
+                bankName:data?.bankName?.bankName?:"",
+                chequeNo:data?.chequeNo?:"",
+                child:child,
+                mNo:memoNo,
+                mDate:mDate,
+                vNo:vNo,
+                amt:amt,
+                sNo:sNo,
+                vehicleNumber:data?.vehicleNumber?:""
+        ]
+
+        reportDetails.push(parent);
+
         params._format = "PDF";
         params._file = "../reports/transactionReport/CashVoucher"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"

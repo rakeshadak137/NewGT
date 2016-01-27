@@ -21,114 +21,94 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement uuid="9fda5f90-517b-40a2-83d7-0688915ade5d" x="0" y="0" width="33" height="20"/>
+				<reportElement uuid="9fda5f90-517b-40a2-83d7-0688915ade5d" stretchType="RelativeToBandHeight" x="0" y="0" width="33" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="49d0a2c5-fb0a-484d-be61-86b57640a2c4" x="33" y="0" width="56" height="20"/>
+				<reportElement uuid="49d0a2c5-fb0a-484d-be61-86b57640a2c4" stretchType="RelativeToBandHeight" x="33" y="0" width="56" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="02aa5dd0-3adc-4f55-b8f1-5cd68aa14c17" x="89" y="0" width="98" height="20"/>
+				<reportElement uuid="02aa5dd0-3adc-4f55-b8f1-5cd68aa14c17" stretchType="RelativeToBandHeight" x="89" y="0" width="196" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="2c499383-9e8d-47c9-bc54-91200f64e8da" x="485" y="0" width="116" height="20"/>
+				<reportElement uuid="2c499383-9e8d-47c9-bc54-91200f64e8da" stretchType="RelativeToBandHeight" x="485" y="0" width="116" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="b6c6e2ea-dd34-4456-9689-f4064e8a95ed" x="601" y="0" width="41" height="20"/>
+				<reportElement uuid="b6c6e2ea-dd34-4456-9689-f4064e8a95ed" stretchType="RelativeToBandHeight" x="601" y="0" width="41" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="913dfc86-2eed-412e-88fd-4bbef214a53d" x="642" y="0" width="43" height="20"/>
+				<reportElement uuid="913dfc86-2eed-412e-88fd-4bbef214a53d" stretchType="RelativeToBandHeight" x="642" y="0" width="43" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8146ea07-65b7-47b1-a9e2-0a0a46febeab" x="685" y="0" width="44" height="20"/>
+				<reportElement uuid="8146ea07-65b7-47b1-a9e2-0a0a46febeab" stretchType="RelativeToBandHeight" x="685" y="0" width="44" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c9ea0023-6653-4854-bd34-621808c868df" stretchType="RelativeToBandHeight" x="729" y="0" width="73" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="025eb15d-599f-4c60-b378-1e1b23ccd7c0" stretchType="RelativeToBandHeight" x="285" y="0" width="200" height="20"/>
 			</rectangle>
 			<textField>
-				<reportElement uuid="66007f1d-ecbd-4158-aed9-a143e5a043fd" x="0" y="0" width="33" height="20"/>
+				<reportElement uuid="66007f1d-ecbd-4158-aed9-a143e5a043fd" stretchType="RelativeToBandHeight" x="0" y="4" width="33" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="814daec4-fd6c-4bee-a7df-e56f4080caeb" x="33" y="0" width="56" height="20"/>
+				<reportElement uuid="814daec4-fd6c-4bee-a7df-e56f4080caeb" stretchType="RelativeToBandHeight" x="33" y="4" width="56" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="16b9a895-b2ed-47ff-9991-04990beb34a5" x="485" y="0" width="116" height="20"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="16b9a895-b2ed-47ff-9991-04990beb34a5" stretchType="RelativeToTallestObject" x="489" y="4" width="108" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="79132d7f-c482-488e-a0dd-f18590b1e078" x="601" y="0" width="41" height="20"/>
+				<reportElement uuid="79132d7f-c482-488e-a0dd-f18590b1e078" stretchType="RelativeToBandHeight" x="601" y="4" width="41" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="d5b215da-0e22-4eee-9bac-72b3267612d5" x="89" y="0" width="98" height="20"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="d5b215da-0e22-4eee-9bac-72b3267612d5" stretchType="RelativeToTallestObject" x="93" y="4" width="188" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{partyName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{partyName}+" - "+$F{fromAddress}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="fa473558-c8fd-49ee-a357-e21258794155" x="642" y="0" width="43" height="20"/>
+				<reportElement uuid="fa473558-c8fd-49ee-a357-e21258794155" stretchType="RelativeToBandHeight" x="642" y="4" width="43" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{invoiceQty}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a944a03b-b601-415b-9f39-5ce884eda23f" x="685" y="0" width="44" height="20"/>
+				<reportElement uuid="a944a03b-b601-415b-9f39-5ce884eda23f" stretchType="RelativeToBandHeight" x="685" y="4" width="44" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{invoiceUnit}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement uuid="c9ea0023-6653-4854-bd34-621808c868df" x="729" y="0" width="73" height="20"/>
-			</rectangle>
 			<textField>
-				<reportElement uuid="a5fad519-d844-40ca-bcd2-3ca9028520ff" x="729" y="0" width="73" height="20"/>
+				<reportElement uuid="a5fad519-d844-40ca-bcd2-3ca9028520ff" stretchType="RelativeToBandHeight" x="729" y="4" width="73" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement uuid="31e0e6fc-22b7-4862-aa91-eadd2d77f7ab" x="187" y="0" width="98" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="025eb15d-599f-4c60-b378-1e1b23ccd7c0" x="285" y="0" width="102" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="b74f7a24-8025-414e-bf53-b4b0f07eedb7" x="387" y="0" width="98" height="20"/>
-			</rectangle>
-			<textField>
-				<reportElement uuid="e09f3142-cb78-4ccc-b3d5-6b014a9b435d" x="187" y="0" width="98" height="20"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="018dbf25-32ad-461b-aa80-49a1eddf1170" stretchType="RelativeToTallestObject" x="289" y="4" width="192" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{fromAddress}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="018dbf25-32ad-461b-aa80-49a1eddf1170" x="285" y="0" width="102" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{toPartyName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="2f9bb30c-e132-4e92-abc9-786fea545b23" x="387" y="0" width="98" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{toAddress}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{toPartyName}+" - "+$F{toAddress}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

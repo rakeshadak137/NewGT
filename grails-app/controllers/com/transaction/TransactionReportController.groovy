@@ -14,6 +14,12 @@ class TransactionReportController {
         render(view: "lrReport");
     }
 
+    def customerList(){
+        def result = [];
+        result = CustomerMaster.findAllByIsActive(true)
+        render result as JSON
+    }
+
     def accountList() {
         def result = [];
         result = AccountMaster.findAllByIsActive(true);
@@ -406,11 +412,11 @@ class TransactionReportController {
                     child.push([
                             voucherNo   : d?.voucherNo ?: "",
                             date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: "",
+                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
                             amount      : d?.netAmount ?: "",
                             bankName    : d?.bankName?.bankName ?: "",
                             chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
+                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                             description : d?.description ?: "",
                             pumpName    : d?.pumpName?.pumpName ?: "",
                             dieselAmount: d?.dieselAmount ?: ""
@@ -442,11 +448,11 @@ class TransactionReportController {
                     child.push([
                             voucherNo   : d?.voucherNo ?: "",
                             date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: "",
+                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
                             amount      : d?.netAmount ?: "",
                             bankName    : d?.bankName?.bankName ?: "",
                             chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
+                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                             description : d?.description ?: "",
                             pumpName    : d?.pumpName?.pumpName ?: "",
                             dieselAmount: d?.dieselAmount ?: ""
@@ -478,11 +484,11 @@ class TransactionReportController {
                     child.push([
                             voucherNo   : d?.voucherNo ?: "",
                             date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: "",
+                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
                             amount      : d?.netAmount ?: "",
                             bankName    : d?.bankName?.bankName ?: "",
                             chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
+                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
                             description : d?.description ?: "",
                             pumpName    : d?.pumpName?.pumpName ?: "",
                             dieselAmount: d?.dieselAmount ?: ""
@@ -514,7 +520,7 @@ class TransactionReportController {
                     child.push([
                             voucherNo   : d?.voucherNo ?: "",
                             date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: "",
+                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
                             amount      : d?.netAmount ?: "",
                             bankName    : d?.bankName?.bankName ?: "",
                             chequeNo    : d?.chequeNo ?: "",
@@ -531,6 +537,82 @@ class TransactionReportController {
                 }
             }
         }
+        params._format = "PDF";
+        params._file = "../reports/transactionReport/datewiseCashVoucher"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
+    def partywiseVoucherReportNew(){
+        def reportDetails = [];
+        def child = [];
+
+        def data = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+            eq("customerName",CustomerMaster.findById(params.customer as Long))
+        }
+
+        if (data) {
+            data.each { d ->
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
+            }
+        }
+
+        reportDetails.push([
+                details: child
+        ])
+
+        params._format = "PDF";
+        params._file = "../reports/transactionReport/datewiseCashVoucher"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
+    def vehiclewiseVoucherReport(){
+        def reportDetails = [];
+        def child = [];
+        def memoData = [];
+
+        memoData = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+            eq("vehicleNo",VehicleMaster.findById(params.vehicle as Long))
+        }
+
+        if (memoData) {
+            memoData.each { d ->
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
+            }
+        }
+        reportDetails.push([
+                details: child
+        ])
+
         params._format = "PDF";
         params._file = "../reports/transactionReport/datewiseCashVoucher"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
@@ -652,6 +734,7 @@ class TransactionReportController {
         }
 
         parent = [
+                reportName: "ISSUE BILL REPORT",
                 details  : child,
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
                 toParty  : params.toParty ? AccountMaster.findById(params.toParty as Long)?.accountName : "",
@@ -672,24 +755,29 @@ class TransactionReportController {
         def reportDetails = [];
         def parent;
         def child = [];
+        def data = []
 
-        def data = BillAgainstLRDetails.createCriteria().list {
-            inList("billAgainstLR", BillAgainstLR.createCriteria().list {
-                eq("branch", session['branch'])
-                eq("isActive", true)
+        def billData =  BillAgainstLR.createCriteria().list {
+            eq("branch", session['branch'])
+            eq("isActive", true)
 
-                if (params.fromParty) {
-                    eq("fromCompany", AccountMaster.findById(params.fromParty as Long))
-                }
-
-                if (params.toParty) {
-                    eq("toCompany", AccountMaster.findById(params.toParty as Long))
-                }
-            })
-            projections {
-                property("lrEntry.id")
+            if (params.fromParty) {
+                eq("fromCompany", AccountMaster.findById(params.fromParty as Long))
             }
-        }.unique();
+
+            if (params.toParty) {
+                eq("toCompany", AccountMaster.findById(params.toParty as Long))
+            }
+        };
+
+        if(billData){
+            data = BillAgainstLRDetails.createCriteria().list {
+                inList("billAgainstLR",billData)
+                projections {
+                    property("lrEntry.id")
+                }
+            }
+        }
 
         if (data) {
             def lrData = LREntry.createCriteria().list {
@@ -733,6 +821,7 @@ class TransactionReportController {
         }
 
         parent = [
+                reportName: "PENDING BILL REPORT",
                 details  : child,
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
                 toParty  : params.toParty ? AccountMaster.findById(params.toParty as Long)?.accountName : "",
@@ -829,6 +918,7 @@ class TransactionReportController {
         }
 
         parent = [
+                reportTitle : "LR RECEIVED REPORT",
                 child : child,
                 reportName : "LRReceivedReport_subreport1.jasper",
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
@@ -900,6 +990,7 @@ class TransactionReportController {
         }
 
         parent = [
+                reportTitle : "LR RECEIVED GODOWNWISE REPORT",
                 child : child,
                 reportName : "LRReceivedReport_subreport1.jasper",
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
@@ -963,6 +1054,7 @@ class TransactionReportController {
         }
 
         parent = [
+                reportTitle : "LR NOT RECEIVED REPORT",
                 child : child,
                 reportName : "LRReceivedReport_subreport2.jasper",
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",

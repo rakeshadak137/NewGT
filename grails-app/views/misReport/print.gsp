@@ -214,7 +214,7 @@
                     </div>
 
                     <div class="span8">
-                        <select ng-model="vehicleNo" ng-options="r.id as r.state+'-'+r.rto+' '+r.series+' '+r.vehicleNo for r in vehicleList"" id="vehicle">
+                        <select ng-model="vehicleNo" ng-options="r.id as r.state+'-'+r.rto+' '+r.series+' '+r.vehicleNo for r in vehicleList" id="vehicle">
                             %{--<option value="">---Select One---</option>--}%
                         </select>
                     </div>

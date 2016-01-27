@@ -139,7 +139,13 @@ class DriverMasterController {
 //                    to 'rakeshadak137@gmail.com'
                     subject "Cash Voucher Created"
                     if(cashInstance) {
-                        html "Voucher No: " + (cashInstance?.voucherNo ?: "") + "<BR> Voucher Type: " + (cashInstance?.voucherType?:"") + "<BR> Pay To: " + (cashInstance?.payTo?:"")+ "<BR> Net Amount: " + (cashInstance?.netAmount?:"") + "<BR> Description: " + (cashInstance?.description?:"") + "<BR> Vehicle No: " + ((cashInstance?.vehicleNo?.state ?: "") + "-" + (cashInstance?.vehicleNo?.rto ?: "") + " " + (cashInstance?.vehicleNo?.series ?: "") + " " + (cashInstance?.vehicleNo?.vehicleNo ?: ""))+ "<BR> Pump Name: " + (cashInstance?.pumpName?.pumpName?:"")+ "<BR> Slip No: " + (cashInstance?.dieselReceiptNo?:"")+ "<BR> Diesel Ltr: " + (cashInstance?.dieselLtr?:"")
+                        html "Voucher No: " + (cashInstance?.voucherNo ?: "") + "<BR> Voucher Type: " + (cashInstance?.voucherType?:"") +
+                                "<BR> Pay To: " + (cashInstance?.payTo?:cashInstance?.customerName?.name?:"")+ "<BR> Net Amount: " +
+                                (cashInstance?.netAmount?:"") + "<BR> Description: " + (cashInstance?.description?:"") +
+                                "<BR> Vehicle No: " + ((cashInstance?.vehicleNo?.state ?: "") + "-" + (cashInstance?.vehicleNo?.rto ?: "") +
+                                " " + (cashInstance?.vehicleNo?.series ?: "") + " " + (cashInstance?.vehicleNo?.vehicleNo ?: ""))+ "<BR> Pump Name: " +
+                                (cashInstance?.pumpName?.pumpName?:"")+ "<BR> Slip No: " + (cashInstance?.dieselReceiptNo?:"")+
+                                "<BR> Diesel Ltr: " + (cashInstance?.dieselLtr?:"")
                     }
                     attachBytes 'voucher.pdf','application/pdf',reportDef.contentStream.toByteArray()
                 }

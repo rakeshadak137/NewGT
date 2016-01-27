@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CashVoucher_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="29c4a9c1-d58e-4739-8703-324527dc5877">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="memoNo" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="amount" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="2350ca89-4c37-4957-a6fe-91c18e7205b8" x="185" y="0" width="111" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0e1b11f4-dc6d-4510-99e6-ed1ceeddde7e" x="296" y="0" width="133" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="59dc0ef0-14ce-46a2-abe8-cab2d97ffebb" x="429" y="0" width="126" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b32e01cc-b852-4ba0-a221-a81b9dd5182b" x="0" y="0" width="185" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="c3be3375-cd3f-4393-b8b6-f28f6748c92f" x="296" y="4" width="133" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9733d76-02d0-45a2-9d85-00fd6f51f6f6" x="429" y="4" width="126" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="350bd453-19bc-4d63-b771-4efdfd7952d1" x="185" y="4" width="111" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71aec3e5-c328-4914-a156-859f8b24217a" x="0" y="4" width="185" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{memoNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

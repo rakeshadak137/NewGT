@@ -20,6 +20,10 @@ class MisReportController {
         def finalData;
         def grandTotalLrAmount = 0;
         def grandTotalFreightAmount = 0;
+        def grandTotalDieselAmount = 0;
+        def grandTotalCashAdvance = 0;
+        def grandTotalDieselPaid = 0;
+        def grandTotalCashPaid = 0;
         def grandTotalBalanceAmount = 0;
 
         def data = InternalMemo.createCriteria().list {
@@ -102,6 +106,10 @@ class MisReportController {
                         grandTotalLrAmount = grandTotalLrAmount + totalLrAmount;
                         grandTotalFreightAmount = grandTotalFreightAmount + d?.freight ?: 0;
                         grandTotalBalanceAmount = grandTotalBalanceAmount + balance;
+                        grandTotalDieselAmount = grandTotalDieselAmount + d?.dieselAmount?:0;
+                        grandTotalCashAdvance = grandTotalCashAdvance + d?.advance?:0;
+                        grandTotalDieselPaid = grandTotalDieselPaid + paidDieselAmount;
+                        grandTotalCashPaid = grandTotalCashPaid  + paidCash;
 
                         lrUniqueData.each {l ->
                             if (memoFlag) {
@@ -164,7 +172,11 @@ class MisReportController {
                 parent : parent,
                 grandTotalLrAmount : grandTotalLrAmount,
                 grandTotalFreightAmount : grandTotalFreightAmount,
-                grandTotalBalanceAmount : grandTotalBalanceAmount
+                grandTotalBalanceAmount : grandTotalBalanceAmount,
+                grandTotalDieselAmount : grandTotalDieselAmount,
+                grandTotalCashAdvance : grandTotalCashAdvance ,
+                grandTotalDieselPaid : grandTotalDieselPaid ,
+                grandTotalCashPaid : grandTotalCashPaid
         ];
 
         reportDetails.push(finalData);
@@ -183,6 +195,10 @@ class MisReportController {
         def finalData;
         def grandTotalLrAmount = 0;
         def grandTotalFreightAmount = 0;
+        def grandTotalDieselAmount = 0;
+        def grandTotalCashAdvance = 0;
+        def grandTotalDieselPaid = 0;
+        def grandTotalCashPaid = 0;
         def grandTotalBalanceAmount = 0;
 
         def data = InternalMemo.createCriteria().list {
@@ -274,9 +290,14 @@ class MisReportController {
 
                     if(lrUniqueData){
                         memoFlag = true;
+
                         grandTotalLrAmount = grandTotalLrAmount + totalLrAmount;
                         grandTotalFreightAmount = grandTotalFreightAmount + d?.freight ?: 0;
                         grandTotalBalanceAmount = grandTotalBalanceAmount + balance;
+                        grandTotalDieselAmount = grandTotalDieselAmount + d?.dieselAmount?:0;
+                        grandTotalCashAdvance = grandTotalCashAdvance + d?.advance?:0;
+                        grandTotalDieselPaid = grandTotalDieselPaid + paidDieselAmount;
+                        grandTotalCashPaid = grandTotalCashPaid  + paidCash;
 
                         lrUniqueData.each {l ->
                             if (memoFlag) {
@@ -339,7 +360,11 @@ class MisReportController {
                 parent : parent,
                 grandTotalLrAmount : grandTotalLrAmount,
                 grandTotalFreightAmount : grandTotalFreightAmount,
-                grandTotalBalanceAmount : grandTotalBalanceAmount
+                grandTotalBalanceAmount : grandTotalBalanceAmount,
+                grandTotalDieselAmount : grandTotalDieselAmount,
+                grandTotalCashAdvance : grandTotalCashAdvance ,
+                grandTotalDieselPaid : grandTotalDieselPaid ,
+                grandTotalCashPaid : grandTotalCashPaid
         ];
 
         reportDetails.push(finalData);
@@ -358,6 +383,10 @@ class MisReportController {
         def finalData;
         def grandTotalLrAmount = 0;
         def grandTotalFreightAmount = 0;
+        def grandTotalDieselAmount = 0;
+        def grandTotalCashAdvance = 0;
+        def grandTotalDieselPaid = 0;
+        def grandTotalCashPaid = 0;
         def grandTotalBalanceAmount = 0;
 
         def data = InternalMemo.createCriteria().list {
@@ -440,9 +469,14 @@ class MisReportController {
 
                     if(lrUniqueData){
                         memoFlag = true;
+
                         grandTotalLrAmount = grandTotalLrAmount + totalLrAmount;
                         grandTotalFreightAmount = grandTotalFreightAmount + d?.freight ?: 0;
                         grandTotalBalanceAmount = grandTotalBalanceAmount + balance;
+                        grandTotalDieselAmount = grandTotalDieselAmount + d?.dieselAmount?:0;
+                        grandTotalCashAdvance = grandTotalCashAdvance + d?.advance?:0;
+                        grandTotalDieselPaid = grandTotalDieselPaid + paidDieselAmount;
+                        grandTotalCashPaid = grandTotalCashPaid  + paidCash;
 
                         lrUniqueData.each {l ->
                             if (memoFlag) {
@@ -505,7 +539,11 @@ class MisReportController {
                 parent : parent,
                 grandTotalLrAmount : grandTotalLrAmount,
                 grandTotalFreightAmount : grandTotalFreightAmount,
-                grandTotalBalanceAmount : grandTotalBalanceAmount
+                grandTotalBalanceAmount : grandTotalBalanceAmount,
+                grandTotalDieselAmount : grandTotalDieselAmount,
+                grandTotalCashAdvance : grandTotalCashAdvance ,
+                grandTotalDieselPaid : grandTotalDieselPaid ,
+                grandTotalCashPaid : grandTotalCashPaid
         ];
 
         reportDetails.push(finalData);

@@ -2,6 +2,7 @@
 <script>
     $(document).ready(function () {
         $("#vehicleNo").searchable();
+        $("#customer").searchable();
     });
          function cashController($scope,$http){
              init();
@@ -13,14 +14,15 @@
                 $scope.memoTotal=0;
                 $scope.memoTotalAmt=0;
                 $scope.vehicleList = ${com.master.VehicleMaster.findAllByIsActive(true) as grails.converters.JSON};
+                $scope.customerList = ${com.master.CustomerMaster.findAllByIsActive(true) as grails.converters.JSON};
                 $scope.pumpList = ${com.master.PumpMaster.findAllByIsActive(true) as grails.converters.JSON};
                 $scope.pTypeList= [{s:"Cash"},{s:"Cheque"},{s:"Diesel"}];
                 $scope.vTypeList= [{s:"Cash Voucher-Memo"},{s:"Cash Voucher-Other"},{s:"Diesel Voucher"},{s:"Maintenance Voucher"}];
                 $scope.showBank=false;
                 $scope.showDiesel=false;
-                 $scope.memoData = [];
-                 $scope.tempMemoData = [];
-                 $scope.disableSave = false;
+                $scope.memoData = [];
+                $scope.tempMemoData = [];
+                $scope.disableSave = false;
 
                  debugger;
                 <g:if test="${cashVoucherInstance?.id}">
@@ -31,6 +33,7 @@
                         $scope.memoTotal = "${cashVoucherInstance?.netAmount}";
                         $scope.chequeNo = "${cashVoucherInstance?.chequeNo?:""}";
                         if("${cashVoucherInstance?.vehicleNo?.id}") $scope.vehicleNo = parseInt("${cashVoucherInstance?.vehicleNo?.id}");
+                        if("${cashVoucherInstance?.customerName?.id}") $scope.customerName = parseInt("${cashVoucherInstance?.customerName?.id}");
                         if("${cashVoucherInstance?.pumpName?.id}"){
                             $scope.pumpName = parseInt("${cashVoucherInstance?.pumpName?.id}");
                             $scope.dieselRate = parseFloat("${cashVoucherInstance?.dieselRate}").toFixed(2);
@@ -156,6 +159,7 @@
 <input type="hidden" name="childJson" value="{{memoData}}" />
 <input type="hidden" name="vehicleNo.id" value="{{vehicleNo}}" />
 <input type="hidden" name="pumpName.id" value="{{pumpName}}" />
+<input type="hidden" name="customerName.id" value="{{customerName}}" />
 <input type="hidden" name="paymentType" value="{{paymentType}}" />
 <input type="hidden" name="voucherType" value="{{vType}}" />
 <table>
@@ -220,7 +224,24 @@
     </tr>
     <tr>
         <td>Pay To</td>
-        <td><g:textArea name="payTo" value="${cashVoucherInstance.payTo}" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"> </g:textArea></td>
+        <td>
+            %{--<g:textArea name="payTo" value="${cashVoucherInstance.payTo}" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">--}%
+            %{--</g:textArea>--}%
+            <select ng-model="customerName" ng-options="c.id as c.name for c in customerList" id="customer" required="">
+                <option value="">---Select One---</option>
+            </select>
+        </td>
+
+        %{--<td><label for="customerName">--}%
+            %{--<g:message code="cashVoucher.customerName.label" default="&nbsp;&nbsp;&nbsp;&nbsp;Customer Name"/>--}%
+            %{--<span class="required-indicator">*</span>--}%
+        %{--</label></td>--}%
+
+        %{--<td>--}%
+            %{--<select ng-model="customerName" ng-options="c.id as c.name for c in customerList" id="customer" required="">--}%
+                %{--<option value="">---Select One---</option>--}%
+            %{--</select>--}%
+        %{--</td>--}%
     </tr>
 %{--<div class="row-fluid">--}%
     %{--<div class="dataTables_filter" id="sample-table-2_filter">--}%

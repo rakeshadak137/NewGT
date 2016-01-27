@@ -21,15 +21,15 @@
 	<field name="bankName" class="java.lang.String"/>
 	<field name="chequeNo" class="java.lang.String"/>
 	<field name="child" class="java.util.Collection"/>
-	<field name="mNo" class="java.lang.String"/>
-	<field name="mDate" class="java.lang.String"/>
-	<field name="vNo" class="java.lang.String"/>
-	<field name="amt" class="java.lang.String"/>
 	<field name="sNo" class="java.lang.String"/>
 	<field name="paymentType" class="java.lang.String"/>
 	<field name="details" class="java.util.Collection"/>
 	<field name="voucherNo" class="java.lang.String"/>
 	<field name="vehicleNumber" class="java.lang.String"/>
+	<field name="mNo" class="java.lang.String"/>
+	<field name="vNo" class="java.lang.String"/>
+	<field name="amt" class="java.lang.String"/>
+	<field name="mDate" class="java.lang.String"/>
 	<background>
 		<band height="802" splitType="Stretch">
 			<rectangle>
@@ -136,34 +136,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[" : "+$F{description}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="71aec3e5-c328-4914-a156-859f8b24217a" x="0" y="98" width="185" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{mNo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="350bd453-19bc-4d63-b771-4efdfd7952d1" x="185" y="98" width="111" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{mDate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="c3be3375-cd3f-4393-b8b6-f28f6748c92f" x="296" y="98" width="133" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{vNo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="b9733d76-02d0-45a2-9d85-00fd6f51f6f6" x="429" y="98" width="126" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{amt}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement uuid="7b827e70-5634-48c2-8402-896131af68a7" x="363" y="0" width="66" height="20"/>
 				<textElement verticalAlignment="Middle">
@@ -192,14 +164,42 @@
 				</textElement>
 				<textFieldExpression><![CDATA[" : "+$F{date}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="2c6d7122-51dc-4068-9de5-d2fece0909c5" x="0" y="98" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MEMO NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4fbd6228-8205-4f8c-a41f-c898f7810f3b" x="185" y="98" width="111" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MEMO DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3e8e7ab7-f82f-4520-bdbc-9fe8dca736a2" x="296" y="98" width="133" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="498f9cd8-5a89-47f3-be1f-2881877607d8" x="429" y="98" width="126" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<subreport>
-				<reportElement uuid="b12297e0-a22f-4496-a63e-498693e2f772" x="0" y="0" width="555" height="18"/>
+				<reportElement uuid="aa6a75ef-db34-46df-a298-1dbb676526fa" x="0" y="0" width="555" height="13"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CashVoucher_subreport.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CashVoucher_subreport1.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="142">
