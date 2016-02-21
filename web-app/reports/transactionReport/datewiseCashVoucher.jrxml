@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datewiseCashVoucher" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3985bee3-fd70-489c-b0f9-c8247c173926">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.7513148009015777"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="IMAGE_DIR" class="java.lang.String"/>
@@ -8,6 +8,8 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<field name="details" class="java.util.Collection"/>
+	<field name="totalAmount" class="java.lang.String"/>
+	<field name="totalDieselAmount" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<rectangle>
@@ -16,7 +18,7 @@
 		</band>
 	</background>
 	<title>
-		<band height="177" splitType="Stretch">
+		<band height="157" splitType="Stretch">
 			<rectangle>
 				<reportElement uuid="cb4652e5-587b-4eef-b610-ef3783456580" x="0" y="0" width="802" height="117"/>
 			</rectangle>
@@ -99,52 +101,72 @@
 			</rectangle>
 			<staticText>
 				<reportElement uuid="7e86c3ae-418b-4759-b2f0-502b11325f2f" x="0" y="137" width="69" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Voucher No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="b2a721fe-4085-4b91-8243-0305cc0acd57" x="69" y="137" width="67" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="1c41d6c6-5fc2-481a-9dec-7fada4266241" x="136" y="137" width="101" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Paid To]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="efc5a770-bc06-4491-885a-a579c17eb2ee" x="237" y="137" width="57" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="7f77409d-56c2-4c17-98d2-69629b8fce02" x="294" y="137" width="92" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Bank Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="2a80ef75-cd0d-4112-8254-7701ce9fca0e" x="386" y="137" width="66" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Cheque No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="495962d0-013e-46fb-b942-38781784625b" x="452" y="137" width="64" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Vehicle No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="c1162494-e6f8-410f-abef-e15676828d7f" x="516" y="137" width="149" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Description]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9bd1df48-d27c-45c0-8a0a-17b37d4cc78b" x="665" y="137" width="86" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Pump Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="bae23fff-9794-4650-8b45-e7fb76792e99" x="751" y="137" width="51" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Diesel Amount]]></text>
 			</staticText>
 		</band>
@@ -156,6 +178,41 @@
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{details})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CashVoucher_subreport.jasper"]]></subreportExpression>
 			</subreport>
+		</band>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="27b90546-18f6-46e5-b72f-aef46c966118" stretchType="RelativeToBandHeight" x="237" y="0" width="57" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bb8cee14-de76-4979-81e6-5cad8726577d" stretchType="RelativeToBandHeight" x="751" y="0" width="51" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ea4a5b3f-a26e-4d04-bd27-d00ad1189b25" stretchType="RelativeToBandHeight" x="0" y="0" width="237" height="20"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="861534ce-71e9-4113-b84a-64ad79d57e88" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalDieselAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fa91b65a-4eda-47ce-aba1-02b400a3c6a5" stretchType="RelativeToTallestObject" x="237" y="0" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="24010e19-8d35-4bb6-828e-94524bf83737" stretchType="RelativeToBandHeight" x="0" y="0" width="237" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="7623451f-37f5-4ed9-85a0-4e54f8c8f258" stretchType="RelativeToBandHeight" x="294" y="0" width="457" height="20"/>
+			</rectangle>
 		</band>
 	</detail>
 </jasperReport>

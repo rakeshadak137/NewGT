@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AllInOneOutEntryReport_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8b27ac1-1204-43b7-b63c-d1bfa7db0ea4">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="child" class="java.util.Collection"/>
+	<field name="voucherNo" class="java.lang.String"/>
+	<field name="voucherDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="godown" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="96434f3a-0fd9-4bbb-a445-edcc95c9868e" stretchType="RelativeToBandHeight" x="0" y="0" width="55" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="61a5ab9e-8c89-4bb4-be7f-da1132190cf6" stretchType="RelativeToBandHeight" x="55" y="0" width="70" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e756cbaa-a93b-456c-885d-4a057576d623" stretchType="RelativeToBandHeight" x="125" y="0" width="99" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6694cbd6-78df-4310-ab66-e650187be6af" stretchType="RelativeToBandHeight" x="224" y="0" width="161" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3b690d79-8ff9-4d46-9d09-fdd1a2d98437" stretchType="RelativeToBandHeight" x="385" y="0" width="417" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="0a9f4184-c52e-4d7b-9da9-49062cdb188d" stretchType="RelativeToBandHeight" x="0" y="4" width="55" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{voucherNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e32042a6-443e-411c-8159-fd6d56c45bff" stretchType="RelativeToBandHeight" x="55" y="4" width="70" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{voucherDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="aa09a008-ca62-4236-9df8-050df3da1970" stretchType="RelativeToTallestObject" x="128" y="4" width="93" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="47d560c0-09be-4e30-9458-980997f36a1d" stretchType="RelativeToTallestObject" x="227" y="4" width="155" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{godown}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cd84a7cb-dc53-429a-b46d-d83247d40424" x="385" y="0" width="417" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DETAILS]]></text>
+			</staticText>
+		</band>
+		<band height="21">
+			<subreport>
+				<reportElement uuid="e82a1234-b136-4a2c-9864-46f26bd0d972" x="0" y="0" width="802" height="21"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "AllInOneOutEntryReport_subreport1_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

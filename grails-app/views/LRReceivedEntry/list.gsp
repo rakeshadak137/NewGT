@@ -7,7 +7,14 @@
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 
     <script>
+        $(document).ready(function () {
+            $("#party1").searchable();
+            $("#party2").searchable();
+        });
+
         function ListController($scope, $http) {
+            $scope.accountList = [];
+            $scope.vehicleList = [];
             init();
 
             function init() {
@@ -18,6 +25,16 @@
                 $http.get("/${grailsApplication.config.erpName}/LRReceivedEntry/getList")
                         .success(function (data) {
                             $scope.DataList = data;
+                        });
+
+                $http.get("/${grailsApplication.config.erpName}/transactionReport/accountList")
+                        .success(function (data) {
+                            $scope.accountList = data;
+                        });
+
+                $http.get("/${grailsApplication.config.erpName}/transactionReport/vehicleList")
+                        .success(function (data) {
+                            $scope.vehicleList = data;
                         });
             }
 
@@ -60,6 +77,66 @@
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
+
+                <div class="well">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="span1">
+                                <label>From</label>
+                            </div>
+
+                            <div class="span4">
+                                <select id="party1" ng-model="fromParty"
+                                        ng-options="r.id as r.accountName for r in accountList"></select>
+                            </div>
+
+                            <div class="span1"></div>
+
+                            <div class="span1">
+                                <label>To</label>
+                            </div>
+
+                            <div class="span4">
+                                <select id="party2" ng-model="toParty"
+                                        ng-options="r.id as r.accountName for r in accountList"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="span1">
+                                <label>From</label>
+                            </div>
+
+                            <div class="span4">
+                                <input type="date" style="width: 150px;" ng-model="fromDate"
+                                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                            </div>
+
+                            <div class="span1"></div>
+
+                            <div class="span1">
+                                <label>To</label>
+                            </div>
+
+                            <div class="span4">
+                                <input type="date" style="width: 150px;" ng-model="toDate"
+                                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="span2">
+                                <a ng-href="/${grailsApplication.config.erpName}/LRReceivedEntry/dcReport?scrid=${session['activeScreen'].id}&fromDate={{fromDate}}&toDate={{toDate}}&fromParty={{fromParty}}&toParty={{toParty}}&format=PDF"
+                                   class="btn btn-primary btn-mini" target="_blank">
+                                    Print Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div role="grid" class="dataTables_wrapper" id="sample-table_wrapper">
                     <div class="dataTables_filter" id="sample-table-2_filter">

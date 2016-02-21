@@ -50,6 +50,21 @@ class TransactionReportController {
         render result as JSON;
     }
 
+    def vehicleListForOutEntry() {
+        def vehicleList = []
+
+        vehicleList = OutEntry.createCriteria().list {
+            eq('branch',session['branch'])
+            eq('isActive',true)
+
+            projections {
+                property("vehicle")
+            }
+        }.unique()
+
+        render vehicleList as JSON
+    }
+
     def LR() {
         def reportDetails = [];
         Boolean printRate = false;
@@ -404,33 +419,52 @@ class TransactionReportController {
 
     def dateWiseVoucherReport() {
         def reportDetails = [];
-        if (params.fdate && params.tdate) {
-            def data = CashVoucher.findAllByVoucherDateBetween(Date.parse("yyyy-MM-dd", params.fdate), Date.parse("yyyy-MM-dd", params.tdate))
-            if (data) {
-                def child = [];
-                data.each { d ->
-                    child.push([
-                            voucherNo   : d?.voucherNo ?: "",
-                            date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
-                            amount      : d?.netAmount ?: "",
-                            bankName    : d?.bankName?.bankName ?: "",
-                            chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
-                            description : d?.description ?: "",
-                            pumpName    : d?.pumpName?.pumpName ?: "",
-                            dieselAmount: d?.dieselAmount ?: ""
-                    ])
-                }
-                if (child) {
-                    reportDetails.push([
-                            details : child,
-                            fromDate: Date.parse("yyyy-MM-dd", params.fdate)?.format("dd-MM-yyyy"),
-                            toDate  : Date.parse("yyyy-MM-dd", params.tdate)?.format("dd-MM-yyyy")
-                    ])
-                }
+        def child = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
+
+        def data = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+
+            isNull("chequeNo")
+
+            if(params.fdate && params.tdate){
+                between("voucherDate",Date.parse("yyyy-MM-dd", params.fdate),Date.parse("yyyy-MM-dd", params.tdate))
+            }else if(params.fdate){
+                ge("voucherDate",Date.parse("yyyy-MM-dd", params.fdate))
+            }else if(params.tdate){
+                le("voucherDate",Date.parse("yyyy-MM-dd", params.tdate))
             }
         }
+
+        if (data) {
+            data.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
+            }
+        }
+
+        reportDetails.push([
+                details : child,
+                fromDate: params.fdate?Date.parse("yyyy-MM-dd", params.fdate)?.format("dd-MM-yyyy"):"",
+                toDate  : params.tdate?Date.parse("yyyy-MM-dd", params.tdate)?.format("dd-MM-yyyy"):"",
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
+        ])
         params._format = "PDF";
         params._file = "../reports/transactionReport/datewiseCashVoucher"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
@@ -440,33 +474,55 @@ class TransactionReportController {
 
     def bankwiseVoucherReport() {
         def reportDetails = [];
-        if (params.fdate && params.tdate && params.bank) {
-            def data = CashVoucher.findAllByVoucherDateBetweenAndBankName(Date.parse("yyyy-MM-dd", params.fdate), Date.parse("yyyy-MM-dd", params.tdate), BankMaster.findById(params.bank as long))
-            if (data) {
-                def child = [];
-                data.each { d ->
-                    child.push([
-                            voucherNo   : d?.voucherNo ?: "",
-                            date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
-                            amount      : d?.netAmount ?: "",
-                            bankName    : d?.bankName?.bankName ?: "",
-                            chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
-                            description : d?.description ?: "",
-                            pumpName    : d?.pumpName?.pumpName ?: "",
-                            dieselAmount: d?.dieselAmount ?: ""
-                    ])
-                }
-                if (child) {
-                    reportDetails.push([
-                            details : child,
-                            fromDate: Date.parse("yyyy-MM-dd", params.fdate)?.format("dd-MM-yyyy"),
-                            toDate  : Date.parse("yyyy-MM-dd", params.tdate)?.format("dd-MM-yyyy")
-                    ])
-                }
+        def child = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
+
+        def data = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+
+            if(params.bank){
+                eq("bankName",BankMaster.findById(params.bank as Long))
+            }
+
+            if(params.fdate && params.tdate){
+                between("voucherDate",Date.parse("yyyy-MM-dd", params.fdate),Date.parse("yyyy-MM-dd", params.tdate))
+            }else if(params.fdate){
+                ge("voucherDate",Date.parse("yyyy-MM-dd", params.fdate))
+            }else if(params.tdate){
+                le("voucherDate",Date.parse("yyyy-MM-dd", params.tdate))
             }
         }
+
+        if (data) {
+            data.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
+            }
+        }
+
+        reportDetails.push([
+                details : child,
+                fromDate: params.fdate?Date.parse("yyyy-MM-dd", params.fdate)?.format("dd-MM-yyyy"):"",
+                toDate  : params.tdate?Date.parse("yyyy-MM-dd", params.tdate)?.format("dd-MM-yyyy"):"",
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
+        ])
+
         params._format = "PDF";
         params._file = "../reports/transactionReport/datewiseCashVoucher"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
@@ -476,33 +532,48 @@ class TransactionReportController {
 
     def chequewiseVoucherReport() {
         def reportDetails = [];
-        if (params.cheque) {
-            def data = CashVoucher.findAllByChequeNo(params.cheque)
-            if (data) {
-                def child = [];
-                data.each { d ->
-                    child.push([
-                            voucherNo   : d?.voucherNo ?: "",
-                            date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
-                            amount      : d?.netAmount ?: "",
-                            bankName    : d?.bankName?.bankName ?: "",
-                            chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
-                            description : d?.description ?: "",
-                            pumpName    : d?.pumpName?.pumpName ?: "",
-                            dieselAmount: d?.dieselAmount ?: ""
-                    ])
-                }
-                if (child) {
-                    reportDetails.push([
-                            details: child,
-//                            fromDate:Date.parse("yyyy-MM-dd",params.fdate)?.format("dd-MM-yyyy"),
-//                            toDate:Date.parse("yyyy-MM-dd",params.tdate)?.format("dd-MM-yyyy")
-                    ])
-                }
+        def child = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
+
+        def data = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+
+            if(params.cheque){
+                eq("chequeNo",params.cheque)
+            }
+
+            isNotNull("chequeNo")
+        }
+
+        if (data) {
+
+            data.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : (d?.vehicleNo?.state?:"")+"-"+(d?.vehicleNo?.rto?:"")+" "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
             }
         }
+
+        reportDetails.push([
+                details: child,
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
+        ])
+
         params._format = "PDF";
         params._file = "../reports/transactionReport/datewiseCashVoucher"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
@@ -512,50 +583,24 @@ class TransactionReportController {
 
     def partywiseVoucherReport() {
         def reportDetails = [];
-        if (params.party) {
-            def data = CashVoucher.findAllByPayTo(params.party)
-            if (data) {
-                def child = [];
-                data.each { d ->
-                    child.push([
-                            voucherNo   : d?.voucherNo ?: "",
-                            date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                            paidTo      : d?.payTo ?: d?.customerName?.name?:"",
-                            amount      : d?.netAmount ?: "",
-                            bankName    : d?.bankName?.bankName ?: "",
-                            chequeNo    : d?.chequeNo ?: "",
-                            vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
-                            description : d?.description ?: "",
-                            pumpName    : d?.pumpName?.pumpName ?: "",
-                            dieselAmount: d?.dieselAmount ?: ""
-                    ])
-                }
-                if (child) {
-                    reportDetails.push([
-                            details: child
-                    ])
-                }
-            }
-        }
-        params._format = "PDF";
-        params._file = "../reports/transactionReport/datewiseCashVoucher"
-        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
-        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
-        chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);
-    }
-
-    def partywiseVoucherReportNew(){
-        def reportDetails = [];
         def child = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
 
         def data = CashVoucher.createCriteria().list {
             eq("branch",session['branch'])
             eq("isActive",true)
-            eq("customerName",CustomerMaster.findById(params.customer as Long))
-        }
 
+            if(params.party){
+                eq("payTo",params.party)
+            }
+        }
         if (data) {
+
             data.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
                 child.push([
                         voucherNo   : d?.voucherNo ?: "",
                         date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
@@ -572,7 +617,54 @@ class TransactionReportController {
         }
 
         reportDetails.push([
-                details: child
+                details: child,
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
+        ])
+
+        params._format = "PDF";
+        params._file = "../reports/transactionReport/datewiseCashVoucher"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
+    def partywiseVoucherReportNew(){
+        def reportDetails = [];
+        def child = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
+
+        def data = CashVoucher.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+            eq("customerName",CustomerMaster.findById(params.customer as Long))
+        }
+
+        if (data) {
+            data.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
+                child.push([
+                        voucherNo   : d?.voucherNo ?: "",
+                        date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                        paidTo      : d?.payTo ?: d?.customerName?.name?:"",
+                        amount      : d?.netAmount ?: "",
+                        bankName    : d?.bankName?.bankName ?: "",
+                        chequeNo    : d?.chequeNo ?: "",
+                        vehicleNo   : d?.vehicleNo?.vehicleNo ?: (d?.vehicleNumber ?: ""),
+                        description : d?.description ?: "",
+                        pumpName    : d?.pumpName?.pumpName ?: "",
+                        dieselAmount: d?.dieselAmount ?: ""
+                ])
+            }
+        }
+
+        reportDetails.push([
+                details: child,
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
         ])
 
         params._format = "PDF";
@@ -586,15 +678,23 @@ class TransactionReportController {
         def reportDetails = [];
         def child = [];
         def memoData = [];
+        def totalAmount = 0;
+        def totalDieselAmount = 0;
 
         memoData = CashVoucher.createCriteria().list {
             eq("branch",session['branch'])
             eq("isActive",true)
-            eq("vehicleNo",VehicleMaster.findById(params.vehicle as Long))
+
+            if(params.vehicle) {
+                eq("vehicleNo", VehicleMaster.findById(params.vehicle as Long))
+            }
         }
 
         if (memoData) {
             memoData.each { d ->
+                totalAmount = totalAmount + d?.netAmount ?: 0;
+                totalDieselAmount = totalDieselAmount + d?.dieselAmount ?: 0;
+
                 child.push([
                         voucherNo   : d?.voucherNo ?: "",
                         date        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
@@ -610,7 +710,9 @@ class TransactionReportController {
             }
         }
         reportDetails.push([
-                details: child
+                details: child,
+                totalAmount : totalAmount,
+                totalDieselAmount : totalDieselAmount
         ])
 
         params._format = "PDF";

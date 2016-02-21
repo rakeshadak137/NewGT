@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DcInvoiceReport_subreport1" language="groovy" columnCount="10" printOrder="Horizontal" pageWidth="555" pageHeight="802" columnWidth="55" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="91b08588-d1d8-4cf7-8b63-598e7010fb24">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="fromCompany" class="java.lang.String"/>
+	<field name="toCompany" class="java.lang.String"/>
+	<group name="fromcompany">
+		<groupExpression><![CDATA[$F{fromCompany}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<rectangle>
+					<reportElement uuid="cb9ac344-4d9e-4f43-87ac-7ce4c99e7240" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="20" backcolor="#D2D2D2"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d5357ded-a68e-41b0-b07e-6a38b28dd9d3" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" pdfFontName="Courier-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ROUTE :-  "+$F{fromCompany}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8e2ded10-53d4-4294-b8c1-21c35c1c7722" x="4" y="4" width="49" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

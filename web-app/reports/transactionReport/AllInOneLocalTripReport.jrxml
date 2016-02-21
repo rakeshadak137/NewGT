@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AllInOneLocalTripReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1efb8a22-442d-4259-bf88-5b172d2233c9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="parent" class="java.util.Collection"/>
+	<field name="fromParty" class="java.lang.String"/>
+	<field name="toParty" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<field name="vehicleNo" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.String"/>
+	<title>
+		<band height="31" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="ac48b19b-f34f-4026-89e4-24b484b37120" x="0" y="0" width="555" height="31"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{parent})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="6f61154c-1b29-497b-8b7a-9cb65aa48c05" x="0" y="20" width="555" height="60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="22fde530-2598-4cda-8f6d-5a8b175f8f7c" x="0" y="0" width="555" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bf660895-d643-4071-85a1-15bab2f1f9a1" x="0" y="0" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LOCAL TRIP REPORTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6407933-cb79-4ea0-a69a-4e47c44f8d66" x="6" y="20" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM PARTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8e2a3cf2-154c-4906-95bc-9ffe60d5e87c" x="6" y="40" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO PARTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6798be4f-f3f7-46b9-82b2-2a53809380cc" x="333" y="20" width="51" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="38a619cd-5370-4540-9cd2-c7818ab9f19a" x="333" y="40" width="51" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="248c8c2e-3d55-452a-abc9-466e479d5dcc" x="6" y="60" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5bc63748-63e0-46b1-b1d2-d27ce95fe469" x="67" y="20" width="261" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{fromParty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cb3a6766-198e-4f2d-9168-4bd5daef8768" x="67" y="40" width="261" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{toParty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8317b316-22ab-4cbd-ac47-949a2b83eb7e" x="384" y="20" width="135" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6d84a3f-5722-4376-85eb-7e0fa5a1726f" x="384" y="40" width="135" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{toDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="37f0e4a5-06c4-4e17-a3b3-3d083560cbde" x="67" y="60" width="261" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{vehicleNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="8a1c87a4-40af-4731-b000-f3cb4310488f" x="0" y="0" width="52" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8feec755-3ab7-4c7f-83b1-1d7338182bc3" x="52" y="0" width="84" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a894fe1e-7bd2-4470-b8f0-77754146df79" x="136" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="55e74865-5e37-4b0e-9d3e-cb60af0c1c81" x="229" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cebac5dd-e23f-446d-aea6-85a8b938fd58" x="322" y="0" width="107" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="37c3ee07-5528-4e67-b46b-47f0709d21dc" x="429" y="0" width="60" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f70c26ba-2a71-4b33-92b6-65731dffb027" x="489" y="0" width="66" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="acb6b6fc-67c4-4963-860f-769a326aad7f" x="0" y="0" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VOU. NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6027ade0-a4c9-47da-94e4-5f8b38c11ab8" x="52" y="0" width="84" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="615cf6da-06cc-41d7-896e-449bd556e674" x="136" y="0" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VEHICLE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c7716c41-cd88-4212-8bd6-5a56518fde2a" x="229" y="0" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INVOICE NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="785efdfb-7370-4b8b-a0e1-7f626f23a86d" x="322" y="0" width="107" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MATERIAL NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b3269ab-1f98-4608-8fd7-317a3473ce08" x="429" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QTY.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="60a7765a-522e-4bdc-af1e-58ca15170cc1" x="489" y="0" width="66" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="096b76d1-a322-4b3c-8eb2-151f6c25e0b6" x="0" y="0" width="555" height="19"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{parent})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "AllInOneLocalTripReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="f2c63256-f10d-428a-839f-fdd470617462" x="0" y="0" width="489" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e0cfbaf8-e88a-4b30-8fc6-3a17b575d0e2" x="489" y="0" width="66" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ec1b5407-f69e-475b-8d37-91d4b005589d" x="429" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="42fc9792-34ae-4b88-bf4b-6d44dbffbe1b" x="489" y="0" width="66" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AllInOneLocalTripReport_subreport1_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4cc4982a-d01e-4e0a-b5fa-8b707c42c928">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="invoiceNo" class="java.lang.String"/>
+	<field name="materialName" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="8f7edc3c-bff3-469f-ac8d-c314731b0806" stretchType="RelativeToBandHeight" x="0" y="0" width="52" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="841f998e-03d4-4ade-ae2b-30aebd2e50f6" stretchType="RelativeToBandHeight" x="52" y="0" width="84" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="d5a73bd4-3270-41b6-8eb6-28aee7bfe18a" stretchType="RelativeToBandHeight" x="136" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5971fc4a-7f94-41e7-b899-6d2013b9e8de" stretchType="RelativeToBandHeight" x="229" y="0" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="33e57f93-265f-4535-9c35-a3a71efe9025" stretchType="RelativeToBandHeight" x="322" y="0" width="107" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5e5b4960-3d99-42e0-a3ab-e960a12f3a40" stretchType="RelativeToBandHeight" x="429" y="0" width="60" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="24a14f8d-1d5e-4dfc-a61a-b1bca5197ba1" stretchType="RelativeToBandHeight" x="489" y="0" width="66" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="361a00a5-c478-4d87-aca7-3a181c2983c4" stretchType="RelativeToBandHeight" x="229" y="4" width="92" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0441a121-5f72-4eeb-80a7-2afcc90e89bd" stretchType="RelativeToTallestObject" x="325" y="4" width="101" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{materialName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6f5ed031-d7aa-4414-b8cb-da0b9fcdfe57" stretchType="RelativeToBandHeight" x="429" y="4" width="60" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

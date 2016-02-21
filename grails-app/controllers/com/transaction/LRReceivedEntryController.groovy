@@ -12,7 +12,7 @@ class LRReceivedEntryController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
-        redirect(action: "create", params: params)
+        redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
@@ -264,5 +264,84 @@ class LRReceivedEntryController {
             }
         }
         render child as JSON;
+    }
+
+    def dcReport() {
+        def reportDetails = []
+        def parent;
+        def child = []
+        def lrData = []
+        def receiveChildData = []
+
+        def receiveData = LRReceivedEntry.createCriteria().list {
+            eq("branch",session['branch'])
+            eq("isActive",true)
+
+            if(params.fromDate && params.toDate){
+                between("receiveDate",Date.parse("yyyy-MM-dd",params.fromDate),Date.parse("yyyy-MM-dd",params.toDate))
+            }else if(params.fromDate){
+                ge("receiveDate",Date.parse("yyyy-MM-dd",params.fromDate))
+            }else if(params.toDate){
+                le("receiveDate",Date.parse("yyyy-MM-dd",params.toDate))
+            }
+        }
+
+        if(params.fromParty || params.toParty) {
+            lrData = LREntry.createCriteria().list {
+                eq("branch", session['branch'])
+                eq("isActive", true)
+                eq("received",true)
+
+                if (params.fromParty) {
+                    eq("fromCustomer", AccountMaster.findById(params.fromParty as Long))
+                }
+
+                if (params.toParty) {
+                    eq("toCustomer", AccountMaster.findById(params.toParty as Long))
+                }
+            };
+        }else{
+            lrData = [];
+        }
+
+        receiveChildData = LRReceivedEntryDetails.createCriteria().list {
+            if(receiveData) {
+                inList("parent", receiveData)
+            }
+
+            if(lrData) {
+                inList("lrEntry", lrData)
+            }
+        }
+
+        if((!receiveData) && (params.fromDate) && (params.toDate)){
+            receiveChildData = [];
+        }
+
+        if(receiveChildData){
+            receiveChildData.each {ch ->
+                child.push([
+                        fromCompany : (ch?.lrEntry?.fromCustomer?.accountName?:"") + " - " + (ch?.lrEntry?.toCustomer?.accountName?:""),
+                        toCompany : ch?.lrEntry?.toCustomer?.accountName?:"",
+                        invoiceNo : ch?.lrEntry?.lrNo?:""
+                ])
+            }
+        }
+
+        parent = [
+                child : child.sort {it.fromCompany},
+                fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
+                toParty  : params.toParty ? AccountMaster.findById(params.toParty as Long)?.accountName : "",
+                fromDate : params.fromDate ? Date.parse("yyyy-MM-dd", params.fromDate)?.format("dd-MM-yyyy") : "",
+                toDate   : params.toDate ? Date.parse("yyyy-MM-dd", params.toDate)?.format("dd-MM-yyyy") : ""
+        ]
+
+        reportDetails.push(parent)
+
+        params._format = "PDF";
+        params._file = "../reports/transactionReport/DcInvoiceReport.jasper"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);
     }
 }

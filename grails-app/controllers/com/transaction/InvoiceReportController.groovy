@@ -61,7 +61,9 @@ class InvoiceReportController {
         def lrChildData = LREntryDetails.createCriteria().list {
             eq("received",true)
 
-            inList("lrEntry", lrData)
+            if(lrData) {
+                inList("lrEntry", lrData)
+            }
         }
 
         if (lrChildData) {
@@ -231,7 +233,9 @@ class InvoiceReportController {
         def lrChildData = LREntryDetails.createCriteria().list {
             eq("received",false)
 
-            inList("lrEntry", lrData)
+            if(lrData) {
+                inList("lrEntry", lrData)
+            }
         }
 
         if (lrChildData) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CashVoucher_subreport" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8d9f5c0e-aa3a-4503-8697-823cb0e7f607">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<field name="voucherNo" class="java.lang.String"/>
@@ -20,83 +20,103 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement uuid="835b5dff-2562-4db7-9ed9-c6ae6b7301fc" stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="20"/>
+				<reportElement uuid="835b5dff-2562-4db7-9ed9-c6ae6b7301fc" stretchType="RelativeToBandHeight" x="0" y="0" width="69" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="dcf3b6fd-c755-49e5-b94e-4375d0ce67e8" stretchType="RelativeToTallestObject" x="69" y="0" width="67" height="20"/>
+				<reportElement uuid="dcf3b6fd-c755-49e5-b94e-4375d0ce67e8" stretchType="RelativeToBandHeight" x="69" y="0" width="67" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="b28d8d24-4433-4f55-8096-7f2acefc243d" stretchType="RelativeToTallestObject" x="136" y="0" width="101" height="20"/>
+				<reportElement uuid="b28d8d24-4433-4f55-8096-7f2acefc243d" stretchType="RelativeToBandHeight" x="136" y="0" width="101" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="d91c065b-4276-42e2-8ba0-fed9fbf6d7b6" stretchType="RelativeToTallestObject" x="237" y="0" width="57" height="20"/>
+				<reportElement uuid="d91c065b-4276-42e2-8ba0-fed9fbf6d7b6" stretchType="RelativeToBandHeight" x="237" y="0" width="57" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="323a4e61-c1b7-4329-9daf-cc2d7b8adc78" stretchType="RelativeToTallestObject" x="294" y="0" width="92" height="20"/>
+				<reportElement uuid="323a4e61-c1b7-4329-9daf-cc2d7b8adc78" stretchType="RelativeToBandHeight" x="294" y="0" width="92" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="95834120-7ca0-4068-9c8a-8b54e3ea8c06" stretchType="RelativeToTallestObject" x="386" y="0" width="66" height="20"/>
+				<reportElement uuid="95834120-7ca0-4068-9c8a-8b54e3ea8c06" stretchType="RelativeToBandHeight" x="386" y="0" width="66" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="4ec468c2-6242-4787-b7e4-c34a816a72da" stretchType="RelativeToTallestObject" x="452" y="0" width="64" height="20"/>
+				<reportElement uuid="4ec468c2-6242-4787-b7e4-c34a816a72da" stretchType="RelativeToBandHeight" x="452" y="0" width="64" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="c2ff930c-cebf-4bd3-b6b4-f18dd1b8a6da" stretchType="RelativeToTallestObject" x="516" y="0" width="149" height="20"/>
+				<reportElement uuid="c2ff930c-cebf-4bd3-b6b4-f18dd1b8a6da" stretchType="RelativeToBandHeight" x="516" y="0" width="149" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="68b04267-78aa-4f49-87a9-fd5d909dad4d" stretchType="RelativeToTallestObject" x="665" y="0" width="86" height="20"/>
+				<reportElement uuid="68b04267-78aa-4f49-87a9-fd5d909dad4d" stretchType="RelativeToBandHeight" x="665" y="0" width="86" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="387302ed-54ca-4e6d-80a1-685eb552d278" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
+				<reportElement uuid="387302ed-54ca-4e6d-80a1-685eb552d278" stretchType="RelativeToBandHeight" x="751" y="0" width="51" height="20"/>
 			</rectangle>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="42352df6-e34a-43d9-bbb5-9e73c5b944ee" stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="42352df6-e34a-43d9-bbb5-9e73c5b944ee" stretchType="RelativeToTallestObject" x="0" y="4" width="69" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{voucherNo}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement uuid="169848a4-b313-4525-be14-6ea392c5d510" stretchType="RelativeToTallestObject" x="69" y="0" width="67" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField>
+				<reportElement uuid="169848a4-b313-4525-be14-6ea392c5d510" stretchType="RelativeToBandHeight" x="69" y="4" width="67" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="635d228c-9558-4be2-8615-04cd30453bd7" stretchType="RelativeToTallestObject" x="136" y="0" width="101" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="635d228c-9558-4be2-8615-04cd30453bd7" stretchType="RelativeToTallestObject" x="141" y="4" width="93" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{paidTo}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement uuid="cfe93a44-4e62-4cf5-9809-f511964a414e" stretchType="RelativeToTallestObject" x="237" y="0" width="57" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField>
+				<reportElement uuid="cfe93a44-4e62-4cf5-9809-f511964a414e" stretchType="RelativeToBandHeight" x="237" y="4" width="57" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="43c820c8-b9db-47ca-809a-39c394ac97bb" stretchType="RelativeToTallestObject" x="294" y="0" width="92" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="43c820c8-b9db-47ca-809a-39c394ac97bb" stretchType="RelativeToTallestObject" x="299" y="4" width="84" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{bankName}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="2aab5755-7377-4df9-92c1-5b7fb4c33e7d" stretchType="RelativeToTallestObject" x="386" y="0" width="66" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="2aab5755-7377-4df9-92c1-5b7fb4c33e7d" stretchType="RelativeToTallestObject" x="386" y="4" width="66" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{chequeNo}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement uuid="230e4907-442f-4c89-88d9-f17e8cfe7d96" stretchType="RelativeToTallestObject" x="452" y="0" width="64" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField>
+				<reportElement uuid="230e4907-442f-4c89-88d9-f17e8cfe7d96" stretchType="RelativeToBandHeight" x="452" y="4" width="64" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="d73649c7-b5c8-4960-ae1a-9201e7e7de99" stretchType="RelativeToTallestObject" x="516" y="0" width="149" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="d73649c7-b5c8-4960-ae1a-9201e7e7de99" stretchType="RelativeToTallestObject" x="521" y="4" width="141" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="d57996f8-e330-4890-b524-df3f6e4c24cc" stretchType="RelativeToTallestObject" x="665" y="0" width="86" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement uuid="d57996f8-e330-4890-b524-df3f6e4c24cc" stretchType="RelativeToTallestObject" x="670" y="4" width="78" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{pumpName}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement uuid="ea0254af-e09f-4fa6-9a16-b0c07eeb3ba7" stretchType="RelativeToTallestObject" x="751" y="0" width="51" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField>
+				<reportElement uuid="ea0254af-e09f-4fa6-9a16-b0c07eeb3ba7" stretchType="RelativeToBandHeight" x="751" y="4" width="51" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{dieselAmount}]]></textFieldExpression>
 			</textField>
 		</band>

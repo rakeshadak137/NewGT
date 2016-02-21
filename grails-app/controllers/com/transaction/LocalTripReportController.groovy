@@ -13,8 +13,10 @@ class LocalTripReportController {
 
     def allInOneLocalTripReport(){
         def reportDetails = []
-        def parent
+        def finalData
+        def parent = []
         def child = []
+        def totalAmount = 0;
 
         def Data = LocalTripEntry.createCriteria().list {
             eq("branch",session['branch'])
@@ -43,36 +45,47 @@ class LocalTripReportController {
 
         if(Data){
             Data.each {d ->
+                child = [];
                 def childData = d?.localOutEntryDetails
+                totalAmount = totalAmount + d?.totalTripRate?:0;
 
                 if(childData){
                     childData.each {ch ->
                         child.push([
-                                date : d?.localOutEntryDate?.format("dd-MM-yyyy")?:"",
-                                vehicleNo : (d?.vehicleNo?.state?:"") +" - "+ (d?.vehicleNo?.rto?:"") +" "+ (d?.vehicleNo?.series?:"") +" "+ (d?.vehicleNo?.vehicleNo?:""),
                                 invoiceNo : ch?.invoiceNo?:"",
                                 materialName : ch?.productCode?.productCode?:"",
-                                qty : ch?.quantity?:"",
-                                amount : ""
+                                qty : ch?.quantity?:""
                         ]);
                     }
+                }
+
+                if(child){
+                    parent.push([
+                            child : child,
+                            date : d?.localOutEntryDate?.format("dd-MM-yyyy")?:"",
+                            vehicleNo : (d?.vehicleNo?.state?:"") +" - "+ (d?.vehicleNo?.rto?:"") +" "+
+                                    (d?.vehicleNo?.series?:"") +" "+ (d?.vehicleNo?.vehicleNo?:""),
+                            amount : d?.totalTripRate?:"",
+                            voucherNo : d?.localOutEntryNo?:""
+                    ]);
                 }
             }
         }
 
-        parent = [
-                child : child,
+        finalData = [
+                parent : parent,
                 fromParty: params.fromParty ? AccountMaster.findById(params.fromParty as Long)?.accountName : "",
                 toParty  : params.toParty ? AccountMaster.findById(params.toParty as Long)?.accountName : "",
                 fromDate : params.fromDate ? Date.parse("yyyy-MM-dd", params.fromDate)?.format("dd-MM-yyyy") : "",
                 toDate   : params.toDate ? Date.parse("yyyy-MM-dd", params.toDate)?.format("dd-MM-yyyy") : "",
-                vehicleNo: params.vNo ? VehicleMaster.findById(params.vNo as Long):""
+                vehicleNo: params.vNo ? VehicleMaster.findById(params.vNo as Long):"",
+                totalAmount : totalAmount
         ]
 
-        reportDetails.push(parent)
+        reportDetails.push(finalData)
 
         params._format = "PDF";
-        params._file = "../reports/transactionReport/InvoiceReceivedReport"
+        params._file = "../reports/transactionReport/AllInOneLocalTripReport.jasper"
         params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
         params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
         chain(controller: 'unitMaster', action: 'generateReport', model: [data: reportDetails], params: params);

@@ -31,8 +31,8 @@
             init();
 
             function init() {
-                $scope.date1 = "${new Date().format("yyyy-MM-dd")}";
-                $scope.date2 = "${new Date().format("yyyy-MM-dd")}";
+                %{--$scope.date1 = "${new Date().format("yyyy-MM-dd")}";--}%
+                %{--$scope.date2 = "${new Date().format("yyyy-MM-dd")}";--}%
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/accountList")
                         .success(function(data){
                             $scope.accountList=data;
@@ -96,9 +96,9 @@
                                           action="dateWiseVoucherReport"
                                           jasper="../reports/inward_reports/bookPurchaseDatewiseSummary">
 
-                                <input type="date" id="date1"  style="width: 150px;" ng-model="date1"
+                                <input type="date"  style="width: 150px;" ng-model="date1"
                                        value="${Date.newInstance().format("yyyy-MM-dd")}" />
-                                <input type="date" id="date2"  style="width: 150px;" ng-model="date2"
+                                <input type="date"  style="width: 150px;" ng-model="date2"
                                        value="${Date.newInstance().format("yyyy-MM-dd")}" />
 
                                 <input type="hidden" name="fdate" value="{{date1}}" />
