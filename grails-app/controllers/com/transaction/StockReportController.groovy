@@ -374,6 +374,66 @@ class StockReportController {
         chain(controller: 'stockReport', action: 'generateReport', model: [data: reportDetails], params: params);
     }
 
+    def itemWiseStockReport() {
+        def reportDetails = []
+        def parent
+        def child = []
+
+        def lrData = LREntry.createCriteria().list {
+            eq('branch',session['branch'])
+            eq('isActive',true)
+
+            if(params.fromDate && params.toDate){
+                between('lrDate',Date.parse("yyyy-MM-dd",params.fromDate),Date.parse("yyyy-MM-dd",params.toDate))
+            }else if(params.fromDate) {
+                ge('lrDate',Date.parse("yyyy-MM-dd",params.fromDate))
+            }else if(params.toDate) {
+                le('lrDate',Date.parse("yyyy-MM-dd",params.toDate))
+            }
+        }
+
+        def lrChildData = LREntryDetails.createCriteria().list {
+            if(lrData) {
+                inList('lrEntry', lrData)
+            }
+
+            if(params.itemName) {
+                eq('productName',ProductMaster.findById(params.itemName as Long))
+            }
+        }
+
+        if(lrChildData) {
+            lrChildData.each {c ->
+                child.push([
+                        procustName    : c?.productName?.productName?:"",
+                        fromCompany    : c?.lrEntry?.fromCustomer?.accountName?:"",
+                        toCompany      : c?.lrEntry?.toCustomer?.accountName?:"",
+                        lrNo           : c?.lrEntry?.lrNo?:"",
+                        lrDate         : c?.lrEntry?.lrDate?.format('dd-MM-yyyy'),
+                        invoiceQty     : c?.invoiceQty?:0
+                ])
+            }
+        }
+
+        def totalQty = lrChildData.inject(0) { sum, item -> sum + item?.invoiceQty?:0 }
+
+        parent = [
+                child         : child,
+                productName   : params.itemName ? ProductMaster.findById(params.itemName as Long)?.productName : "",
+                fromDate      : params.fromDate ? Date.parse('yyyy-MM-dd',params.fromDate)?.format("dd-MM-yyyy") : "",
+                toDate        : params.toDate ? Date.parse('yyyy-MM-dd',params.toDate)?.format("dd-MM-yyyy") : "",
+                totalQty      : totalQty ?:0
+        ]
+
+        reportDetails.push(parent)
+
+        params._format = params.format;
+        params._file = "../reports/transactionReport/stockReportItemWise"
+        params.SUBREPORT_DIR = "${servletContext.getRealPath('/reports/transactionReport')}/"
+        params.IMAGE_DIR = "${servletContext.getRealPath('/images')}/"
+        chain(controller: 'stockReport', action: 'generateReport', model: [data: reportDetails], params: params);
+    }
+
     def generateReport = {
         def reportModel = this.getProperties().containsKey('chainModel') ? chainModel : null
         def report = jasperService.buildReportDefinition(params, request.getLocale(), reportModel)

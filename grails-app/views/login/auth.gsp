@@ -171,11 +171,12 @@
 <div class="center">
     <h1>
         %{--<span class="red">ABR CREATIONS</span><br>--}%
-        <img src="/${grailsApplication.config.erpName}/images/final2.jpg">
+        %{--<img src="/${grailsApplication.config.erpName}/images/final2.jpg">--}%
+        <img src="/${grailsApplication.config.erpName}/images/AssiduousLogo.png">
         %{--<i class="icon-truck"></i>--}%
-        <small>
-        <span class="RED" style="">CREATIONS</span>
-    </small>
+        %{--<small>--}%
+        %{--<span class="RED" style="">CREATIONS</span>--}%
+    %{--</small>--}%
     </h1>
     %{--<h4 class="blue">&copy; Balaji Enterprises</h4>--}%
 </div>
@@ -211,8 +212,8 @@
                     %{--</label>--}%
                         <label class="block clearfix">
                             %{--<span class="block input-icon input-icon-right">--}%
-                            <g:select name="year" from="${FinancialYear.list()}" id="year"
-                                      autofocus="" noSelection="['': '-Financial Year-']"/>
+                            <g:select name="year" from="${FinancialYear.list().sort(false) {-it.id}}" id="year"
+                                      autofocus=""/>
                             %{--<i class="icon-user"></i>--}%
                             %{--</span>--}%
                         </label>

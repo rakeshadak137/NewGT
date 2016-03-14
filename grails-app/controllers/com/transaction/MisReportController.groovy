@@ -25,6 +25,10 @@ class MisReportController {
         def grandTotalDieselPaid = 0;
         def grandTotalCashPaid = 0;
         def grandTotalBalanceAmount = 0;
+        def dieselReceiptNoMemo = "";
+        def pumpNameMemo = "";
+        def dieselReceiptNoVoucher = "";
+        def pumpNameVoucher = "";
 
         def data = InternalMemo.createCriteria().list {
             eq("branch",session['branch'])
@@ -55,6 +59,9 @@ class MisReportController {
                 def finalVoucherData = [];
                 def lrData = [];
 
+                dieselReceiptNoMemo = d?.dieselReceiptNo?:""
+                pumpNameMemo = d?.pumpName?.pumpName?:""
+
                 def voucherData = CashVoucherChild.createCriteria().list {
                     eq("memoNo",d as InternalMemo)
 
@@ -68,6 +75,9 @@ class MisReportController {
                 }
 
                 if(finalVoucherData) {
+                    dieselReceiptNoVoucher = finalVoucherData?.cashVoucher?.dieselReceiptNo?:""
+                    pumpNameVoucher = finalVoucherData?.cashVoucher?.pumpName?.pumpName?:""
+
                     if (finalVoucherData?.paymentType == "Diesel") {
                         balance = (d?.totalBalance ?: 0) - (finalVoucherData?.dieselAmount ?: 0)
                         paidDiesel = finalVoucherData?.dieselLtr ?: 0;
@@ -114,51 +124,59 @@ class MisReportController {
                         lrUniqueData.each {l ->
                             if (memoFlag) {
                                 child.push([
-                                        memoDate        : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
-                                        fromParty       : l?.fromCustomer?.accountName ?: "",
-                                        toParty         : l?.toCustomer?.accountName ?: "",
-                                        vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
-                                                " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
-                                        memoNo          : d?.voucherNo ?: "",
-                                        lrNo            : l?.lrNo ?: "",
-                                        lrAmount        : l?.grandTotal ?: 0,
-                                        vehFright       : d?.freight ?: 0,
-                                        diesel          : d?.dieselLtr ?: 0,
-                                        dieselRate      : d?.dieselRate ?: 0,
-                                        dieselAmount    : d?.dieselAmount ?: 0,
-                                        cashAdvance     : d?.advance ?: 0,
-                                        balance         : balance,
-                                        paidDiesel      : paidDiesel,
-                                        paidDieselRate  : paidDieselRate,
-                                        paidDieselAmount: paidDieselAmount,
-                                        paidCash        : paidCash,
-                                        paidDate        : paidDate,
-                                        received        : received,
-                                        totalLrAmount   : totalLrAmount
+                                        memoDate                     : d?.voucherDate?.format("dd-MM-yyyy") ?: "",
+                                        fromParty                    : l?.fromCustomer?.accountName ?: "",
+                                        toParty                      : l?.toCustomer?.accountName ?: "",
+                                        vehicleNo                    : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                                                         " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                                        memoNo                       : d?.voucherNo ?: "",
+                                        lrNo                         : l?.lrNo ?: "",
+                                        lrAmount                     : l?.grandTotal ?: 0,
+                                        vehFright                    : d?.freight ?: 0,
+                                        diesel                       : d?.dieselLtr ?: 0,
+                                        dieselRate                   : d?.dieselRate ?: 0,
+                                        dieselAmount                 : d?.dieselAmount ?: 0,
+                                        cashAdvance                  : d?.advance ?: 0,
+                                        balance                      : balance,
+                                        paidDiesel                   : paidDiesel,
+                                        paidDieselRate               : paidDieselRate,
+                                        paidDieselAmount             : paidDieselAmount,
+                                        paidCash                     : paidCash,
+                                        paidDate                     : paidDate,
+                                        received                     : received,
+                                        totalLrAmount                : totalLrAmount,
+                                        dieselReceiptNoMemo          : dieselReceiptNoMemo,
+                                        pumpNameMemo                 : pumpNameMemo,
+                                        dieselReceiptNoVoucher       : dieselReceiptNoVoucher,
+                                        pumpNameVoucher              : pumpNameVoucher
                                 ]);
                             } else {
                                 child.push([
-                                        memoDate        : "",
-                                        fromParty       : l?.fromCustomer?.accountName ?: "",
-                                        toParty         : l?.toCustomer?.accountName ?: "",
-                                        vehicleNo : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
-                                                " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
-                                        memoNo          : "",
-                                        lrNo            : l?.lrNo ?: "",
-                                        lrAmount        : l?.grandTotal ?: 0,
-                                        vehFright       : "",
-                                        diesel          : "",
-                                        dieselRate      : "",
-                                        dieselAmount    : "",
-                                        cashAdvance     : "",
-                                        balance         : "",
-                                        paidDiesel      : "",
-                                        paidDieselRate  : "",
-                                        paidDieselAmount: "",
-                                        paidCash        : "",
-                                        paidDate        : "",
-                                        received        : "",
-                                        totalLrAmount   : ""
+                                        memoDate                     : "",
+                                        fromParty                    : l?.fromCustomer?.accountName ?: "",
+                                        toParty                      : l?.toCustomer?.accountName ?: "",
+                                        vehicleNo                    : (d?.vehicleNo?.state?:"")+" - "+(d?.vehicleNo?.rto?:"")+
+                                                                         " "+(d?.vehicleNo?.series?:"")+" "+(d?.vehicleNo?.vehicleNo?:""),
+                                        memoNo                       : "",
+                                        lrNo                         : l?.lrNo ?: "",
+                                        lrAmount                     : l?.grandTotal ?: 0,
+                                        vehFright                    : "",
+                                        diesel                       : "",
+                                        dieselRate                   : "",
+                                        dieselAmount                 : "",
+                                        cashAdvance                  : "",
+                                        balance                      : "",
+                                        paidDiesel                   : "",
+                                        paidDieselRate               : "",
+                                        paidDieselAmount             : "",
+                                        paidCash                     : "",
+                                        paidDate                     : "",
+                                        received                     : "",
+                                        totalLrAmount                : "",
+                                        dieselReceiptNoMemo          : dieselReceiptNoMemo,
+                                        pumpNameMemo                 : pumpNameMemo,
+                                        dieselReceiptNoVoucher       : dieselReceiptNoVoucher,
+                                        pumpNameVoucher              : pumpNameVoucher
                                 ]);
                             }
                             memoFlag = false;

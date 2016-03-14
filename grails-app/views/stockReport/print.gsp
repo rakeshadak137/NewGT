@@ -3,24 +3,26 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'billAgainstLR.label', default: 'Bill Related Report')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
-
-
+    <title>
+        <g:message code="default.list.label" args="[entityName]"/>
+    </title>
     <script>
         $(document).ready(function () {
             $("#party").searchable();
             $("#party2").searchable();
             $("#item").searchable();
             $("#item2").searchable();
+            $("#item1").searchable();
+            $("#item3").searchable();
             $("#vehicle").searchable();
             $("#tabs").tabs();
         });
 
 
         function BillAgainstLR($scope, $http) {
-            $scope.accountList=[];
-            $scope.itemList=[];
-            $scope.vehicleList=[];
+            $scope.accountList = [];
+            $scope.itemList = [];
+            $scope.vehicleList = [];
             init();
 
             function init() {
@@ -29,142 +31,134 @@
                 $scope.goDownList = ${com.master.GodownMaster.findAllByIsActive(true) as grails.converters.JSON};
                 $scope.divisionList = ${DivisionMaster.findAllByIsActive(true) as grails.converters.JSON};
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/accountList")
-                        .success(function(data){
-                            $scope.accountList=data;
+                        .success(function (data) {
+                            $scope.accountList = data;
                         });
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/itemList")
-                        .success(function(data){
-                            $scope.itemList=data;
+                        .success(function (data) {
+                            $scope.itemList = data;
                         });
                 $http.get("/${grailsApplication.config.erpName}/transactionReport/vehicleList")
-                        .success(function(data){
-                            $scope.vehicleList=data;
+                        .success(function (data) {
+                            $scope.vehicleList = data;
                         });
             }
         }
     </script>
 </head>
-
 <body>
 <div ng-app="">
-<%= newId %>
+<%=newId%>
 <div ng-controller="BillAgainstLR">
-
 <div class="main-content">
-
 <div class="row-fluid" style="margin-left:30px; width:95%; margin-top: 15px;">
-
 <div id="list-examSchedule" class="content scaffold-list" role="main">
-
 <div class="table-header">
-    %{--<h5>LR REPORT</h5>--}%
+    %{--
+    <h5>LR REPORT</h5>
+    --}%
 </div>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
 <div id="tabs">
-
 <ul>
     <li><a href="#tabs-1">Party Item Wise</a></li>
     <li><a href="#tabs-2">Godown Wise</a></li>
     <li><a href="#tabs-3">Division Wise</a></li>
-
+    <li><a href="#tabs-4">Item Wise</a></li>
 </ul>
-
-
 <div id="tabs-1">
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="From Party"/>
-                </label>
-            </div>
-
-            <div class="span8">
-                <select ng-model="fromParty" ng-options="p.id as p.accountName for p in accountList" id="party">
-                    %{--<option value="">---Select One---</option>--}%
-                </select>
-            </div>
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="From Party"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <select ng-model="fromParty" ng-options="p.id as p.accountName for p in accountList" id="party">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
             </div>
             <div class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="To Party"/>
-                </label>
-            </div>
-
-            <div class="span8">
-                <select ng-model="toParty" ng-options="p.id as p.accountName for p in accountList" id="party2">
-                    %{--<option value="">---Select One---</option>--}%
-                </select>
-            </div>
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="To Party"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <select ng-model="toParty" ng-options="p.id as p.accountName for p in accountList" id="party2">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
-            <span class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="Product Code"/>
-                </label>
-            </div>
-
-            <div class="span8">
-                <select ng-model="itemName" ng-options="p.id as p.productCode for p in itemList" id="item">
-                    %{--<option value="">---Select One---</option>--}%
-                </select>
-            </div>
-            </span>
             <div class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="Product Name"/>
-                </label>
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="Product Code"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <select ng-model="itemName" ng-options="p.id as p.productCode for p in itemList" id="item">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
             </div>
-
-            <div class="span8">
-                <select ng-model="itemName" ng-options="p.id as p.productName for p in itemList" id="item2">
-                    %{--<option value="">---Select One---</option>--}%
-                </select>
-            </div>
+            <div class="span6">
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="Product Name"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <select ng-model="itemName" ng-options="p.id as p.productName for p in itemList" id="item2">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
-        <div class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
-                </label>
-            </div>
-
-            <div class="span8">
-                <input type="date" id="date1"  style="width: 150px;" ng-model="fromDate"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
-            </div>
-        </div>
             <div class="span6">
-            <div class="span4">
-                <label for="quotationNo">
-                    <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
-                </label>
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <input type="date" id="date1" style="width: 150px;" ng-model="fromDate"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                </div>
             </div>
-
-            <div class="span8">
-                <input type="date" id="date2"  style="width: 150px;" ng-model="toDate"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
-            </div>
+            <div class="span6">
+                <div class="span4">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
+                    </label>
+                </div>
+                <div class="span8">
+                    <input type="date" id="date2" style="width: 150px;" ng-model="toDate"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span2">
@@ -178,9 +172,7 @@
             </div>
         </div>
     </div>
-
 </div>
-
 <div id="tabs-2">
     <div class="row-fluid">
         <div class="span12">
@@ -189,7 +181,6 @@
                     <g:message code="quotationEntry.quotationNo.label" default="Godown Name"/>
                 </label>
             </div>
-
             <div class="span3">
                 <select ng-model="godownName" ng-options="g.id as g.godownName for g in goDownList">
                     <option value="">---Select One---</option>
@@ -197,7 +188,6 @@
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span2">
@@ -205,25 +195,21 @@
                     <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
                 </label>
             </div>
-
             <div class="span3">
-                <input type="date" id="date3"  style="width: 150px;" ng-model="fromDateg"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                <input type="date" id="date3" style="width: 150px;" ng-model="fromDateg"
+                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
             </div>
-
             <div class="span2">
                 <label for="quotationNo">
                     <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
                 </label>
             </div>
-
             <div class="span3">
-                <input type="date" id="date4"  style="width: 150px;" ng-model="toDateg"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                <input type="date" id="date4" style="width: 150px;" ng-model="toDateg"
+                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span2">
@@ -238,7 +224,6 @@
         </div>
     </div>
 </div>
-
 <div id="tabs-3">
     <div class="row-fluid">
         <div class="span12">
@@ -247,7 +232,6 @@
                     <g:message code="quotationEntry.quotationNo.label" default="Division Name"/>
                 </label>
             </div>
-
             <div class="span3">
                 <select ng-model="divName" ng-options="d.id as d.divisionName for d in divisionList">
                     <option value="">---Select One---</option>
@@ -255,7 +239,6 @@
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span2">
@@ -263,25 +246,21 @@
                     <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
                 </label>
             </div>
-
             <div class="span3">
-                <input type="date" id="date4"  style="width: 150px;" ng-model="fromDated"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                <input type="date" id="date4" style="width: 150px;" ng-model="fromDated"
+                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
             </div>
-
             <div class="span2">
                 <label for="quotationNo">
                     <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
                 </label>
             </div>
-
             <div class="span3">
-                <input type="date" id="date5"  style="width: 150px;" ng-model="toDated"
-                       value="${Date.newInstance().format("yyyy-MM-dd")}" />
+                <input type="date" id="date5" style="width: 150px;" ng-model="toDated"
+                       value="${Date.newInstance().format("yyyy-MM-dd")}"/>
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="span12">
             <div class="span2">
@@ -296,9 +275,79 @@
         </div>
     </div>
 </div>
-
+<div id="tabs-4">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span6">
+                <div class="span3">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="Product Code"/>
+                    </label>
+                </div>
+                <div class="span6">
+                    <select ng-model="itemName1" ng-options="p.id as p.productCode for p in itemList" id="item1">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="span3">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="Product Name"/>
+                    </label>
+                </div>
+                <div class="span6">
+                    <select ng-model="itemName1" ng-options="p.id as p.productName for p in itemList" id="item3">
+                        %{--
+                        <option value="">---Select One---</option>
+                        --}%
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span6">
+                <div class="span3">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="From Date"/>
+                    </label>
+                </div>
+                <div class="span6">
+                    <input type="date" style="width: 150px;" ng-model="fromDate"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="span3">
+                    <label for="quotationNo">
+                        <g:message code="quotationEntry.quotationNo.label" default="To Date"/>
+                    </label>
+                </div>
+                <div class="span6">
+                    <input type="date" style="width: 150px;" ng-model="toDate"
+                           value="${Date.newInstance().format("yyyy-MM-dd")}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span2">
+                <a ng-href="/${grailsApplication.config.erpName}/stockReport/itemWiseStockReport?scrid=${session['activeScreen'].id}&itemName={{itemName1}}&fromDate={{fromDate}}&toDate={{toDate}}&format=PDF"
+                   class="btn btn-primary btn-mini" target="_blank">
+                    PDF</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a ng-href="/${grailsApplication.config.erpName}/stockReport/itemWiseStockReport?scrid=${session['activeScreen'].id}&itemName={{itemName1}}&fromDate={{fromDate}}&toDate={{toDate}}&format=XLSX"
+                   class="btn btn-primary btn-mini">
+                    EXCEL</a>
+            </div>
+        </div>
+    </div>
 </div>
-
 </div>
 </div>
 </div>

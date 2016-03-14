@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stockReportItemWise" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ebb1aba-73eb-40f0-8beb-a41e3f4dbf2b">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="125"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="child" class="java.util.Collection"/>
+	<field name="productName" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<field name="totalQty" class="java.lang.String"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="9c0ee68b-efea-42c8-a35a-e5d93cd65b4e" x="0" y="0" width="555" height="802"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="204" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="4933cefa-3b61-4380-b9c6-834ee7784c61" x="0" y="184" width="130" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="be0fe414-4791-47b2-8bc8-0bb708271962" x="130" y="184" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="da55f3ec-e039-4643-94c6-28870bde1e8d" x="243" y="184" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4ea51bc4-32b5-45aa-bdfb-b098fe77cad7" x="356" y="184" width="66" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4dbfb29c-96ad-45aa-8aa6-fc4f6793cc75" x="422" y="184" width="66" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9b12d100-6503-4c68-affd-d21605639030" x="488" y="184" width="67" height="20"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="df72fc9a-7402-4d7e-b14c-cdfa8128fc13" x="0" y="0" width="555" height="124"/>
+				<subreportParameter name="IMAGE_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "address_information.jasper"]]></subreportExpression>
+			</subreport>
+			<rectangle>
+				<reportElement uuid="8edbe9ad-bd70-4dc6-8b77-1438a8361c35" x="0" y="144" width="555" height="40"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="09528416-4b40-416d-936f-7b796662ad78" x="0" y="124" width="555" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bcfe9910-0d51-4727-9132-76330dec863f" x="0" y="124" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[STOCK REPROT ITEM WISE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c8cf32c-4d3c-4fdf-af8a-02f596be7fbe" x="6" y="144" width="57" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[PRODUCT  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0da2f5fc-8035-4631-b5a4-2a363405ae31" x="333" y="144" width="51" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd1b9f3c-d514-4d9a-afce-b62097cea320" x="333" y="164" width="51" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<text><![CDATA[TO DATE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="25d86d53-84a4-4cf7-a3ae-87d487b7159e" stretchType="RelativeToTallestObject" x="63" y="144" width="265" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca0e9d51-0ff4-4858-92d5-068d90ab7060" x="384" y="144" width="135" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9898039-7871-4775-9830-60d2e29afbb5" x="384" y="164" width="135" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Courier-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" : "+$F{toDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7b54c565-5be9-4e21-bcdf-37325b759ffe" x="0" y="184" width="130" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PRODUCT NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13f8576e-a163-4720-b11e-ee2c0ff90925" x="130" y="184" width="113" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef85e89f-588a-4da9-af03-e98fad1ae9b5" x="243" y="184" width="113" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ed0033d-7a65-497b-85b3-ed59ae363f35" x="356" y="184" width="66" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7c72f44-69a5-49a3-be72-4c2fc2cd1814" x="422" y="184" width="66" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[LR DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71e65142-5fb7-48dc-8d14-c9c5dec7ff22" x="488" y="184" width="67" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QTY.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="48b02a5e-17ee-46e0-86e2-aa00e69e4db4" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="20"/>
+			</rectangle>
+			<subreport>
+				<reportElement uuid="98868bc8-5ff9-420a-be17-003b8e021274" x="0" y="0" width="555" height="20"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{child})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "stockReportItemWise_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="ea68a751-9139-4cbf-bb71-39584e2ffccc" x="0" y="0" width="555" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="3df40f5d-b3eb-4316-8b11-93872dac8813" x="488" y="0" width="67" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalQty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4692d23b-15c9-4152-b92e-2d8534aebcd2" x="356" y="0" width="132" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

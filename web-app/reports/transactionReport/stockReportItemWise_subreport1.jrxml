@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stockReportItemWise_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="194e8f30-36aa-4144-9dff-ba3186c81d69">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="procustName" class="java.lang.String"/>
+	<field name="fromCompany" class="java.lang.String"/>
+	<field name="toCompany" class="java.lang.String"/>
+	<field name="lrNo" class="java.lang.String"/>
+	<field name="lrDate" class="java.lang.String"/>
+	<field name="invoiceQty" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="68c9d061-ade3-4490-bd16-2728b5fed381" stretchType="RelativeToBandHeight" x="130" y="0" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bdf5a356-5f5e-499c-915d-f6b4ab667d2c" stretchType="RelativeToBandHeight" x="0" y="0" width="130" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f87952cd-7901-4453-8c31-63803061a2d0" stretchType="RelativeToBandHeight" x="243" y="0" width="113" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e927591a-1520-4efe-a09a-9b0560d4e25a" stretchType="RelativeToBandHeight" x="422" y="0" width="66" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5f37f6b2-3f12-46d8-b218-5b590fabefdc" stretchType="RelativeToBandHeight" x="356" y="0" width="66" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4f016446-3d5c-4bc0-b728-272bde546e6c" stretchType="RelativeToBandHeight" x="488" y="0" width="67" height="20"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fea9fe4d-f082-4b4a-b24e-6c1bf96896a7" stretchType="RelativeToTallestObject" x="5" y="4" width="121" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{procustName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="90afc892-6ab7-4960-ab71-7a1ac5bd3be8" stretchType="RelativeToTallestObject" x="135" y="4" width="104" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromCompany}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="15f4e3a8-4ed5-4bc6-91f9-6a08549cdbf2" stretchType="RelativeToTallestObject" x="248" y="4" width="104" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toCompany}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d825434a-568a-4b1d-86c9-4d9451a6a2eb" stretchType="RelativeToBandHeight" x="356" y="4" width="66" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c31d42c4-5ded-4543-a691-95d28f8066f5" stretchType="RelativeToBandHeight" x="422" y="4" width="66" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lrDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b0300a59-1947-4762-a8f3-751c57d60b6a" stretchType="RelativeToBandHeight" x="488" y="4" width="67" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceQty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
