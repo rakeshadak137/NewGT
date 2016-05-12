@@ -761,27 +761,27 @@ class TransactionReportController {
             catch (Exception e) {
                 e.printStackTrace();
             }
-            if (lrInstance.print_status == 0) {
-                try {
-                    sendMail {
-                        multipart true
-                        to toMailId
-//                        to 'rakeshadak137@gmail.com'
-                        subject "Report From Ganesh Transport Created"
-                        html "LR"
-                        attachBytes 'lr.pdf', 'application/pdf', reportDef.contentStream.toByteArray()
-                    }
-
-                    if (lrInstance) {
-                        lrInstance.print_status = lrInstance.print_status + 1;
-                        lrInstance.save(flush: true);
-
-                    }
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+//            if (lrInstance.print_status == 0) {
+//                try {
+//                    sendMail {
+//                        multipart true
+//                        to toMailId
+////                        to 'rakeshadak137@gmail.com'
+//                        subject "Report From Ganesh Transport Created"
+//                        html "LR"
+//                        attachBytes 'lr.pdf', 'application/pdf', reportDef.contentStream.toByteArray()
+//                    }
+//
+//                    if (lrInstance) {
+//                        lrInstance.print_status = lrInstance.print_status + 1;
+//                        lrInstance.save(flush: true);
+//
+//                    }
+//                }
+//                catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
         } else {
             render(text: reportDef.contentStream, contentType: reportDef.fileFormat.mimeTyp, encoding: reportDef.parameters.encoding ? reportDef.parameters.encoding : 'UTF-8');

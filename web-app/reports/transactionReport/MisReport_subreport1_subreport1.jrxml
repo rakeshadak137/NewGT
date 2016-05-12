@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MisReport_subreport1_subreport1" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1190" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8cac4699-d8da-466d-85b5-07711248b37f">
 	<property name="ireport.zoom" value="1.4641000000000015"/>
-	<property name="ireport.x" value="887"/>
+	<property name="ireport.x" value="415"/>
 	<property name="ireport.y" value="0"/>
 	<field name="memoDate" class="java.lang.String"/>
 	<field name="fromParty" class="java.lang.String"/>
@@ -23,67 +23,72 @@
 	<field name="paidDate" class="java.lang.String"/>
 	<field name="received" class="java.lang.String"/>
 	<field name="totalLrAmount" class="java.lang.String"/>
+	<field name="dieselReceiptNoMemo" class="java.lang.String"/>
+	<field name="pumpNameMemo" class="java.lang.String"/>
 	<detail>
 		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="11186c73-506c-4f56-a1a0-3cf04fbcb11e" stretchType="RelativeToBandHeight" x="638" y="0" width="46" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="da83ea6b-4d79-48de-8195-d56af1f483df" stretchType="RelativeToBandHeight" x="684" y="0" width="86" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b0c9a060-eae6-4cc9-ac8f-a7bcff912fea" stretchType="RelativeToBandHeight" x="587" y="0" width="51" height="20"/>
+			</rectangle>
 			<rectangle>
 				<reportElement uuid="3fa53d5c-601a-482e-87b3-80887af05f3b" stretchType="RelativeToBandHeight" x="0" y="0" width="52" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="94cea0e1-f6eb-4307-9756-60f4bb27346d" stretchType="RelativeToBandHeight" x="52" y="0" width="137" height="20"/>
+				<reportElement uuid="94cea0e1-f6eb-4307-9756-60f4bb27346d" stretchType="RelativeToBandHeight" x="52" y="0" width="106" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="55d593a2-4a41-4b0b-a7e9-23def8dd0b53" stretchType="RelativeToBandHeight" x="189" y="0" width="135" height="20"/>
+				<reportElement uuid="55d593a2-4a41-4b0b-a7e9-23def8dd0b53" stretchType="RelativeToBandHeight" x="158" y="0" width="104" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="308afda2-415e-4660-94d6-0521c862ac6a" stretchType="RelativeToBandHeight" x="324" y="0" width="70" height="20"/>
+				<reportElement uuid="308afda2-415e-4660-94d6-0521c862ac6a" stretchType="RelativeToBandHeight" x="262" y="0" width="70" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="df182876-1d04-48da-a193-5c2a148aa573" stretchType="RelativeToBandHeight" x="394" y="0" width="46" height="20"/>
+				<reportElement uuid="df182876-1d04-48da-a193-5c2a148aa573" stretchType="RelativeToBandHeight" x="332" y="0" width="46" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="41a2876d-5911-4310-8d85-e9e528441ad8" stretchType="RelativeToBandHeight" x="440" y="0" width="46" height="20"/>
+				<reportElement uuid="41a2876d-5911-4310-8d85-e9e528441ad8" stretchType="RelativeToBandHeight" x="378" y="0" width="46" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="724eff1a-bceb-43c6-b0aa-6636bb4913c7" stretchType="RelativeToBandHeight" x="486" y="0" width="46" height="20"/>
+				<reportElement uuid="724eff1a-bceb-43c6-b0aa-6636bb4913c7" stretchType="RelativeToBandHeight" x="424" y="0" width="46" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="f616d6eb-6022-40a5-8572-0ebe05e41ba6" stretchType="RelativeToBandHeight" x="532" y="0" width="46" height="20"/>
+				<reportElement uuid="f20b9327-7a25-40e0-8372-70785a476939" stretchType="RelativeToBandHeight" x="470" y="0" width="47" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="f20b9327-7a25-40e0-8372-70785a476939" stretchType="RelativeToBandHeight" x="578" y="0" width="46" height="20"/>
+				<reportElement uuid="2dac7d38-1a33-4790-b35e-5ecdffd88765" stretchType="RelativeToBandHeight" x="517" y="0" width="35" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="2dac7d38-1a33-4790-b35e-5ecdffd88765" stretchType="RelativeToBandHeight" x="624" y="0" width="35" height="20"/>
+				<reportElement uuid="a3881963-08e7-470e-abfd-4c06ae941d51" stretchType="RelativeToBandHeight" x="552" y="0" width="35" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="a3881963-08e7-470e-abfd-4c06ae941d51" stretchType="RelativeToBandHeight" x="659" y="0" width="35" height="20"/>
+				<reportElement uuid="fb873ff1-8f7b-4da5-8e12-1e06c2623537" stretchType="RelativeToBandHeight" x="770" y="0" width="51" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="12182326-8a6c-49ea-b831-a7c00feae2ed" stretchType="RelativeToBandHeight" x="694" y="0" width="51" height="20"/>
+				<reportElement uuid="44e4b0bd-fb31-4d9c-bbbd-f33eba61e052" stretchType="RelativeToBandHeight" x="1045" y="0" width="50" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="fb873ff1-8f7b-4da5-8e12-1e06c2623537" stretchType="RelativeToBandHeight" x="744" y="0" width="51" height="20"/>
+				<reportElement uuid="410f24f7-d48d-453d-b548-23e52dd69b1d" stretchType="RelativeToBandHeight" x="821" y="0" width="41" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="44e4b0bd-fb31-4d9c-bbbd-f33eba61e052" stretchType="RelativeToBandHeight" x="1037" y="0" width="50" height="20"/>
+				<reportElement uuid="fa332397-50de-48f9-9e2a-e2857b84add7" stretchType="RelativeToBandHeight" x="862" y="0" width="29" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="410f24f7-d48d-453d-b548-23e52dd69b1d" stretchType="RelativeToBandHeight" x="795" y="0" width="41" height="20"/>
+				<reportElement uuid="b65fe8de-5994-472a-bc24-2795174c3f8a" stretchType="RelativeToBandHeight" x="891" y="0" width="49" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="fa332397-50de-48f9-9e2a-e2857b84add7" stretchType="RelativeToBandHeight" x="836" y="0" width="41" height="20"/>
+				<reportElement uuid="f3b14109-1912-40f2-b666-75ecd2c4517d" stretchType="RelativeToBandHeight" x="940" y="0" width="53" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="b65fe8de-5994-472a-bc24-2795174c3f8a" stretchType="RelativeToBandHeight" x="877" y="0" width="49" height="20"/>
+				<reportElement uuid="4a5128de-e87d-4fd5-a8f3-d030de51e7f3" stretchType="RelativeToBandHeight" x="993" y="0" width="52" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="f3b14109-1912-40f2-b666-75ecd2c4517d" stretchType="RelativeToBandHeight" x="926" y="0" width="53" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="4a5128de-e87d-4fd5-a8f3-d030de51e7f3" stretchType="RelativeToBandHeight" x="979" y="0" width="58" height="20"/>
-			</rectangle>
-			<rectangle>
-				<reportElement uuid="7a13fc61-a1c6-45aa-892c-38b691f6377a" stretchType="RelativeToBandHeight" x="1087" y="0" width="63" height="20"/>
+				<reportElement uuid="7a13fc61-a1c6-45aa-892c-38b691f6377a" stretchType="RelativeToBandHeight" x="1095" y="0" width="55" height="20"/>
 			</rectangle>
 			<textField>
 				<reportElement uuid="dd99f59e-e68f-4b9e-b3fe-789e05d23b4f" stretchType="RelativeToBandHeight" x="0" y="3" width="52" height="13"/>
@@ -93,137 +98,144 @@
 				<textFieldExpression><![CDATA[$F{memoDate}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="42258c8b-18a5-4131-a059-06ea26e693fc" stretchType="RelativeToTallestObject" x="54" y="3" width="133" height="13"/>
+				<reportElement uuid="42258c8b-18a5-4131-a059-06ea26e693fc" stretchType="RelativeToTallestObject" x="54" y="3" width="101" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fromParty}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="e6d16e37-68c0-4d66-bd8a-636351a42167" stretchType="RelativeToTallestObject" x="192" y="3" width="129" height="13"/>
+				<reportElement uuid="e6d16e37-68c0-4d66-bd8a-636351a42167" stretchType="RelativeToTallestObject" x="160" y="3" width="99" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{toParty}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="bc51c2ef-bc99-4b24-bb97-9255a2d44e53" stretchType="RelativeToTallestObject" x="324" y="3" width="70" height="13"/>
+				<reportElement uuid="bc51c2ef-bc99-4b24-bb97-9255a2d44e53" stretchType="RelativeToTallestObject" x="262" y="3" width="70" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicleNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="90d45a1d-6257-4fe1-b281-79bb55102518" stretchType="RelativeToBandHeight" x="394" y="3" width="46" height="13"/>
+				<reportElement uuid="90d45a1d-6257-4fe1-b281-79bb55102518" stretchType="RelativeToBandHeight" x="332" y="3" width="46" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{memoNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9dfe4d16-6be6-47bb-9ba2-895dfb48310b" stretchType="RelativeToBandHeight" x="440" y="3" width="46" height="13"/>
+				<reportElement uuid="9dfe4d16-6be6-47bb-9ba2-895dfb48310b" stretchType="RelativeToBandHeight" x="378" y="3" width="46" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lrNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9851d7a5-036a-4dfb-8b62-f06cb0c6e3b4" stretchType="RelativeToBandHeight" x="486" y="3" width="46" height="13"/>
+				<reportElement uuid="9851d7a5-036a-4dfb-8b62-f06cb0c6e3b4" stretchType="RelativeToBandHeight" x="424" y="3" width="46" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lrAmount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="18b1aa12-9611-4716-8d00-c3d690db176b" stretchType="RelativeToBandHeight" x="578" y="3" width="46" height="13"/>
+				<reportElement uuid="18b1aa12-9611-4716-8d00-c3d690db176b" stretchType="RelativeToBandHeight" x="471" y="3" width="46" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehFright}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="17b84195-b4e6-4ee7-916e-bd763901c7d0" stretchType="RelativeToBandHeight" x="624" y="3" width="35" height="13"/>
+				<reportElement uuid="17b84195-b4e6-4ee7-916e-bd763901c7d0" stretchType="RelativeToBandHeight" x="517" y="3" width="35" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diesel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="bf7dbe60-29ac-4903-9bbf-a2204eb4b974" stretchType="RelativeToBandHeight" x="659" y="3" width="35" height="13"/>
+				<reportElement uuid="bf7dbe60-29ac-4903-9bbf-a2204eb4b974" stretchType="RelativeToBandHeight" x="552" y="3" width="35" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dieselRate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="3e6ee4dc-1eb1-4d89-858b-b178d35cf539" stretchType="RelativeToBandHeight" x="694" y="3" width="50" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{dieselAmount}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="90477e43-7421-4924-ad1c-dcea9c0076e9" stretchType="RelativeToBandHeight" x="745" y="3" width="50" height="13"/>
+				<reportElement uuid="90477e43-7421-4924-ad1c-dcea9c0076e9" stretchType="RelativeToBandHeight" x="771" y="3" width="50" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cashAdvance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="150b7a7c-1372-4d02-9d93-4abe33cb4a26" stretchType="RelativeToBandHeight" x="1037" y="3" width="50" height="13"/>
+				<reportElement uuid="150b7a7c-1372-4d02-9d93-4abe33cb4a26" stretchType="RelativeToBandHeight" x="1045" y="3" width="50" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0e773e4e-3c26-4f2c-b839-228947ebafe7" stretchType="RelativeToBandHeight" x="795" y="3" width="41" height="13"/>
+				<reportElement uuid="0e773e4e-3c26-4f2c-b839-228947ebafe7" stretchType="RelativeToBandHeight" x="821" y="3" width="41" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidDiesel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="cfd79bcd-ec66-4082-a7b3-0e0c5844d46e" stretchType="RelativeToBandHeight" x="836" y="3" width="41" height="13"/>
+				<reportElement uuid="cfd79bcd-ec66-4082-a7b3-0e0c5844d46e" stretchType="RelativeToBandHeight" x="862" y="3" width="29" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidDieselRate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7bb91aa9-38a0-44db-9deb-0d91f53d27f4" stretchType="RelativeToBandHeight" x="877" y="3" width="49" height="13"/>
+				<reportElement uuid="7bb91aa9-38a0-44db-9deb-0d91f53d27f4" stretchType="RelativeToBandHeight" x="891" y="3" width="49" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidDieselAmount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ba0ab868-0aa8-44b0-9846-e15da465845d" stretchType="RelativeToBandHeight" x="926" y="3" width="53" height="13"/>
+				<reportElement uuid="ba0ab868-0aa8-44b0-9846-e15da465845d" stretchType="RelativeToBandHeight" x="940" y="3" width="53" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidCash}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="3f506967-0b72-41d0-830b-8b2176a5e4df" stretchType="RelativeToBandHeight" x="979" y="3" width="58" height="13"/>
+				<reportElement uuid="3f506967-0b72-41d0-830b-8b2176a5e4df" stretchType="RelativeToBandHeight" x="993" y="3" width="52" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7c25dc74-62f3-4f4a-8023-14fe1205d2fd" x="1087" y="3" width="63" height="13"/>
+				<reportElement uuid="7c25dc74-62f3-4f4a-8023-14fe1205d2fd" x="1095" y="3" width="55" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{received}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e7373617-3476-4a82-8281-960003faf1dc" stretchType="RelativeToBandHeight" x="532" y="3" width="46" height="13"/>
+				<reportElement uuid="5bd3cf9b-ef63-4026-bfa1-03a842a2cb47" stretchType="RelativeToBandHeight" x="588" y="3" width="50" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{totalLrAmount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dieselAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02d68e9d-1deb-4763-89ff-8e7e7486a7a2" stretchType="RelativeToBandHeight" x="638" y="3" width="46" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dieselReceiptNoMemo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f8494eab-8979-4015-94ce-e25de916662b" stretchType="RelativeToTallestObject" x="686" y="3" width="81" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pumpNameMemo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
